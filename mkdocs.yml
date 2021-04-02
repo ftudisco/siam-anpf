@@ -1,0 +1,18 @@
+site_name: Acronym
+nav:
+    - Home: index.md
+    - Chapter1: chapter1.md
+    - Chapter2: chapter2.md
+    - Chapter3: chapter3.md
+theme:
+  name: null
+  custom_dir: cinder
+  colorscheme: github
+  highlightjs: true
+  font:
+    text: Open Sans 
+  features:
+    - tabs
+    - navigation.expand
+extra_css:
+  - css/extra.css
