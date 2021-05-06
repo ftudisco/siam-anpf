@@ -16,7 +16,7 @@
     
     
       
-        <title>Chapter3 - SIAM LA 21 Tutorial</title>
+        <title>Centrality - SIAM LA 21 Tutorial</title>
       
     
     
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#node_and_layer_eigenvector_centrality_for_multiplex" class="md-skip">
+        <a href="#network_centrality" class="md-skip">
           Skip to content
         </a>
       
@@ -99,7 +99,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Chapter3
+              Centrality
             
           </span>
         </div>
@@ -200,10 +200,12 @@
         
   
   
+    
+  
 
 
   <li class="md-tabs__item">
-    <a href="../centrality/" class="md-tabs__link">
+    <a href="./" class="md-tabs__link md-tabs__link--active">
       Centrality
     </a>
   </li>
@@ -212,12 +214,10 @@
         
   
   
-    
-  
 
 
   <li class="md-tabs__item">
-    <a href="./" class="md-tabs__link md-tabs__link--active">
+    <a href="../chapter3/" class="md-tabs__link">
       Chapter3
     </a>
   </li>
@@ -292,21 +292,6 @@
 
   
   
-  
-    <li class="md-nav__item">
-      <a href="../centrality/" class="md-nav__link">
-        Centrality
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
     
   
   
@@ -319,12 +304,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Chapter3
+          Centrality
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Chapter3
+        Centrality
       </a>
       
         
@@ -342,9 +327,49 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#higher-order_network_models" class="md-nav__link">
+    Higher-order network models
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#node_and_layer_eigenvector_centrality_for_multiplex" class="md-nav__link">
+    Node and layer eigenvector centrality for multiplex
+  </a>
+  
+    <nav class="md-nav" aria-label="Node and layer eigenvector centrality for multiplex">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#related_work" class="md-nav__link">
     Related work
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node_and_edge_eigenvector_centrality_for_hypergraphs" class="md-nav__link">
+    Node and edge eigenvector centrality for hypergraphs
+  </a>
+  
+    <nav class="md-nav" aria-label="Node and edge eigenvector centrality for hypergraphs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#related_work_tensor" class="md-nav__link">
+    Related work tensor
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -352,6 +377,21 @@
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter3/" class="md-nav__link">
+        Chapter3
+      </a>
     </li>
   
 
@@ -369,7 +409,28 @@
               
                 
                 
-                <h1 id="node_and_layer_eigenvector_centrality_for_multiplex">Node and layer eigenvector centrality for multiplex</h1>
+                <h1 id="network_centrality">Network centrality</h1>
+<p>Ranking the nodes of a network according to suitable &ldquo;centrality measures&rdquo; is a recurring and fundamental question in network science and data mining.  Among the various  network centrality models,  the class of <strong>eigenvector centrality</strong> is one of the most widely used and effective. This family of models  dates back to chess tournaments in the 19th Century by Edmund Landau<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> and was then  popularized in the network science community starting from the late &rsquo;80s with Bonacich<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>, PageRank<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup> and HITS<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup> models. This class of scores assigns importances  are based on the leading eigenvector <span class="arithmatex">\(x\)</span> (or the leading singular vectors <span class="arithmatex">\(x,y\)</span>) of suitable network matrices and strongly rely on the matrix Perron-Frobenius theorem. </p>
+<p>One of the keys of the success of eigenvector  centralities is that they naturally incorporate <strong>mutual reinforcement</strong>: important objects are those that interact with many other important objects. For example, when <span class="arithmatex">\(G=(V,E)\)</span> is a graph with adjacency matrix <span class="arithmatex">\(A\)</span>, Bonacich centrality model defines the importance <span class="arithmatex">\(x_i\)</span> of node <span class="arithmatex">\(i\in V\)</span> as </p>
+<div class="arithmatex">\[
+x_i\propto \sum_{j: \, ij\in E} A_{ij} \, x_j\, ,
+\]</div>
+<p>that is, the importance of node <span class="arithmatex">\(x_i\)</span> is linearly proportional to the importances <span class="arithmatex">\(x_j\)</span> of the nodes it shares an edge with. The Perron-Frobenius theory teaches us that only one such vector <span class="arithmatex">\(x\)</span> exists: the Perron eigenvector of the adjacency matrix <span class="arithmatex">\(Ax=\rho(A)x\)</span>.</p>
+<h2 id="higher-order_network_models">Higher-order network models</h2>
+<p>While graph and networks are ubiquitous in the natural sciences, in many real-world applications we  are confronted with higher-order interaction data. Relational data is full of interactions that happen in groups. For example, friendship relations very often happen in groups that are strictly larger than two individuals.  Moreover, interactions naturally occur on multiple layers, for example  work relations, sport relations, friendship relations, etc.  </p>
+<p>To model higher-order interactions we need higher-order network models, which include <em>multilayer networks</em>,  where we have a set of networks (so-called layers) with connections internally  and  across the layers, and <em>non-dyadic networks</em>, such as hypergraphs or simplicial complexes, where we have access to interactions involving multiple nodes. </p>
+<p>For simplicity, here we consider the following two settings:  </p>
+<ul>
+<li><strong>Multiplex</strong>: This is a set <span class="arithmatex">\(\{G_i\}\)</span> of <span class="arithmatex">\(m\)</span> graphs <span class="arithmatex">\(G_i=(V,E_i)\)</span> <span class="arithmatex">\(i=1,\dots,m\)</span>, the <em>layers</em>, each defined on the same set of nodes but with possibly different edge sets </li>
+<li><strong>Hypergraph</strong>: Just like a standard graph, this is a pair <span class="arithmatex">\(H=(V,\mathcal E)\)</span> where the set of <em>hyperedges</em> <span class="arithmatex">\(\mathcal E\)</span> is such that each <span class="arithmatex">\(e\in \mathcal E\)</span> can involve an arbitrary number of nodes, rather than just two nodes as in the standard graph case. </li>
+</ul>
+<!-- Here we focus on the hypergraph setting, where  interactions across multiple nodes are described by a hypergraph $H=(V,E)$, made by a set of nodes $V=\{1,\dots,n\}$ and a set of hyperedges $E$ where each $e\in E$ can involve an arbitrary number of nodes, rather than just two nodes as in the standard graph case.  -->
+
+<!-- <center>
+<img style="width:8rem" src="../img/coauthorship-hypergraph.png" alt="hypergraph" />
+</center> -->
+
+<h2 id="node_and_layer_eigenvector_centrality_for_multiplex">Node and layer eigenvector centrality for multiplex</h2>
 <p>A multiplex network <span class="arithmatex">\(\{G_k\}\)</span> can be naturally described by means of an adjacency tensor <span class="arithmatex">\(\mathcal A\)</span> with three modes</p>
 <div class="arithmatex">\[
 \mathcal A_{ijk} = \begin{cases}
@@ -377,25 +438,58 @@
 0 &amp; \text{otherwise}
 \end{cases}
 \]</div>
-<p>where <span class="arithmatex">\(\omega_k:E_k\to \RR_{++}\)</span> is a positive weight function for the edges of the <span class="arithmatex">\(k\)</span>-th layer and <span class="arithmatex">\(i\to j\)</span> means that there is an edge from node <span class="arithmatex">\(i\)</span> to node <span class="arithmatex">\(j\)</span>, i.e. <span class="arithmatex">\(i,j\in E_k\)</span>. </p>
-<p>How can we define a mutual reinforcing centrality score for nodes (and layers) in <span class="arithmatex">\(\{G_k\}\)</span> so that a larger  centrality is assigned to nodes that form  links  in  highly  influential  layers with other central nodes? Here we discuss the model proposed in <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> based on <span class="arithmatex">\(\mathcal A\)</span> and a multihomogeneous order-preserving mapping associated to it.  Other approaches are discussed briefly in <a href="#related-work"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.67 4.42a6.08 6.08 0 0 0-3.22-.86c-1.58 0-2.79.78-2.79 2 0 1.4 1.34 1.91 3.34 2.58 2.5.81 4.4 1.83 4.4 4.24a4.01 4.01 0 0 1-1.8 3.23c.65.61 1.01 1.47 1 2.36 0 2.82-2.6 4-5.1 4-1.46.06-2.91-.33-4.15-1.1L8 19.34c1.04.71 2.27 1.09 3.53 1.1 1.72 0 3-.78 3-2.2 0-1.24-.78-1.93-3.28-2.79C8.5 14.5 6.6 13.5 6.6 11.21c.07-1.32.83-2.52 2-3.14-.63-.57-.99-1.4-1-2.26C7.6 3.45 9.77 2 12.53 2c1.29 0 2.56.29 3.7.89l-.56 1.53m-4.32 9c1.06.33 2.09.76 3.06 1.29.65-.49 1.02-1.26 1-2.07 0-1-.64-1.88-2.41-2.5-1.11-.37-2.22-.83-3.28-1.37-.75.45-1.22 1.26-1.22 2.14 0 .97.73 1.77 2.85 2.51z"/></svg></span>Related work</a>. </p>
+<p>where <span class="arithmatex">\(\omega_k:E_k\to \mathbb R_{&gt;0}\)</span> is a positive weight function for the edges of the <span class="arithmatex">\(k\)</span>-th layer and <span class="arithmatex">\(i\to j\)</span> means that there is an edge from node <span class="arithmatex">\(i\)</span> to node <span class="arithmatex">\(j\)</span>, i.e. <span class="arithmatex">\(i,j\in E_k\)</span>. </p>
+<p>How can we define a mutual reinforcing centrality score for nodes (and layers) in <span class="arithmatex">\(\{G_k\}\)</span> so that a larger  centrality is assigned to nodes that form  links  in  highly  influential  layers with other central nodes? Here we discuss the model proposed in <sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup> based on <span class="arithmatex">\(\mathcal A\)</span> and a multihomogeneous order-preserving mapping associated to it.  Other approaches are discussed in <a href="#related-work">#Related work</a>. </p>
 <p>In this model, mutual reinforcement happens at both layer and node levels, as layers are more influential if highly central nodes are active in them. Thus, if <span class="arithmatex">\(x_i\)</span> denotes the centrality of node <span class="arithmatex">\(i\)</span> and <span class="arithmatex">\(y_k\)</span> the influence of layer <span class="arithmatex">\(k\)</span>, we require that </p>
-<p><center>
-<span class="arithmatex">\(x_i \propto \sum_{jk}\mathcal A_{ijk}x_jy_k\)</span>, and <span class="arithmatex">\(y_k \propto \sum_{ij}\mathcal A_{ijk}x_ix_j\)</span>
-</center></p>
-<p>Since the centrality score is</p>
-<h2 id="related_work">Related work</h2>
+<div class="arithmatex">\[\begin{equation}\label{eq:tensor_singvec}
+\left\{
+\begin{array}{l}
+    \sum_{j,k}\mathcal A_{i,j,k}x_jy_k = \lambda \, |x_i|^{p} \mathrm{sign}(x_i)\\[.5em] \sum_{i,j}\mathcal A_{i,j,k}x_ix_j = \mu\,   |y_k|^{q} \mathrm{sign}(y_k)
+\end{array}
+\right.
+\end{equation}\]</div>
+<p>which imposes that a power of the importance of node <span class="arithmatex">\(i\)</span> is proportional to the sum of the importances of the nodes that point at <span class="arithmatex">\(i\)</span>, times the influence of the layer where such connections take place and, similarly, defines the <span class="arithmatex">\(q\)</span>-power of the influence of the layer <span class="arithmatex">\(k\)</span> as being proportional the product of the centrality of the nodes that are connected in that layer. </p>
+<!-- $$x_i \propto \sum_{jk}\mathcal A_{ijk}x_jy_k \quad  \text{ and } \quad y_k \propto \sum_{ij}\mathcal A_{ijk}x_ix_j$$ -->
+
+<p>Since the centrality score is a positive number this is equivalent to </p>
+<h3 id="related_work">Related work</h3>
 <p>Extending eigenvector centrality to higher-order graph models is nontrivial as it first requires extending standard one-dimensional graph mappings, then generalizing mutual-reinforcing properties via suitable eigenequations and finally providing the supporting mathematics for their well-posedeness and computation. </p>
 <p>A relatively standard way to extend graph mappings and their eigenvectors to the higher-order setting is via a &ldquo;flattening&rdquo; or a &ldquo;projection&rdquo;. These are forms of linearizations where the whole higher-order graph is flattened into a standard graph to which standard centrality models are applied.  There are many approaches that follow this line, including linear-weighted clique expansions \cite{carletti2020random,rodri2002laplacian,rodriguez2003laplacian,rodriguez2009laplacian,agarwal2006higher,zhou2007hypergraph}, where hyperedges are replaced by cliques in the flattened graph, whose adjacency matrix becomes </p>
 <div class="arithmatex">\[\begin{equation}\label{eq:clique-expansion-adjacency}
     A_{ij} = \sum_{e: \, i,j\in e}w(e) 
 \end{equation}\]</div>
-<p>with <span class="arithmatex">\(w(e)\)</span> the weights of the original hypergraph; clique averaging \cite{agarwal2005beyond}, where  the weights <span class="arithmatex">\(w(e)\)</span> in the sum \eqref{eq:clique-expansion-adjacency}  are averaged with generalized mean functions;  connectivity graph expansion \cite{banerjee2021spectrum,de2021phase}, where the weights in the clique expansion are based on hyperedge degrees, for example replacing <span class="arithmatex">\(w(e)\)</span> with <span class="arithmatex">\(1/(|e|-1)\)</span> in \eqref{eq:clique-expansion-adjacency}; the  star expansion \cite{zien1999multilevel}, where the flattened graph is obtained by introducing new vertices for each hyperedge, which are then connected according to the hypergraph structure;   </p>
+<p>with <span class="arithmatex">\(w(e)\)</span> the weights of the original hypergraph; clique averaging  \cite{agarwal2005beyond} , where  the weights <span class="arithmatex">\(w(e)\)</span> in the sum <span class="arithmatex">\(\eqref{eq:clique-expansion-adjacency}\)</span>  are averaged with generalized mean functions;  connectivity graph expansion \cite{banerjee2021spectrum,de2021phase}, where the weights in the clique expansion are based on hyperedge degrees, for example replacing <span class="arithmatex">\(w(e)\)</span> with <span class="arithmatex">\(1/(|e|-1)\)</span> in \eqref{eq:clique-expansion-adjacency}; the  star expansion \cite{zien1999multilevel}, where the flattened graph is obtained by introducing new vertices for each hyperedge, which are then connected according to the hypergraph structure;   </p>
+<h3 id="node_and_edge_eigenvector_centrality_for_hypergraphs">Node and edge eigenvector centrality for hypergraphs</h3>
+<h4 id="related_work_tensor">Related work tensor</h4>
+<p>Unlike flattening models, tensor-based approaches maintain the higher-order structure of the network. Spectral methods for tensor-based mappings have seen a great growth in recent years \cite{li2013z,ng2010finding,hu2013cored,chen2017fiedler,qi2017tensor} and are based on different notions of tensor eigenvectors.</p>
+<p>In the non-dyadic setting, tensor-based centrality scores for the nodes of a <span class="arithmatex">\(k\)</span>-uniform hypergraph are defined in e.g.\  \cite{benson2019three,ng2011multirank,zhou2007co,deng2009generalized}. %  in terms of tensor eigenvectors. 
+As every hyperedge contains exactly <span class="arithmatex">\(k\)</span> nodes, we can associate to the hypergraph the adjacency tensor  <span class="arithmatex">\(\mathcal A\)</span> such that <span class="arithmatex">\(\mathcal A_{i_1,\dots,i_k} = w(e)\)</span> if the hyperedge <span class="arithmatex">\(e = \{i_1,\dots,i_k\}\)</span> is in the hypergraph, and <span class="arithmatex">\(\mathcal A_{i_1,\dots,i_k}=0\)</span> otherwise. %Clearly, <span class="arithmatex">\(\mathcal A\)</span> coincides with the adjacency matrix of the graph when <span class="arithmatex">\(k=2\)</span>. 
+The %tensor-eigenvector 
+centrality score <span class="arithmatex">\(x\)</span>  for the nodes of the hypergraph is then defined via the constrained tensor eigenvector equation
+% Different notions of tensor eigenvectors are available in the literature (see e.g.,
+% \cite{cipolla2019shifted,gautier2019unifying}). In particular, for <span class="arithmatex">\(p&gt;1\)</span>, a <span class="arithmatex">\(\ell^p\)</span>  eigenvector for <span class="arithmatex">\(\mathcal A\)</span> is a vector <span class="arithmatex">\(x\)</span> such that </p>
+<div class="arithmatex">\[\begin{equation}\label{eq:tensor_eig}
+    \sum_{i_2,\dots,i_k}\mathcal A_{i_1,i_2,\dots,i_k}x_{i_2}x_{i_3}\cdots x_{i_k} = \lambda \, |x_{i_1}|^{p-2}x_{i_1} 
+\end{equation}\]</div>
+<p>with <span class="arithmatex">\(x&gt;0\)</span>, <span class="arithmatex">\(\lambda&gt;0\)</span> and <span class="arithmatex">\(p&gt;1\)</span>.
+%The special cases <span class="arithmatex">\(p=2\)</span> and <span class="arithmatex">\(p={k}\)</span> correspond to so-called <span class="arithmatex">\(Z\)</span>- and <span class="arithmatex">\(H\)</span>-eigenvectors for <span class="arithmatex">\(\mathcal A\)</span>. %A centrality for the nodes of <span class="arithmatex">\(H\)</span> is a solution <span class="arithmatex">\(x\)</span> to \eqref{eq:tensor_eig} such that <span class="arithmatex">\(x&gt;0\)</span> and <span class="arithmatex">\(\lambda&gt;0\)</span>.</p>
 <div class="footnote">
 <hr />
 <ol>
 <li id="fn:1">
-<p>Francesco Tudisco, Francesca Arrigo, and Antoine Gautier. Node and layer eigenvector centralities for multiplex networks. <em>SIAM Journal on Applied Mathematics</em>, 78<span class="arithmatex">\(2\)</span>:853–876, 2018.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>J. P. Schäfermeyer. On Edmund Landau&rsquo;s contribution to the ranking of chess players. Technical Report, Unpublished manuscript, 2019.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>P. Bonacich. Power and centrality: a family of measures. <em>American Journal of Sociology</em>, 92:1170–1182, 1987.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>Lawrence Page, Sergey Brin, Rajeev Motwani, and Terry Winograd. The PageRank citation ranking: Bringing order to the web. Technical Report, Stanford InfoLab, 1999.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>Jon M Kleinberg. Authoritative sources in a hyperlinked environment. <em>Journal of the ACM <span class="arithmatex">\(JACM\)</span></em>, 46<span class="arithmatex">\(5\)</span>:604–632, 1999.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>Francesco Tudisco, Francesca Arrigo, and Antoine Gautier. Node and layer eigenvector centralities for multiplex networks. <em>SIAM Journal on Applied Mathematics</em>, 78<span class="arithmatex">\(2\)</span>:853–876, 2018.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
@@ -421,7 +515,7 @@
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../centrality/" class="md-footer__link md-footer__link--prev" rel="prev">
+        <a href="../chapter1/" class="md-footer__link md-footer__link--prev" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -430,11 +524,25 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Centrality
+              Chapter1
             </div>
           </div>
         </a>
       
+      
+        <a href="../chapter3/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Chapter3
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
       
     </nav>
   

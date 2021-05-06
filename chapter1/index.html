@@ -11,12 +11,12 @@
         <meta name="author" content="Francesco Tudisco">
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
     
     
       
-        <title>The Perron-Frobenius theorem for multihomogeneous mappings - SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory</title>
+        <title>Chapter1 - SIAM LA 21 Tutorial</title>
       
     
     
@@ -40,6 +40,8 @@
     
       <link rel="stylesheet" href="../css/extra.css">
     
+      <link rel="stylesheet" href="http://tikzjax.com/v1/fonts.css">
+    
     
       
     
@@ -54,7 +56,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="deep-orange">
   
     
     <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
@@ -67,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#the-perron-frobenius-theorem-for-multihomogeneous-mappings" class="md-skip">
+        <a href="#the_perron-frobenius_theorem_for_multihomogeneous_mappings" class="md-skip">
           Skip to content
         </a>
       
@@ -78,15 +80,10 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory" class="md-header__button md-logo" aria-label="SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory" data-md-component="logo">
+    <a href=".." title="SIAM LA 21 Tutorial" class="md-header__button md-logo" aria-label="SIAM LA 21 Tutorial" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
-  <path d="M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z" />
-  <path d="M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z" style="fill-opacity: 0.5" />
-  <path d="M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z" />
-  <path d="M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z" style="fill-opacity: 0.25" />
-</svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18-.21 0-.41-.06-.57-.18l-7.9-4.44A.991.991 0 0 1 3 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18.21 0 .41.06.57.18l7.9 4.44c.32.17.53.5.53.88v9M12 4.15 6.04 7.5 12 10.85l5.96-3.35L12 4.15M5 15.91l6 3.38v-6.71L5 9.21v6.7m14 0v-6.7l-6 3.37v6.71l6-3.38z"/></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -96,13 +93,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory
+            SIAM LA 21 Tutorial
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              The Perron-Frobenius theorem for multihomogeneous mappings
+              Chapter1
             
           </span>
         </div>
@@ -113,7 +110,7 @@
         
           
           
-          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="" type="radio" name="__palette" id="__palette_1">
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="deep-orange" type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
@@ -122,7 +119,7 @@
         
           
           
-          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent="" type="radio" name="__palette" id="__palette_2">
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="deep-orange" type="radio" name="__palette" id="__palette_2">
           
             <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
@@ -181,15 +178,11 @@
   
 
 
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
-        Home
-      </a>
-    </li>
-  
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Home
+    </a>
+  </li>
 
       
         
@@ -199,15 +192,11 @@
   
 
 
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="./" class="md-tabs__link md-tabs__link--active">
-        Chapter1
-      </a>
-    </li>
-  
+  <li class="md-tabs__item">
+    <a href="./" class="md-tabs__link md-tabs__link--active">
+      Chapter1
+    </a>
+  </li>
 
       
         
@@ -215,15 +204,23 @@
   
 
 
+  <li class="md-tabs__item">
+    <a href="../centrality/" class="md-tabs__link">
+      Centrality
+    </a>
+  </li>
+
+      
+        
   
   
-  
-    <li class="md-tabs__item">
-      <a href="../chapter2/" class="md-tabs__link">
-        Chapter2
-      </a>
-    </li>
-  
+
+
+  <li class="md-tabs__item">
+    <a href="../chapter3/" class="md-tabs__link">
+      Chapter3
+    </a>
+  </li>
 
       
     </ul>
@@ -248,18 +245,13 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory" class="md-nav__button md-logo" aria-label="SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory" data-md-component="logo">
+    <a href=".." title="SIAM LA 21 Tutorial" class="md-nav__button md-logo" aria-label="SIAM LA 21 Tutorial" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
-  <path d="M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z" />
-  <path d="M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z" style="fill-opacity: 0.5" />
-  <path d="M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z" />
-  <path d="M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z" style="fill-opacity: 0.25" />
-</svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18-.21 0-.41-.06-.57-.18l-7.9-4.44A.991.991 0 0 1 3 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18.21 0 .41.06.57.18l7.9 4.44c.32.17.53.5.53.88v9M12 4.15 6.04 7.5 12 10.85l5.96-3.35L12 4.15M5 15.91l6 3.38v-6.71L5 9.21v6.7m14 0v-6.7l-6 3.37v6.71l6-3.38z"/></svg>
 
     </a>
-    SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory
+    SIAM LA 21 Tutorial
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -271,68 +263,18 @@
   
   
   
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" data-md-state="indeterminate" type="checkbox" id="__nav_1" checked>
-      
-      <label class="md-nav__link" for="__nav_1">
-        Home
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Home" data-md-level="1">
-        <label class="md-nav__title" for="__nav_1">
-          <span class="md-nav__icon md-icon"></span>
-          Home
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
     <li class="md-nav__item">
       <a href=".." class="md-nav__link">
-        Applied Nonlinear Perron-Frobenius Theory
+        Home
       </a>
     </li>
   
 
-          
-        </ul>
-      </nav>
-    </li>
-  
-
     
       
       
       
 
-  
-  
-    
-  
-  
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
-      
-      <label class="md-nav__link" for="__nav_2">
-        Chapter1
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Chapter1" data-md-level="1">
-        <label class="md-nav__title" for="__nav_2">
-          <span class="md-nav__icon md-icon"></span>
-          Chapter1
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
   
   
     
@@ -347,12 +289,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          The Perron-Frobenius theorem for multihomogeneous mappings
+          Chapter1
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        The Perron-Frobenius theorem for multihomogeneous mappings
+        Chapter1
       </a>
       
         
@@ -370,21 +312,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-cone-of-nonnegative-vectors" class="md-nav__link">
+  <a href="#the_cone_of_nonnegative_vectors" class="md-nav__link">
     The cone of nonnegative vectors
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#hilbert-projective-distance" class="md-nav__link">
+  <a href="#hilbert_projective_distance" class="md-nav__link">
     Hilbert projective distance
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#est-deus-pericula-exigere-figit" class="md-nav__link">
+  <a href="#est_deus_pericula_exigere_figit" class="md-nav__link">
     Est deus pericula exigere figit
   </a>
   
@@ -397,63 +339,33 @@
     </li>
   
 
-          
-        </ul>
-      </nav>
-    </li>
-  
-
     
       
       
       
 
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
-      
-      <label class="md-nav__link" for="__nav_3">
-        Chapter2
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Chapter2" data-md-level="1">
-        <label class="md-nav__title" for="__nav_3">
-          <span class="md-nav__icon md-icon"></span>
-          Chapter2
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
   
   
   
     <li class="md-nav__item">
-      <a href="../chapter2/" class="md-nav__link">
-        Heros sereno
+      <a href="../centrality/" class="md-nav__link">
+        Centrality
       </a>
     </li>
   
 
-          
-            
+    
+      
+      
+      
+
   
   
   
     <li class="md-nav__item">
       <a href="../chapter3/" class="md-nav__link">
-        Heros sereno
+        Chapter3
       </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
     </li>
   
 
@@ -471,19 +383,19 @@
               
                 
                 
-                <h1 id="the-perron-frobenius-theorem-for-multihomogeneous-mappings">The Perron-Frobenius theorem for multihomogeneous mappings<a class="headerlink" href="#the-perron-frobenius-theorem-for-multihomogeneous-mappings" title="Permanent link">&para;</a></h1>
-<h2 id="the-cone-of-nonnegative-vectors">The cone of nonnegative vectors<a class="headerlink" href="#the-cone-of-nonnegative-vectors" title="Permanent link">&para;</a></h2>
+                <h1 id="the_perron-frobenius_theorem_for_multihomogeneous_mappings">The Perron-Frobenius theorem for multihomogeneous mappings</h1>
+<h2 id="the_cone_of_nonnegative_vectors">The cone of nonnegative vectors</h2>
 <p>The Perron-Frobenius theory deals with operators that leave a normal, convex and pointed cone invariant. The cone of nonnegative vectors is the most common example of such a cone and the one that most often arises in applications. We denote such cone as <span class="arithmatex">\(C_+ \subseteq \mathbb R^n\)</span> or, when the dimension is clear from the context, simply as <span class="arithmatex">\(C_+.\)</span> The elements of <span class="arithmatex">\(C_+\)</span> are vectors whose components are all nonnegative. Whereas the interior <span class="arithmatex">\(C_{++}\)</span> of <span class="arithmatex">\(C_+\)</span> is the set of entrywise positive vectors:</p>
 <ul>
-<li><span class="arithmatex">\(C_+ = \{x\in \mathbb R^n : x_i\geq 0 \text{ for all }i=1,\dots,n\}=\{x\in \mathbb R^n : x\succeq 0\}\)</span> </li>
-<li><span class="arithmatex">\(C_{++} = \{x\in \mathbb R^n : x_i&gt; 0 \text{ for all }i=1,\dots,n\}=\{x\in \mathbb R^n : x\succ 0\}\)</span>.  </li>
+<li><span class="arithmatex">\(C_+ = \{x\in \mathbb R^n : x_i\geq 0\)</span> for all <span class="arithmatex">\(i=1,\dots,n\}=\{x\in \mathbb R^n : x\succeq 0\}\)</span> </li>
+<li><span class="arithmatex">\(C_{++} = \{x\in \mathbb R^n : x_i&gt; 0\)</span> for all <span class="arithmatex">\(i=1,\dots,n\}=\{x\in \mathbb R^n : x\succ 0\}.\)</span>  </li>
 </ul>
 <p><span class="arithmatex">\(C_+\)</span> is convex, pointed and normal as <span class="arithmatex">\(\alpha x\in C_+\)</span> for all <span class="arithmatex">\(x\in C_+\)</span> and all scalar coefficients <span class="arithmatex">\(\alpha \geq 0\)</span>,  <span class="arithmatex">\(C_+\cap -C_+ = \{0\}\)</span> and for all pair of vectors <span class="arithmatex">\(x,y\in C_+\)</span> such that <span class="arithmatex">\(x\preceq y\)</span> there exists a <span class="arithmatex">\(\gamma&gt;0\)</span> such that <span class="arithmatex">\(\|x\|\leq \gamma \|y\|\)</span>. Here <span class="arithmatex">\(\|\cdot\|\)</span> is any norm on <span class="arithmatex">\(\mathbb R^n\)</span>. </p>
 <p>This tutorial will  focus only on <span class="arithmatex">\(C_+\)</span> however, however we point out that all the results we will present can be  relatively directly transferred to arbitrary normal, convex and pointed cones.  </p>
-<h2 id="hilbert-projective-distance">Hilbert projective distance<a class="headerlink" href="#hilbert-projective-distance" title="Permanent link">&para;</a></h2>
+<h2 id="hilbert_projective_distance">Hilbert projective distance</h2>
 <p>One of the key tools for the Perron-Frobenius theory for nonlinear mappings is the Hilbert distance. For any two positive vectors <span class="arithmatex">\(x,y\succ 0\)</span>, this is defined as:<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></p>
 <p>\[d_H(x,y) = \ln\Big(\max_{i=1,\dots,n}\frac{x_i}{y_i}\max_{i=1,\dots,n}\frac{y_i}{x_i}\Big)\]</p>
-<p><span class="arithmatex">\(d_H\)</span> is a metric on the space of rays in <span class="arithmatex">\(C_{++}\)</span>, that is it holds</p>
+<p><span class="arithmatex">\(d_H\)</span> is a metric on the space of rays in <span class="arithmatex">\(C_{++}\)</span>, that is it holds<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></p>
 <p><center>
 <span class="arithmatex">\(d_H(\alpha x, \beta y) =d_H(x,y)\)</span> for all scalar coefficients <span class="arithmatex">\(\alpha,\beta &gt;0\)</span>
 </center></p>
@@ -507,7 +419,7 @@ if (processorSdk) {
 fons</a> esse Nisi. Dixit <strong>dolorem simulamina</strong> motus.
 Gradibus tuta quae addere vero iuvenis candida; ictu Phocaico, tempore addicere
 pluma terra?</p>
-<h2 id="est-deus-pericula-exigere-figit">Est deus pericula exigere figit<a class="headerlink" href="#est-deus-pericula-exigere-figit" title="Permanent link">&para;</a></h2>
+<h2 id="est_deus_pericula_exigere_figit">Est deus pericula exigere figit</h2>
 <p>Iani rumpere raptos o columbae non et leonis <a href="http://www.signaverat.org/oblita.aspx">ferre qui
 quinque</a> arva idem <em>dixit</em> haec;
 advertite candore. Mora invitusque casses,
@@ -533,6 +445,9 @@ quod aut intrarunt et graves urbes, telluris carmen coget corpus.</p>
 <ol>
 <li id="fn:1">
 <p>This definition is strictly related to the choice of the nonnegative cone <span class="arithmatex">\(C_+\)</span>. For general cones, the definition of <span class="arithmatex">\(d_H\)</span> changes. However, all its properties do not change.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6m0 2h7v5h5v11H6V4m2 8v2h8v-2H8m0 4v2h5v-2H8z"/></svg></span> <em>Lemmens, Nussbaum, Citation test</em>&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
@@ -567,19 +482,19 @@ quod aut intrarunt et graves urbes, telluris carmen coget corpus.</p>
               <span class="md-footer__direction">
                 Previous
               </span>
-              Applied Nonlinear Perron-Frobenius Theory
+              Home
             </div>
           </div>
         </a>
       
       
-        <a href="../chapter2/" class="md-footer__link md-footer__link--next" rel="next">
+        <a href="../centrality/" class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Heros sereno
+              Centrality
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -618,6 +533,8 @@ quod aut intrarunt et graves urbes, telluris carmen coget corpus.</p>
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="http://tikzjax.com/v1/tikzjax.js"></script>
       
     
   </body>
