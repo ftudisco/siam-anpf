@@ -1,15 +1,15 @@
 # Network centrality
 
-Ranking the nodes of a network according to suitable "centrality measures" is a recurring and fundamental question in network science and data mining.  Among the various  network centrality models,  the class of **eigenvector centrality** is one of the most widely used and effective. This family of models  dates back to chess tournaments in the 19th Century by Edmund Landau[@schaf2019landau] and was then  popularized in the network science community starting from the late '80s with Bonacich[@bonacich1987eig], PageRank[@page1999pagerank] and HITS[@K99] models. This class of scores assigns importances  are based on the leading eigenvector $x$ (or the leading singular vectors $x,y$) of suitable network matrices and strongly rely on the matrix Perron-Frobenius theorem. 
+Ranking the nodes of a network according to suitable "centrality measures" is a recurring and fundamental question in network science and data mining.  Among the various  network centrality models,  the class of **eigenvector centrality** is one of the most widely used and effective. This family of models  dates back to the 19th Century when it was proposed as a mean to rank professional chess players by Edmund Landau[@schaf2019landau] and was then  popularized in the network science community starting from the late '80s with Bonacich[@bonacich1987eig], PageRank[@page1999pagerank] and HITS[@K99] models. 
 
+This class of scores assigns importances to the nodes of a graph, based on the leading eigenvector $x$ (or the leading singular vectors $x,y$) of suitable network matrices and strongly rely on the matrix Perron-Frobenius theorem. 
 One of the keys of the success of eigenvector  centralities is that they naturally incorporate **mutual reinforcement**: important objects are those that interact with many other important objects. For example, when $G=(V,E)$ is a graph with adjacency matrix $A$, Bonacich centrality model defines the importance $x_i$ of node $i\in V$ as 
-
 
 $$
 x_i\propto \sum_{j: \, ij\in E} A_{ij} \, x_j\, ,
 $$
 
-that is, the importance of node $x_i$ is linearly proportional to the importances $x_j$ of the nodes it shares an edge with. The Perron-Frobenius theory teaches us that only one such vector $x$ exists: the Perron eigenvector of the adjacency matrix $Ax=\rho(A)x$.
+that is, the importance of node $x_i$ is linearly proportional to the importances $x_j$ of the nodes it shares an edge with. The Perron-Frobenius theory teaches us that only one such vector $x$ exists, the Perron eigenvector of the adjacency matrix $Ax=\rho(A)x$, and it provides us with sufficient conditions to compute such $x$ via the simple Power Method scheme.
 
 
 
@@ -49,7 +49,7 @@ $$
 
 where $\omega_k:E_k\to \mathbb R_{>0}$ is a positive weight function for the edges of the $k$-th layer and $i\to j$ means that there is an edge from node $i$ to node $j$, i.e. $i,j\in E_k$. 
 
-How can we define a mutual reinforcing centrality score for nodes (and layers) in $\{G_k\}$ so that a larger  centrality is assigned to nodes that form  links  in  highly  influential  layers with other central nodes? Here we discuss the model proposed in [@tudisco2017node] based on $\mathcal A$ and a multihomogeneous order-preserving mapping associated to it.  Other approaches are discussed in [#Related work](#related-work). 
+How can we define a mutual reinforcing centrality score for nodes (and layers) in $\{G_k\}$ so that a larger  centrality is assigned to nodes that form  links  in  highly  influential  layers with other central nodes? Here we discuss the model proposed in [@tudisco2017node] based on $T$ and a multihomogeneous order-preserving mapping associated to it.  Other approaches are discussed in [#Related work](#related-work). 
 
 In this model, mutual reinforcement happens at both layer and node levels, as layers are more influential if highly central nodes are active in them. Thus, if $x_i$ denotes the centrality of node $i$ and $y_k$ the influence of layer $k$, we require that 
 
@@ -61,14 +61,15 @@ In this model, mutual reinforcement happens at both layer and node levels, as la
 \right.
 \end{equation}
 
-which imposes that a power of the importance of node $i$ is proportional to the sum of the importances of the nodes that point at $i$, times the influence of the layer where such connections take place and, similarly, defines the $q$-power of the influence of the layer $k$ as being proportional the product of the centrality of the nodes that are connected in that layer. 
+which imposes that the $p$-power of the importance of node $i$ is proportional to the sum of the importances of the nodes that point at $i$, times the influence of the layer where such connections take place and, similarly, defines the $q$-power of the influence of the layer $k$ as being proportional the product of the centrality of the nodes that are connected in that layer. 
 
 <!-- $$x_i \propto \sum_{jk}\mathcal A_{ijk}x_jy_k \quad  \text{ and } \quad y_k \propto \sum_{ij}\mathcal A_{ijk}x_ix_j$$ -->
 
 
-Since the centrality score is a positive number it is natural to add the constraint $\lambda,\mu>0$ and $x,y\succ 0$ in $\eqref{eq:tensor_singvec}$. Thus, our centrality problem boils down to a constrained nonlinear system of equations. When $p=q=1$, the equations are homogeneous polynomials and $\eqref{eq:tensor_singvec}$ is directly reminiscent of a singular vector equation. However, unlike the matrix case, even positive tensors may admit multiple solutions here, as shown by the following example
+Since the centrality score is a positive number it is natural to add the constraint $\lambda,\mu>0$ and $x,y\succ 0$ in $\eqref{eq:tensor_singvec}$. Thus, our centrality problem boils down to a constrained nonlinear system of equations. When $p=q=1$, the equations are homogeneous polynomials and $\eqref{eq:tensor_singvec}$ is directly reminiscent of a singular vector equation. However, unlike the matrix case, even positive tensors may admit multiple solutions here, as shown by the following example:
+<!-- ###### A entrywise positive 2x2x2 example -->
 
-##### A entrywise positive 2x2x2 example
+<section markdown="block" class="example">
 Consider the positive adjacency tensor $\mathcal A$ with entries 
 
 $$
@@ -81,6 +82,29 @@ $$
 
 then both the pair 
 $x = \frac 1 3(2,1)$, $y = \frac 1 3(1,2)$ and the pair $x = \frac 1 4(1,3)$,  $y  = \frac 1 4(3,1)$ are positive solutions to $\eqref{eq:tensor_singvec}$.
+</section>
+
+
+In order to practically use the centrality model $\eqref{eq:tensor_singvec}$ we need it to define a unique score. To this end, we recast the vectors $x,y$ solutions of $\eqref{eq:tensor_singvec}$ as eigenvectors of the multihomogeneous mapping
+
+$$
+F(x,y) := \begin{bmatrix} (\mathcal A_{(1)}xy)^{1/p} \\ (\mathcal A_{(3)}xx)^{1/q} \end{bmatrix} = \begin{bmatrix} (\sum_{jk} \mathcal A_{ijk}  x_jy_k)^{1/p} \\ (\sum_{ij}\mathcal A_{ijk}x_ix_j)^{1/q} \end{bmatrix}\, .
+$$
+
+In fact, it is easy to see that $\eqref{eq:tensor_singvec}$ holds iff $F(x,y)= (\lambda,\mu)\otimes (x,y)$. Moreover, one easily realizes that 
+
+$$
+H = \begin{bmatrix}
+1/p & 1/p \\ 2/q & 0
+\end{bmatrix}
+$$
+
+is the homogeneity matrix of $F$. Thus, using a slightly different cone than $C_+$, one obtains the following:
+
+ 
+<section markdown="block" class="theorem">
+**Theorem.** Let ....
+</section>
 
 
 ### Related work 

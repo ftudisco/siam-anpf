@@ -1,10 +1,11 @@
-site_name: SIAM LA 21 Tutorial #- Applied Nonlinear Perron-Frobenius Theory
-site_author: Francesco Tudisco
+site_name: SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory
+site_author: Francesco Tudiscos
 
 nav:
     - Home: index.md
     - Chapter1: chapter1.md
-    - Centrality: centrality.md
+    - Centrality: 
+        - centrality.md
     - Chapter3: chapter3.md
     
     # - Home: 
@@ -42,7 +43,7 @@ theme:
     font:
         text: Open Sans
         code: Roboto Mono
-    favicon: assets/favicon.png
+    # favicon: assets/favicon.png
     icon:
         logo: material/cube-outline #axis-arrow
 
@@ -80,6 +81,7 @@ theme:
 markdown_extensions:
     - pymdownx.arithmatex:
         generic: true
+
     - pymdownx.emoji:
         emoji_index: !!python/name:materialx.emoji.twemoji
         emoji_generator: !!python/name:materialx.emoji.to_svg
@@ -103,7 +105,7 @@ extra_javascript:
     - assets/mathjaxhelper.js
     - https://polyfill.io/v3/polyfill.min.js?features=es6
     - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-    - http://tikzjax.com/v1/tikzjax.js
+    # - http://tikzjax.com/v1/tikzjax.js
     # - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
 plugins:
