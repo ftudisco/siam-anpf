@@ -1,18 +1,113 @@
-site_name: Acronym
+site_name: SIAM LA 21 Tutorial #- Applied Nonlinear Perron-Frobenius Theory
+site_author: Francesco Tudisco
+
 nav:
     - Home: index.md
     - Chapter1: chapter1.md
-    - Chapter2: chapter2.md
+    - Centrality: centrality.md
     - Chapter3: chapter3.md
+    
+    # - Home: 
+    #     - index.md
+    # - Chapter1: 
+    #     - chapter1.md
+    # - Centrality: 
+    #     - ch2/centrality.md
+    #     - ch2/chapter3.md
+
+# theme: 
+#     name: null
+#     custom_dir: 'cinder'
+#     features:
+#         - tabs
+#         - navigation.expand
+#     # Turn off Previous/Next navigation links in the navbar
+#     disable_nav_previous_next: false
+    
+    
 theme:
-  name: null
-  custom_dir: cinder
-  colorscheme: github
-  highlightjs: true
-  font:
-    text: Open Sans 
-  features:
-    - tabs
+    name: material
+    # custom_dir: 'mkdocs-material/material'
+
+    # 404 page
+    static_templates: 
+    - 404.html
+
+    # Necessary for search to work properly
+    include_search_page: false
+    search_index_only: true
+
+    # Default values, taken from mkdocs_theme.yml
+    language: en
+    font:
+        text: Open Sans
+        code: Roboto Mono
+    favicon: assets/favicon.png
+    icon:
+        logo: material/cube-outline #axis-arrow
+
+    # logo: SIAM-Logo-PNG/siam_logo_white_non co-branded.png
+    # palette:
+    #     primary: blue
+    #     accent: deep orange
+
+    palette:
+    - scheme: default
+      primary: teal
+      accent: deep orange
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: blue
+      accent: deep orange
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+    features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    # - navigation.sections
     - navigation.expand
+    - navigation.top
+    # - navigation.indexes
+    - toc.integrate
+    
+
+markdown_extensions:
+    - pymdownx.arithmatex:
+        generic: true
+    - pymdownx.emoji:
+        emoji_index: !!python/name:materialx.emoji.twemoji
+        emoji_generator: !!python/name:materialx.emoji.to_svg
+    - extra
+    - tables
+    # - mdx_math:
+        # enable_dollar_delimiter: True
+    - fenced_code
+    - toc:
+        permalink: false
+        separator: "_"
+    - footnotes
+    - smarty
+    - sane_lists
 extra_css:
-  - css/extra.css
+    - css/extra.css
+    - http://tikzjax.com/v1/fonts.css
+    
+extra_javascript: 
+    # - javascripts/config.js
+    - assets/mathjaxhelper.js
+    - https://polyfill.io/v3/polyfill.min.js?features=es6
+    - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    - http://tikzjax.com/v1/tikzjax.js
+    # - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+
+plugins:
+  - search
+  - bibtex:
+      bib_file: "references.bib"
+      cite_style: "plain"

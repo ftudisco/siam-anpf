@@ -1,11 +1,10 @@
----
-disable_toc: true
----
 # Applied Nonlinear Perron-Frobenius Theory 
 ### SIAM LA and ILAS 21 Conferences Tutorial  
 
-<br>
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+<br> 
+Welcome to the webpage dedicated to the SIAM minitutorial on *Applied Nonlinear Perron-Frobenius Theory*. The page is developed and maintained by [Antoine Gautier]() and [Francesco Tudisco](https://ftudisco.gitlab.io/). 
+
+
 
 ## Commands
 

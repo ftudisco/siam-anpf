@@ -1,0 +1,583 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Francesco Tudisco">
+      
+      
+      <link rel="icon" href="../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
+    
+    
+      
+        <title>Centrality - SIAM LA 21 Tutorial</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.e35208c4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Raleway";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../css/extra.css">
+    
+      <link rel="stylesheet" href="http://tikzjax.com/v1/fonts.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="deep-orange">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#network_centrality" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="SIAM LA 21 Tutorial" class="md-header__button md-logo" aria-label="SIAM LA 21 Tutorial" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18-.21 0-.41-.06-.57-.18l-7.9-4.44A.991.991 0 0 1 3 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18.21 0 .41.06.57.18l7.9 4.44c.32.17.53.5.53.88v9M12 4.15 6.04 7.5 12 10.85l5.96-3.35L12 4.15M5 15.91l6 3.38v-6.71L5 9.21v6.7m14 0v-6.7l-6 3.37v6.71l6-3.38z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SIAM LA 21 Tutorial
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Centrality
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="deep-orange" type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="deep-orange" type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../chapter1/" class="md-tabs__link">
+      Chapter1
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="./" class="md-tabs__link md-tabs__link--active">
+      Centrality
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../chapter3/" class="md-tabs__link">
+      Chapter3
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="SIAM LA 21 Tutorial" class="md-nav__button md-logo" aria-label="SIAM LA 21 Tutorial" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18-.21 0-.41-.06-.57-.18l-7.9-4.44A.991.991 0 0 1 3 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18.21 0 .41.06.57.18l7.9 4.44c.32.17.53.5.53.88v9M12 4.15 6.04 7.5 12 10.85l5.96-3.35L12 4.15M5 15.91l6 3.38v-6.71L5 9.21v6.7m14 0v-6.7l-6 3.37v6.71l6-3.38z"/></svg>
+
+    </a>
+    SIAM LA 21 Tutorial
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter1/" class="md-nav__link">
+        Chapter1
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Centrality
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Centrality
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#higher-order_network_models" class="md-nav__link">
+    Higher-order network models
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#node_and_layer_eigenvector_centrality_for_multiplex" class="md-nav__link">
+    Node and layer eigenvector centrality for multiplex
+  </a>
+  
+    <nav class="md-nav" aria-label="Node and layer eigenvector centrality for multiplex">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#related_work" class="md-nav__link">
+    Related work
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node_and_edge_eigenvector_centrality_for_hypergraphs" class="md-nav__link">
+    Node and edge eigenvector centrality for hypergraphs
+  </a>
+  
+    <nav class="md-nav" aria-label="Node and edge eigenvector centrality for hypergraphs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#related_work_tensor" class="md-nav__link">
+    Related work tensor
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter3/" class="md-nav__link">
+        Chapter3
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="network_centrality">Network centrality</h1>
+<p>Ranking the nodes of a network according to suitable &ldquo;centrality measures&rdquo; is a recurring and fundamental question in network science and data mining.  Among the various  network centrality models,  the class of <strong>eigenvector centrality</strong> is one of the most widely used and effective. This family of models  dates back to chess tournaments in the 19th Century by Edmund Landau<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> and was then  popularized in the network science community starting from the late &rsquo;80s with Bonacich<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>, PageRank<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup> and HITS<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup> models. This class of scores assigns importances  are based on the leading eigenvector <span class="arithmatex">\(x\)</span> (or the leading singular vectors <span class="arithmatex">\(x,y\)</span>) of suitable network matrices and strongly rely on the matrix Perron-Frobenius theorem. </p>
+<p>One of the keys of the success of eigenvector  centralities is that they naturally incorporate <strong>mutual reinforcement</strong>: important objects are those that interact with many other important objects. For example, when <span class="arithmatex">\(G=(V,E)\)</span> is a graph with adjacency matrix <span class="arithmatex">\(A\)</span>, Bonacich centrality model defines the importance <span class="arithmatex">\(x_i\)</span> of node <span class="arithmatex">\(i\in V\)</span> as </p>
+<div class="arithmatex">\[
+x_i\propto \sum_{j: \, ij\in E} A_{ij} \, x_j\, ,
+\]</div>
+<p>that is, the importance of node <span class="arithmatex">\(x_i\)</span> is linearly proportional to the importances <span class="arithmatex">\(x_j\)</span> of the nodes it shares an edge with. The Perron-Frobenius theory teaches us that only one such vector <span class="arithmatex">\(x\)</span> exists: the Perron eigenvector of the adjacency matrix <span class="arithmatex">\(Ax=\rho(A)x\)</span>.</p>
+<h2 id="higher-order_network_models">Higher-order network models</h2>
+<p>While graph and networks are ubiquitous in the natural sciences, in many real-world applications we  are confronted with higher-order interaction data. Relational data is full of interactions that happen in groups. For example, friendship relations very often happen in groups that are strictly larger than two individuals.  Moreover, interactions naturally occur on multiple layers, for example  work relations, sport relations, friendship relations, etc.  </p>
+<p>To model higher-order interactions we need higher-order network models, which include <em>multilayer networks</em>,  where we have a set of networks (so-called layers) with connections internally  and  across the layers, and <em>non-dyadic networks</em>, such as hypergraphs or simplicial complexes, where we have access to interactions involving multiple nodes. </p>
+<p>For simplicity, here we consider the following two settings:  </p>
+<ul>
+<li><strong>Multiplex</strong>: This is a set <span class="arithmatex">\(\{G_i\}\)</span> of <span class="arithmatex">\(m\)</span> graphs <span class="arithmatex">\(G_i=(V,E_i)\)</span> <span class="arithmatex">\(i=1,\dots,m\)</span>, the <em>layers</em>, each defined on the same set of nodes but with possibly different edge sets </li>
+<li><strong>Hypergraph</strong>: Just like a standard graph, this is a pair <span class="arithmatex">\(H=(V,\mathcal E)\)</span> where the set of <em>hyperedges</em> <span class="arithmatex">\(\mathcal E\)</span> is such that each <span class="arithmatex">\(e\in \mathcal E\)</span> can involve an arbitrary number of nodes, rather than just two nodes as in the standard graph case. </li>
+</ul>
+<!-- Here we focus on the hypergraph setting, where  interactions across multiple nodes are described by a hypergraph $H=(V,E)$, made by a set of nodes $V=\{1,\dots,n\}$ and a set of hyperedges $E$ where each $e\in E$ can involve an arbitrary number of nodes, rather than just two nodes as in the standard graph case.  -->
+
+<!-- <center>
+<img style="width:8rem" src="../img/coauthorship-hypergraph.png" alt="hypergraph" />
+</center> -->
+
+<h2 id="node_and_layer_eigenvector_centrality_for_multiplex">Node and layer eigenvector centrality for multiplex</h2>
+<p>A multiplex network <span class="arithmatex">\(\{G_k\}\)</span> can be naturally described by means of an adjacency tensor <span class="arithmatex">\(\mathcal A\)</span> with three modes</p>
+<div class="arithmatex">\[
+\mathcal A_{ijk} = \begin{cases}
+\omega_k(ij) &amp; i\to j \text{ on layer }k \\
+0 &amp; \text{otherwise}
+\end{cases}
+\]</div>
+<p>where <span class="arithmatex">\(\omega_k:E_k\to \mathbb R_{&gt;0}\)</span> is a positive weight function for the edges of the <span class="arithmatex">\(k\)</span>-th layer and <span class="arithmatex">\(i\to j\)</span> means that there is an edge from node <span class="arithmatex">\(i\)</span> to node <span class="arithmatex">\(j\)</span>, i.e. <span class="arithmatex">\(i,j\in E_k\)</span>. </p>
+<p>How can we define a mutual reinforcing centrality score for nodes (and layers) in <span class="arithmatex">\(\{G_k\}\)</span> so that a larger  centrality is assigned to nodes that form  links  in  highly  influential  layers with other central nodes? Here we discuss the model proposed in <sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup> based on <span class="arithmatex">\(\mathcal A\)</span> and a multihomogeneous order-preserving mapping associated to it.  Other approaches are discussed in <a href="#related-work">#Related work</a>. </p>
+<p>In this model, mutual reinforcement happens at both layer and node levels, as layers are more influential if highly central nodes are active in them. Thus, if <span class="arithmatex">\(x_i\)</span> denotes the centrality of node <span class="arithmatex">\(i\)</span> and <span class="arithmatex">\(y_k\)</span> the influence of layer <span class="arithmatex">\(k\)</span>, we require that </p>
+<div class="arithmatex">\[\begin{equation}\label{eq:tensor_singvec}
+\left\{
+\begin{array}{l}
+    \sum_{j,k}\mathcal A_{i,j,k}x_jy_k = \lambda \, |x_i|^{p} \mathrm{sign}(x_i)\\[.5em] \sum_{i,j}\mathcal A_{i,j,k}x_ix_j = \mu\,   |y_k|^{q} \mathrm{sign}(y_k)
+\end{array}
+\right.
+\end{equation}\]</div>
+<p>which imposes that a power of the importance of node <span class="arithmatex">\(i\)</span> is proportional to the sum of the importances of the nodes that point at <span class="arithmatex">\(i\)</span>, times the influence of the layer where such connections take place and, similarly, defines the <span class="arithmatex">\(q\)</span>-power of the influence of the layer <span class="arithmatex">\(k\)</span> as being proportional the product of the centrality of the nodes that are connected in that layer. </p>
+<!-- $$x_i \propto \sum_{jk}\mathcal A_{ijk}x_jy_k \quad  \text{ and } \quad y_k \propto \sum_{ij}\mathcal A_{ijk}x_ix_j$$ -->
+
+<p>Since the centrality score is a positive number this is equivalent to </p>
+<h3 id="related_work">Related work</h3>
+<p>Extending eigenvector centrality to higher-order graph models is nontrivial as it first requires extending standard one-dimensional graph mappings, then generalizing mutual-reinforcing properties via suitable eigenequations and finally providing the supporting mathematics for their well-posedeness and computation. </p>
+<p>A relatively standard way to extend graph mappings and their eigenvectors to the higher-order setting is via a &ldquo;flattening&rdquo; or a &ldquo;projection&rdquo;. These are forms of linearizations where the whole higher-order graph is flattened into a standard graph to which standard centrality models are applied.  There are many approaches that follow this line, including linear-weighted clique expansions \cite{carletti2020random,rodri2002laplacian,rodriguez2003laplacian,rodriguez2009laplacian,agarwal2006higher,zhou2007hypergraph}, where hyperedges are replaced by cliques in the flattened graph, whose adjacency matrix becomes </p>
+<div class="arithmatex">\[\begin{equation}\label{eq:clique-expansion-adjacency}
+    A_{ij} = \sum_{e: \, i,j\in e}w(e) 
+\end{equation}\]</div>
+<p>with <span class="arithmatex">\(w(e)\)</span> the weights of the original hypergraph; clique averaging  \cite{agarwal2005beyond} , where  the weights <span class="arithmatex">\(w(e)\)</span> in the sum <span class="arithmatex">\(\eqref{eq:clique-expansion-adjacency}\)</span>  are averaged with generalized mean functions;  connectivity graph expansion \cite{banerjee2021spectrum,de2021phase}, where the weights in the clique expansion are based on hyperedge degrees, for example replacing <span class="arithmatex">\(w(e)\)</span> with <span class="arithmatex">\(1/(|e|-1)\)</span> in \eqref{eq:clique-expansion-adjacency}; the  star expansion \cite{zien1999multilevel}, where the flattened graph is obtained by introducing new vertices for each hyperedge, which are then connected according to the hypergraph structure;   </p>
+<h3 id="node_and_edge_eigenvector_centrality_for_hypergraphs">Node and edge eigenvector centrality for hypergraphs</h3>
+<h4 id="related_work_tensor">Related work tensor</h4>
+<p>Unlike flattening models, tensor-based approaches maintain the higher-order structure of the network. Spectral methods for tensor-based mappings have seen a great growth in recent years \cite{li2013z,ng2010finding,hu2013cored,chen2017fiedler,qi2017tensor} and are based on different notions of tensor eigenvectors.</p>
+<p>In the non-dyadic setting, tensor-based centrality scores for the nodes of a <span class="arithmatex">\(k\)</span>-uniform hypergraph are defined in e.g.\  \cite{benson2019three,ng2011multirank,zhou2007co,deng2009generalized}. %  in terms of tensor eigenvectors. 
+As every hyperedge contains exactly <span class="arithmatex">\(k\)</span> nodes, we can associate to the hypergraph the adjacency tensor  <span class="arithmatex">\(\mathcal A\)</span> such that <span class="arithmatex">\(\mathcal A_{i_1,\dots,i_k} = w(e)\)</span> if the hyperedge <span class="arithmatex">\(e = \{i_1,\dots,i_k\}\)</span> is in the hypergraph, and <span class="arithmatex">\(\mathcal A_{i_1,\dots,i_k}=0\)</span> otherwise. %Clearly, <span class="arithmatex">\(\mathcal A\)</span> coincides with the adjacency matrix of the graph when <span class="arithmatex">\(k=2\)</span>. 
+The %tensor-eigenvector 
+centrality score <span class="arithmatex">\(x\)</span>  for the nodes of the hypergraph is then defined via the constrained tensor eigenvector equation
+% Different notions of tensor eigenvectors are available in the literature (see e.g.,
+% \cite{cipolla2019shifted,gautier2019unifying}). In particular, for <span class="arithmatex">\(p&gt;1\)</span>, a <span class="arithmatex">\(\ell^p\)</span>  eigenvector for <span class="arithmatex">\(\mathcal A\)</span> is a vector <span class="arithmatex">\(x\)</span> such that </p>
+<div class="arithmatex">\[\begin{equation}\label{eq:tensor_eig}
+    \sum_{i_2,\dots,i_k}\mathcal A_{i_1,i_2,\dots,i_k}x_{i_2}x_{i_3}\cdots x_{i_k} = \lambda \, |x_{i_1}|^{p-2}x_{i_1} 
+\end{equation}\]</div>
+<p>with <span class="arithmatex">\(x&gt;0\)</span>, <span class="arithmatex">\(\lambda&gt;0\)</span> and <span class="arithmatex">\(p&gt;1\)</span>.
+%The special cases <span class="arithmatex">\(p=2\)</span> and <span class="arithmatex">\(p={k}\)</span> correspond to so-called <span class="arithmatex">\(Z\)</span>- and <span class="arithmatex">\(H\)</span>-eigenvectors for <span class="arithmatex">\(\mathcal A\)</span>. %A centrality for the nodes of <span class="arithmatex">\(H\)</span> is a solution <span class="arithmatex">\(x\)</span> to \eqref{eq:tensor_eig} such that <span class="arithmatex">\(x&gt;0\)</span> and <span class="arithmatex">\(\lambda&gt;0\)</span>.</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>J. P. Schäfermeyer. On Edmund Landau&rsquo;s contribution to the ranking of chess players. Technical Report, Unpublished manuscript, 2019.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>P. Bonacich. Power and centrality: a family of measures. <em>American Journal of Sociology</em>, 92:1170–1182, 1987.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>Lawrence Page, Sergey Brin, Rajeev Motwani, and Terry Winograd. The PageRank citation ranking: Bringing order to the web. Technical Report, Stanford InfoLab, 1999.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>Jon M Kleinberg. Authoritative sources in a hyperlinked environment. <em>Journal of the ACM <span class="arithmatex">\(JACM\)</span></em>, 46<span class="arithmatex">\(5\)</span>:604–632, 1999.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>Francesco Tudisco, Francesca Arrigo, and Antoine Gautier. Node and layer eigenvector centralities for multiplex networks. <em>SIAM Journal on Applied Mathematics</em>, 78<span class="arithmatex">\(2\)</span>:853–876, 2018.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../chapter1/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Chapter1
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../chapter3/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Chapter3
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.top", "toc.integrate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.4ea5477f.min.js"></script>
+      
+        <script src="../assets/mathjaxhelper.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="http://tikzjax.com/v1/tikzjax.js"></script>
+      
+    
+  </body>
+</html>

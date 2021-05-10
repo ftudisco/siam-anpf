@@ -1,6 +1,33 @@
-# Heros sereno
+# The Perron-Frobenius theorem for multihomogeneous mappings
 
-## Uni gladii laudemur templi suo
+## The cone of nonnegative vectors
+
+The Perron-Frobenius theory deals with operators that leave a normal, convex and pointed cone invariant. The cone of nonnegative vectors is the most common example of such a cone and the one that most often arises in applications. We denote such cone as $C_+ \subseteq \mathbb R^n$ or, when the dimension is clear from the context, simply as $C_+.$ The elements of $C_+$ are vectors whose components are all nonnegative. Whereas the interior $C_{++}$ of $C_+$ is the set of entrywise positive vectors:
+
+
+- $C_+ = \{x\in \mathbb R^n : x_i\geq 0$ for all $i=1,\dots,n\}=\{x\in \mathbb R^n : x\succeq 0\}$ 
+- $C_{++} = \{x\in \mathbb R^n : x_i> 0$ for all $i=1,\dots,n\}=\{x\in \mathbb R^n : x\succ 0\}.$  
+
+$C_+$ is convex, pointed and normal as $\alpha x\in C_+$ for all $x\in C_+$ and all scalar coefficients $\alpha \geq 0$,  $C_+\cap -C_+ = \{0\}$ and for all pair of vectors $x,y\in C_+$ such that $x\preceq y$ there exists a $\gamma>0$ such that $\|x\|\leq \gamma \|y\|$. Here $\|\cdot\|$ is any norm on $\mathbb R^n$. 
+
+This tutorial will  focus only on $C_+$ however, however we point out that all the results we will present can be  relatively directly transferred to arbitrary normal, convex and pointed cones.  
+
+## Hilbert projective distance 
+One of the key tools for the Perron-Frobenius theory for nonlinear mappings is the Hilbert distance. For any two positive vectors $x,y\succ 0$, this is defined as:[^1]
+
+\\[d_H(x,y) = \ln\Big(\max_{i=1,\dots,n}\frac{x_i}{y_i}\max_{i=1,\dots,n}\frac{y_i}{x_i}\Big)\\]
+
+[^1]: This definition is strictly related to the choice of the nonnegative cone $C_+$. For general cones, the definition of $d_H$ changes. However, all its properties do not change. 
+
+$d_H$ is a metric on the space of rays in $C_{++}$, that is it holds[^2]
+
+<center>
+$d_H(\alpha x, \beta y) =d_H(x,y)$ for all scalar coefficients $\alpha,\beta >0$
+</center>
+
+[^2]: :material-file-document-outline: *Lemmens, Nussbaum, Citation test*
+
+ds
 
 Lorem markdownum fuit peragit eunti, cum illuc heu ferrumque gentis. Curvarique
 loca remoraminaque terram iniustaque tempora luctusque vitam; tela iunxit gratia
