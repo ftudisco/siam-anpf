@@ -80,7 +80,7 @@ $$
 \end{array}\right.
 $$
 
-then both the pair 
+then both the pair  AAAAAAAAA 
 $x = \frac 1 3(2,1)$, $y = \frac 1 3(1,2)$ and the pair $x = \frac 1 4(1,3)$,  $y  = \frac 1 4(3,1)$ are positive solutions to $\eqref{eq:tensor_singvec}$.
 </section>
 
