@@ -535,7 +535,7 @@ x_i \propto \sum_{j: i\to j}y_j =  (A^\top y)_i \qquad y_i \propto  \sum_{j:j\to
 <p>It is easy to verify that the mapping <span class="arithmatex">\(F(x) := Ax^{1-\varepsilon}\)</span> is (multi)homogeneous with homogeneity matrix the scalar <span class="arithmatex">\(\M=1-\varepsilon\)</span>. Thus, for any <span class="arithmatex">\(\varepsilon \in (0,1)\)</span>, <span class="arithmatex">\(\rho(\M)&lt;1\)</span> and by the nonlinear Perron-Frobenius theorem we have that <span class="arithmatex">\(\eqref{eq:Af(x)}\)</span> has a unique positive solution. It is easy to verify that such solution is entrywise constant, yielding the desired centrality assignment. </p>
 <p>A similar situation holds for the singular vector case. Consider the graph in the figure below:</p>
 <p><center>
-<img style="width:13em;border-style:solid;border:5px;" src="/tikz-figures/example-graph-hits.png" alt="example-graph" />
+<img style="width:13em;border-style:solid;border:5px;" src="./tikz-figures/example-graph-hits.png" alt="example-graph" />
 </center></p>
 <p>This is a well-known example where HITS centrality may fail to output a reasonable centrality. 
 While this graph is not a strongly connected graph, we all most probably agree that node <span class="arithmatex">\(1\)</span> is the most relevant <em>hub</em> while node <span class="arithmatex">\(6\)</span> is the most relevant <em>authority</em>. Despite this simple setting, using the dominant singular vectors of <span class="arithmatex">\(A\)</span> as in the HITS model may fail to identify these relevant hub and authority nodes. In fact, both the following pairs</p>
