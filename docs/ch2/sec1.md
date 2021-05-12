@@ -1,5 +1,8 @@
 # Network centrality  
 
+
+## Eigenvector centrality 101
+
 Ranking the nodes of a network according to suitable "centrality measures" is a recurring and fundamental question in network science and data mining.  Among the various  network centrality models,  the class of **eigenvector centrality** is one of the most widely used and effective. This family of models  dates back to the 19th Century when it was proposed as a mean to rank professional chess players by Edmund Landau[@schaf2019landau] and was then  popularized in the network science community starting from the late '80s with Bonacich[@bonacich1987eig], PageRank[@page1999pagerank] and HITS[@K99] models. 
 
 This class of scores assigns importances to the nodes of a graph, based on the leading eigenvector $x$ (or the leading singular vectors $x,y$) of suitable network matrices and strongly rely on the matrix Perron-Frobenius theorem. 

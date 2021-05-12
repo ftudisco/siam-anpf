@@ -7,9 +7,14 @@ nav:
         - chapter1.md
     - Chapter 2: 
         # - ch2/centrality.md
-        - ch2/centrality0.md
-        - ch2/centrality00.md
-    - Chapter 3: chapter3.md
+        - ch2/sec1.md
+        - ch2/sec2.md
+    - Chapter 3: 
+        - ch3/sec1.md
+        - ch3/sec2.md
+    - Chapter 4: 
+        - ch4/sec1.md
+        - ch4/sec2.md
     
     # - Home: 
     #     - index.md

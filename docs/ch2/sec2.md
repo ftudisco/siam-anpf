@@ -250,7 +250,7 @@ is connected, then $\eqref{eq:NEP}$ has a unique solution. Instead, when either 
 <section markdown="block" class="theorem">
 **Theorem.**  Let $f,g,\varphi,\psi$ be order preserving and homogeneous of degrees $\alpha,\beta,\gamma,\delta$, respectively. Define the coefficient $\rho = |\alpha\beta\gamma\delta|$. 
 
-If either  (**1**) $\rho<1$, or (**2**) $\rho=1$,  $f,g,\varphi,\psi$ are differentiable and the bipartite graph with adjacency matrix as in $\eqref{eq:bipartite}$ is connected, then there exist unique $x^*,y^* \succ  0$ (up to scaling) and unique $\lambda, \mu >0$ solution of $\eqref{eq:NEP}$ and the nonlinear power iteration
+If either    $\rho<1$  or   $\rho=1$,  $f,g,\varphi,\psi$ are differentiable and the bipartite graph with adjacency matrix as in $\eqref{eq:bipartite}$ is connected, then there exist unique $x^*,y^* \succ  0$ (up to scaling) and unique $\lambda, \mu >0$ solution of $\eqref{eq:NEP}$ and the nonlinear power iteration
 
 ``` julia
 x = ones(n,1)  
@@ -268,7 +268,7 @@ converges to such $x^*,y^*$.
 You can find [here :material-github:](https://github.com/ftudisco/node-edge-hypergraph-centrality) the `julia` code that implements this algorithm and that runs it on a number of example datasets.
 
 
-#### The hypergraph sunflower 
+### The hypergraph sunflower 
 A sunflower is a hypergraph whose hyperedges all have one common intersection in one single node, called the *core*. Let $u\in V$ be that intersection. Also let $r$ be the number of *petals* (the hyperedges) each containing $|e_i|$ nodes, for $i=1,\dots,r$. By definition $u$ is the only element in all the edges $\cap_i e_i = \{u\}$. 
 
 
@@ -290,9 +290,11 @@ x_v \propto g(f(y)),\qquad  x_u \propto g(rf(y)), \qquad y \propto \psi(\varphi(
 $$
 
 So, for example, with the choices of Theorem $\ref{thm:tensor-eig} we get $x_u/x_v = g(r) = r^{1/(p+1)}$ which coincides with the value computed in \cite{benson2019three}, for the two choices $p = 1$ and $p=m-1$, \new{i.e., the tensor $Z$-eigenvector and $H$-eigenvector based centralities, respectively}. More generally, if $g$ is homogeneous of degree $\beta$ we have
+
 \begin{equation}\label{eq:sunflower-centrality-ratio}
     \frac{x_u}{x_v} \propto r^\beta\, .
 \end{equation}
+
 This shows that the node centrality assignment in the case of a uniform sunflower hypergraph only depends on the homogeneity degree of $g$ and, in particular,  when $\beta\to 0$ all the centralities tend to coincide, while $x_u > x_v$ for all $\beta>0$,  confirming and  extending the observation in \cite{benson2019three} for the setting of uniform hypergraph centralities based on tensor eigenvectors. Figure \ref{fig:uniform-sunflower} illustrates this behaviour on an example uniform sunflower hypergraph with eight petals ($r=8$) each having three nodes ($k=3$). The figure shows the nodes of the hypergraph with a blue dot whose size is proportional to its centrality value computed according to the three singular vector hypergraph centrality models defined in Section \ref{sec:comp}.  The value of $\beta$ for these three centralities is $1$ for both the `max' and the `linear' centrality', and $1/2$ for `log-exp' centrality'. Thus, all the three models assign essentially the same centrality score: the core node $u$ has strictly larger centrality, while all other nodes have same centrality score. \new{Similarly, the computed edge centrality is constant across all models and all petals.}
 
 \subsubsection*{Generic sunflower}
