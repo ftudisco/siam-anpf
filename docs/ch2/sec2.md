@@ -231,8 +231,16 @@ If we extend real functions on vectors by defining them as mappings that act in 
     \end{cases}\qquad   x,  y \succ  0, \quad  \lambda, \mu > 0  \, .
 \end{equation}
 
-If $f,g,\psi$ and $\varphi$ are all identity functions, then $\eqref{eq:NEP}$ boils down to a linear system of equations which is structurally reminiscent of the  HITS  centrality model for directed graphs, briefly reviewed above: the importance of a node is proportional to the sum of the importances of the hyperedges it belongs to and, vice-versa, the importancesof a hyperdge is proportional 
-to the sum of the importances of the nodes it involves.
+Particular choices of the functions $f,g,\psi$ and $\varphi$ allow us to retrieve different models. 
+
+If $f,g,\psi$ and $\varphi$ are all identity functions, then $\eqref{eq:NEP}$ boils down to a linear system of equations which is structurally reminiscent of the  HITS  centrality model for directed graphs, briefly reviewed above: the importance of a node is proportional to the sum of the importances of the hyperedges it belongs to and, vice-versa, the importancesof a hyperdge is proportional  to the sum of the importances of the nodes it involves.
+
+When $f,g,\psi$ and $\varphi$ are logarithmic- and exponential-based, instead, the nonlinear eigenvector equation $\eqref{eq:NEP}$ allow us to extend the tensor eigenvector centrality model to the non-uniform hypergraph setting. In fact, the theorem below  shows that, for uniform hypergraphs,  the tensor-based eigenvector centrality $\eqref{eq:tensor_eig}$ is a particular case of $\eqref{eq:NEP}$ for logarithmic- and exponential-based nonlinear functions. Thus, when used on non-uniform hypergraphs, these choices of functions in $\eqref{eq:NEP}$ yield a tensor eigenvector like centrality for general hypergraphs.
+
+<section markdown="block" class="theorem">
+**Theorem.**  Let $H$ be a $k$-uniform hypergraph. If $x$ is a positive solution of  $\eqref{eq:NEP}$ with $f(x) =  x$, $g(x) = x^{1/(p+1)}$,  $\psi(x) = e^{x}$ and $\varphi(x) = \ln(x)$,  then $x\succ 0$ is an eigenvector centrality solution of the tensor eigenvalue problem $\eqref{eq:tensor_eig}$. 
+</section>
+
 
 As for HITS centrality, when $f=g=\varphi=\psi=\text{id}$ and we have no edge nor node weights (i.e.  $W,N$ are identity matrices), then  $x, y$ in $\eqref{eq:NEP}$ are the left and right  singular vectors of a graph matrix,  in this case $B$, and the matrix Perron-Frobenius theory tells us that if the bipartite graph with adjacency matrix 
 
@@ -273,7 +281,7 @@ A sunflower is a hypergraph whose hyperedges all have one common intersection in
 
 
 <center>
-<img style="width:13em;border-style:solid;border:5px;" src="/img/sunflower.jpg" alt="example-sunflower" />
+<img style="width:17em;border-style:solid;border:5px;" src="/img/sunflower.jpg" alt="example-sunflower" />
 </center>
 
 
@@ -281,29 +289,49 @@ A sunflower is a hypergraph whose hyperedges all have one common intersection in
 
 If $|e_i|=k+1$ for all $i$, we say that the hypergraph is a uniform sunflower. The tensor eigenvector centrality of a uniform sunflower is studied for example in [@benson2019three]. In this case we can assume that all the hyperedges have the same centrality score and that the same holds for all the nodes, besides the core, which is assigned a specific value. 
 
-Assuming no weights, 
-by symmetry we may impose the constraints $x_{v_i}=x_v$ for all $v_i\neq u$ and $y_e = y$ for all $e\in E$
+Assuming no weights, by symmetry we may impose the constraints $x_{v_i}=x_v$ for all $v_i\neq u$ and $y_e = y$ for all $e\in E$
 in $\eqref{eq:NEP}$ to obtain
 
 $$
 x_v \propto g(f(y)),\qquad  x_u \propto g(rf(y)), \qquad y \propto \psi(\varphi(x_u) + k\varphi(x_v)). 
 $$
 
-So, for example, with the choices of Theorem $\ref{thm:tensor-eig} we get $x_u/x_v = g(r) = r^{1/(p+1)}$ which coincides with the value computed in \cite{benson2019three}, for the two choices $p = 1$ and $p=m-1$, \new{i.e., the tensor $Z$-eigenvector and $H$-eigenvector based centralities, respectively}. More generally, if $g$ is homogeneous of degree $\beta$ we have
+So, 
+<!-- for example, with the choices $f(x) =  x$, $g(x) = x^{1/(p+1)}$,  $\psi(x) = e^{x}$ and $\varphi(x) = \ln(x)$ we get $x_u/x_v = g(r) = r^{1/(p+1)}$ , which coincides with the value computed in [@benson2019three], for the two choices $p = 1$ and $p=m-1$, i.e., the tensor $Z$-eigenvector and $H$-eigenvector based centralities, respectively. More generally,  -->
+if $g$ is homogeneous of degree $\beta$ we have $x_u/ x_v  \propto r^\beta$. 
 
-\begin{equation}\label{eq:sunflower-centrality-ratio}
-    \frac{x_u}{x_v} \propto r^\beta\, .
-\end{equation}
+This shows that the node centrality assignment in the case of a uniform sunflower hypergraph only depends on the homogeneity degree of $g$ and, in particular,  when $\beta\to 0$ all the centralities tend to coincide, while $x_u > x_v$ for all $\beta>0$,  confirming and  extending the observation in [@benson2019three] for the setting of uniform hypergraph centralities based on tensor eigenvectors. The figure below illustrates this behaviour on an example uniform sunflower hypergraph with eight petals ($r=8$), each having three nodes ($k=3$). 
 
-This shows that the node centrality assignment in the case of a uniform sunflower hypergraph only depends on the homogeneity degree of $g$ and, in particular,  when $\beta\to 0$ all the centralities tend to coincide, while $x_u > x_v$ for all $\beta>0$,  confirming and  extending the observation in \cite{benson2019three} for the setting of uniform hypergraph centralities based on tensor eigenvectors. Figure \ref{fig:uniform-sunflower} illustrates this behaviour on an example uniform sunflower hypergraph with eight petals ($r=8$) each having three nodes ($k=3$). The figure shows the nodes of the hypergraph with a blue dot whose size is proportional to its centrality value computed according to the three singular vector hypergraph centrality models defined in Section \ref{sec:comp}.  The value of $\beta$ for these three centralities is $1$ for both the `max' and the `linear' centrality', and $1/2$ for `log-exp' centrality'. Thus, all the three models assign essentially the same centrality score: the core node $u$ has strictly larger centrality, while all other nodes have same centrality score. \new{Similarly, the computed edge centrality is constant across all models and all petals.}
 
-\subsubsection*{Generic sunflower}
-The situation is different for the case of a nonuniform hypergraph sunflower where we have $r$ petals each containing an arbitrary number of nodes. 
-The computational results in Figure~\ref{fig:non-uniform-sunflower} indicate that the three models in Section \ref{sec:comp} capture significantly different centrality properties:
-All three models recognize the core node as the most central one, however while the `linear' model favours nodes that belong to large hyperedges, the multiplicative `log-exp' model behaves in the opposite way assigning a larger centrality score to nodes being part of small hyperedges. Finally, the `max' model behaves like in the uniform case, assigning the same centrality value to all the nodes in the petals (core node excluded). \new{For this hypergraph, we observe that the edge centrality follows directly from the node one: for the `linear' model the edge centrality is proportional to the number of nodes in the edge, 
-for the `log-exp' model it is inversely proportional to the number of nodes, while for the `max' model all edges have the same centrality.} 
-It would be of interest to pursue these differences analytically and hence gain further 
-insights into the effect of $f,g,\varphi$ and $\psi$.
+<center>
+<img style="width:35em;border-style:solid;border:5px;" src="/img/uniform-sunflower.png" alt="centrality-uniform-sunflower" />
+</center>
+
+
+
+The figure shows the nodes of the hypergraph with a blue dot whose size is proportional to its centrality value computed according to three choices of the mappings in $\eqref{eq:NEP}$:
+
+1. *Linear*: $f(x) =  g(x) = \psi(x) = \varphi(x) = x$  
+1. *Log-exp*: $f(x) =  x$, $g(x) = x^{1/2}$,  $\psi(x) = e^{x}$ and $\varphi(x) = \ln(x)$  
+1. *Max*: $f(x) = g(x) = x$, $\varphi(x) = x^{10}$, $\psi(x) = x^{1/10}$
+
+ The value of $\beta$  is $1$ for both the *max* and the *linear* centrality, and $1/2$ for *log-exp* centrality. Thus, all the three models assign the same centrality ranking: the core node $u$ has strictly larger centrality, while all other nodes have same centrality score. 
+
+
+The situation is different for the case of a nonuniform hypergraph sunflower where we have $r$ petals each containing an arbitrary number of nodes. The figure below shows the computed centrality 
+on an example sunflower
+
+<center>
+<img style="width:35em;border-style:solid;border:5px;" src="/img/non-uniform-sunflower.png" alt="centrality-nonuniform-sunflower" />
+</center>
+
+
+
+and indicates that the three models capture significantly different centrality properties:
+All three models recognize the core node as the most central one, however while the *linear* model favours nodes that belong to large hyperedges, the multiplicative *log-exp* model behaves in the opposite way assigning a larger centrality score to nodes being part of small hyperedges. Finally, the *max* model behaves like in the uniform case, assigning the same centrality value to all the nodes in the petals (core node excluded).  For this hypergraph, we observe that the edge centrality follows directly from the node one: for the *linear* model the edge centrality is proportional to the number of nodes in the edge,  for the *log-exp* model it is inversely proportional to the number of nodes, while for the *max* model all edges have the same centrality. 
+
+
+
 
 
 

@@ -1,6 +1,18 @@
 # Network centrality  
 
 
+Complex networks is a common name for various real networks which are usually presented by
+graphs with a large number of nodes: Internet graphs, collaboration graphs, e-mail graphs, social
+networks, transport networks, protein-protein interaction networks, and many other. 
+
+ The term network analysis refers to a wealth of mathematical techniques
+aiming at describing the structure, function, and evolution of complex networks. One of the main tasks in network analysis is the localization of nodes that, in some sense,
+are the "most important" in a given graph. The main tool to quantify the relevance of nodes
+in a graph is through the computation of suitably defined centrality indices. Many centrality
+indices have been invented during time. Each one of them refers to a particular definition of
+"importance" or "relevance" that is most useful in a given context.....
+
+
 ## Eigenvector centrality 101
 
 Ranking the nodes of a network according to suitable "centrality measures" is a recurring and fundamental question in network science and data mining.  Among the various  network centrality models,  the class of **eigenvector centrality** is one of the most widely used and effective. This family of models  dates back to the 19th Century when it was proposed as a mean to rank professional chess players by Edmund Landau[@schaf2019landau] and was then  popularized in the network science community starting from the late '80s with Bonacich[@bonacich1987eig], PageRank[@page1999pagerank] and HITS[@K99] models. 
