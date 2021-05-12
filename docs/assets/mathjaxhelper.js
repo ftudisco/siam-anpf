@@ -10,8 +10,6 @@
 //     matchFontHeight: true
 //   }
 // });
-
-
 window.MathJax = {
   tex: {
     inlineMath: [["\\(", "\\)"],["$","$"]],
@@ -20,7 +18,11 @@ window.MathJax = {
     processEnvironments: true,
     tagSide: 'left',
     macros: {
-      RR: '{\\mathbb R}'
+      RR: '{\\mathbb R}',
+      R: '{\\mathbb R}',
+      krog: '{\\odot}', 
+      M: '{\\mathit{\\Theta}}',
+      one: '{\\mathbf 1}'
       // b: ['{\\mathbf #1}',1]
     },
     tags: 'ams'
@@ -42,7 +44,7 @@ window.MathJax = {
     skipAttributes: {},            // RFDa and other attributes NOT to copy to the output
     exFactor: .5,                  // default size of ex in em units
     displayAlign: 'left',          // default for indentalign when set to 'auto'
-    displayIndent: '5em'           // default for indentshift when set to 'auto'
+    displayIndent: '0em'           // default for indentshift when set to 'auto'
   }
 };
 
