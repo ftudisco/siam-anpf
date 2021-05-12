@@ -1,6 +1,6 @@
 using LinearAlgebra
 
-function pm(A,α,β)
+function power_method(A,α,β)
     maxiter = 100;
     n = size(A,1)
     x = ones(n,1)
@@ -13,17 +13,21 @@ function pm(A,α,β)
         y = y ./ norm(y,1)
     end
     
-    return x,y
+    return vec(x),vec(y)
 end
 
-A = [0 0 0 0 0 0; 1 0 0 0 0 0; 1 0 0 0 0 0; 1 0 0 0 0 0; 1 0 0 0 0 0; 0 1 1 1 1 0]
-A = [0 1 1 1 1 0; 0 0 0 0 0 1; 0 0 0 0 0 1; 0 0 0 0 0 1; 0 0 0 0 0 1; 0 0 0 0 0 0]
+A = [0 0 0 0 0 0; 
+     1 0 0 0 0 0; 
+     1 0 0 0 0 0; 
+     1 0 0 0 0 0; 
+     1 0 0 0 0 0; 
+     0 1 1 1 1 0]
 
-α = .5
-β = .9 #1/α-.001 
+α = .5; β = .5; x1,y1 = power_method(A,α,β)
+α = .9; β = .9; x2,y2 = power_method(A,α,β)
+α = .5; β = .9; x3,y3 = power_method(A,α,β)
+α = .9; β = .5; x4,y4 = power_method(A,α,β)
 
-H = [0 α; β 0]
-λ = maximum(eigvals(H))
 
-x,y = pm(A,α,β)
-[x y]
+df = DataFrame(x1 = x1, x2 = x2, x3 = x3, x4 = x4, y1 = y1, y2 = y2, y3 = y3, y4 = y4)
+println(df)

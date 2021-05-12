@@ -1,3 +1,9 @@
+<!-- ---
+hide:
+  - navigation # Hide navigation
+  - toc        # Hide table of contents
+--- -->
+
 # Applied Nonlinear Perron-Frobenius Theory 
 ### SIAM LA and ILAS 21 Conferences Tutorial  
 

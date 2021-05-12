@@ -3,10 +3,13 @@ site_author: Francesco Tudiscos
 
 nav:
     - Home: index.md
-    - Chapter1: chapter1.md
-    - Centrality: 
-        - centrality.md
-    - Chapter3: chapter3.md
+    - Chapter 1: 
+        - chapter1.md
+    - Chapter 2: 
+        # - ch2/centrality.md
+        - ch2/centrality0.md
+        - ch2/centrality00.md
+    - Chapter 3: chapter3.md
     
     # - Home: 
     #     - index.md
@@ -69,9 +72,9 @@ theme:
     features:
     - navigation.instant
     - navigation.tracking
-    - navigation.tabs
-    - navigation.tabs.sticky
-    # - navigation.sections
+    # - navigation.tabs
+    # - navigation.tabs.sticky
+    - navigation.sections
     - navigation.expand
     - navigation.top
     # - navigation.indexes
