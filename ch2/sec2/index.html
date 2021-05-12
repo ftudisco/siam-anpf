@@ -708,7 +708,7 @@ for r = 0,1,2,3,...
 <h3 id="the_hypergraph_sunflower">The hypergraph sunflower</h3>
 <p>A sunflower is a hypergraph whose hyperedges all have one common intersection in one single node, called the <em>core</em>. Let <span class="arithmatex">\(u\in V\)</span> be that intersection. Also let <span class="arithmatex">\(r\)</span> be the number of <em>petals</em> (the hyperedges) each containing <span class="arithmatex">\(|e_i|\)</span> nodes, for <span class="arithmatex">\(i=1,\dots,r\)</span>. By definition <span class="arithmatex">\(u\)</span> is the only element in all the edges <span class="arithmatex">\(\cap_i e_i = \{u\}\)</span>. </p>
 <p><center>
-<img style="width:17em;border-style:solid;border:5px;" src="./img/sunflower.jpg" alt="example-sunflower" />
+<img style="width:17em;border-style:solid;border:5px;" src="../img/sunflower.jpg" alt="example-sunflower" />
 </center></p>
 <p>If <span class="arithmatex">\(|e_i|=k+1\)</span> for all <span class="arithmatex">\(i\)</span>, we say that the hypergraph is a uniform sunflower. The tensor eigenvector centrality of a uniform sunflower is studied for example in <sup id="fnref2:20"><a class="footnote-ref" href="#fn:20">20</a></sup>. In this case we can assume that all the hyperedges have the same centrality score and that the same holds for all the nodes, besides the core, which is assigned a specific value. </p>
 <p>Assuming no weights, by symmetry we may impose the constraints <span class="arithmatex">\(x_{v_i}=x_v\)</span> for all <span class="arithmatex">\(v_i\neq u\)</span> and <span class="arithmatex">\(y_e = y\)</span> for all <span class="arithmatex">\(e\in E\)</span>
@@ -721,7 +721,7 @@ x_v \propto g(f(y)),\qquad  x_u \propto g(rf(y)), \qquad y \propto \psi(\varphi(
 if <span class="arithmatex">\(g\)</span> is homogeneous of degree <span class="arithmatex">\(\beta\)</span> we have <span class="arithmatex">\(x_u/ x_v  \propto r^\beta\)</span>. </p>
 <p>This shows that the node centrality assignment in the case of a uniform sunflower hypergraph only depends on the homogeneity degree of <span class="arithmatex">\(g\)</span> and, in particular,  when <span class="arithmatex">\(\beta\to 0\)</span> all the centralities tend to coincide, while <span class="arithmatex">\(x_u &gt; x_v\)</span> for all <span class="arithmatex">\(\beta&gt;0\)</span>,  confirming and  extending the observation in <sup id="fnref4:20"><a class="footnote-ref" href="#fn:20">20</a></sup> for the setting of uniform hypergraph centralities based on tensor eigenvectors. The figure below illustrates this behaviour on an example uniform sunflower hypergraph with eight petals (<span class="arithmatex">\(r=8\)</span>), each having three nodes (<span class="arithmatex">\(k=3\)</span>). </p>
 <p><center>
-<img style="width:35em;border-style:solid;border:5px;" src="./img/uniform-sunflower.png" alt="centrality-uniform-sunflower" />
+<img style="width:35em;border-style:solid;border:5px;" src="../img/uniform-sunflower.png" alt="centrality-uniform-sunflower" />
 </center></p>
 <p>The figure shows the nodes of the hypergraph with a blue dot whose size is proportional to its centrality value computed according to three choices of the mappings in <span class="arithmatex">\(\eqref{eq:NEP}\)</span>:</p>
 <ol>
@@ -733,7 +733,7 @@ if <span class="arithmatex">\(g\)</span> is homogeneous of degree <span class="a
 <p>The situation is different for the case of a nonuniform hypergraph sunflower where we have <span class="arithmatex">\(r\)</span> petals each containing an arbitrary number of nodes. The figure below shows the computed centrality 
 on an example sunflower</p>
 <p><center>
-<img style="width:35em;border-style:solid;border:5px;" src="./img/non-uniform-sunflower.png" alt="centrality-nonuniform-sunflower" />
+<img style="width:35em;border-style:solid;border:5px;" src="../img/non-uniform-sunflower.png" alt="centrality-nonuniform-sunflower" />
 </center></p>
 <p>and indicates that the three models capture significantly different centrality properties:
 All three models recognize the core node as the most central one, however while the <em>linear</em> model favours nodes that belong to large hyperedges, the multiplicative <em>log-exp</em> model behaves in the opposite way assigning a larger centrality score to nodes being part of small hyperedges. Finally, the <em>max</em> model behaves like in the uniform case, assigning the same centrality value to all the nodes in the petals (core node excluded).  For this hypergraph, we observe that the edge centrality follows directly from the node one: for the <em>linear</em> model the edge centrality is proportional to the number of nodes in the edge,  for the <em>log-exp</em> model it is inversely proportional to the number of nodes, while for the <em>max</em> model all edges have the same centrality. </p>
