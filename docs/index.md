@@ -6,31 +6,29 @@ hide:
 
 # Applied Nonlinear Perron-Frobenius Theory 
 
-## SIAM LA and ILAS 21 Conferences Tutorial  
+
+## About 
+
+This website has the aim to provide a self-contained and relatively detailed overview of the material presented at the SIAM LA and ILAS 2021 conferences minitutorial on ***Applied Nonlinear Perron-Frobenius Theory***.
+
+The slides of the talks can be found here:  
 
 
 
-Nonnegative matrices are pervasive in data miningapplications. For example, distance andsimilarity matrices are fundamental tools for dataclassification, affinity matrices are keyinstruments for graph matching, adjacency matricesare at the basis of almost every graphmining algorithm, transition matrices are the maintool for studying stochastic processes ondata. The Perron-Frobenius theory makes the algorithmsbased on these matrices veryattractive from a linear algebra point of view.At the same time, as the available data grows bothin terms of size and complexity, more andmore data mining methods rely on nonlinear mappingsrather than just matrices, whichhowever still have some notion of nonnegativity.The nonlinear Perron-Frobenius theory allows us totransfer most of the theoretical andcomputational niceties of nonnegative matrices tothe much broader class of nonlinearmultihomogeneous operators. These types of operatorsinclude for example commonly usedmaps associated with tensors and are tightly connectedto the formulation of nonlineareigenvalue problems with eigenvector nonlinearities.
-In this minitutorial we will introduce the concept of multihomogeneous operators and we willpresent the state-of-the-art version of the nonlinearPerron-Frobenius theorem fornonnegative nonlinear mappings. We will discuss severalnumerical optimization implicationsconnected to nonlinear and higher-order versions ofthe Power and the Sinkhorn methodsand several open challenges, both from the theoreticaland the computational viewpoints.We will also discuss numerous problems in data mining,machine learning and networkscience which can be cast in terms of nonlinear eigenvectorproblems and we will show howthe nonlinear Perron-Frobenius theory can help solvethem.
+## Abstract 
+
+
+
+Nonnegative matrices are pervasive in data mining applications. For example, distance and similarity matrices are fundamental tools for data classification, affinity matrices are key instruments for graph matching, adjacency matrices are at the basis of almost every graph mining algorithm, transition matrices are the main tool for studying stochastic processes on data. The Perron-Frobenius theory makes the algorithms based on these matrices very attractive from a linear algebra point of view. At the same time, as the available data grows both in terms of size and complexity, more and more data mining methods rely on nonlinear mappings rather than just matrices, which however still have some form of *nonnegativity*.The nonlinear Perron-Frobenius theory allows us to transfer most of the theoretical and computational niceties of nonnegative matrices to the much broader class of **nonlinear multihomogeneous operators**. These types of operators include for example commonly used maps associated with tensors and are tightly connected to the formulation of nonlinear eigenvalue problems with eigenvector nonlinearities.
+In this minitutorial we will introduce the concept of multihomogeneous operators and we will present the state-of-the-art version of the nonlinear Perron-Frobenius theorem for nonnegative nonlinear mappings. We will discuss several numerical optimization implications connected to nonlinear and higher-order versions of the Power and the Sinkhorn methods and several open challenges, both from the theoretical and the computational viewpoints. We will also discuss a number of problems in data mining, machine learning and network science which can be cast in terms of nonlinear eigenvector problems and we will show how the nonlinear Perron-Frobenius theory can help solve them.
 
 
 
 
-<br> 
-Welcome to the webpage dedicated to the SIAM minitutorial on *Applied Nonlinear Perron-Frobenius Theory*. The page is developed and maintained by [Antoine Gautier]() and [Francesco Tudisco](https://ftudisco.gitlab.io/). 
+## Credits
+The website is developed and maintained by [Antoine Gautier](https://scholar.google.com/citations?user=ymx43BUAAAAJ&hl=en) and [Francesco Tudisco](https://ftudisco.gitlab.io/). 
 
-
-
-## Commands
-
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
-
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+<center>
+<a href="https://scholar.google.com/citations?user=ymx43BUAAAAJ&hl=en"><img style="width:15em;border-style:solid;border-width:2px;border-radius: 50%;margin-right:2em;" src="/img/antoine-gautier.jpeg" alt="antoine-gautier" /></a>
+<a href="https://ftudisco.gitlab.io/"><img style="width:15em;border-style:solid;border-width:2px;border-radius: 50%;margin-left:2em;" src="/img/francesco-tudisco.jpg" alt="francesco-tudisco" /></a>
+</center>

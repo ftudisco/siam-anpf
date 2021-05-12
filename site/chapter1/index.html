@@ -8,15 +8,15 @@
       
       
       
-        <meta name="author" content="Francesco Tudisco">
+        <meta name="author" content="Francesco Tudiscos">
       
       
-      <link rel="icon" href="../assets/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
     
     
       
-        <title>Chapter1 - SIAM LA 21 Tutorial</title>
+        <title>Perron-Frobenius theory for linear mappings - SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory</title>
       
     
     
@@ -32,8 +32,8 @@
       
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>:root{--md-text-font-family:"Raleway";--md-code-font-family:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Open Sans";--md-code-font-family:"Roboto Mono"}</style>
       
     
     
@@ -41,6 +41,8 @@
       <link rel="stylesheet" href="../css/extra.css">
     
       <link rel="stylesheet" href="http://tikzjax.com/v1/fonts.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css">
     
     
       
@@ -69,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#the_perron-frobenius_theorem_for_multihomogeneous_mappings" class="md-skip">
+        <a href="#perron-frobenius_theory_for_linear_mappings" class="md-skip">
           Skip to content
         </a>
       
@@ -80,7 +82,7 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="SIAM LA 21 Tutorial" class="md-header__button md-logo" aria-label="SIAM LA 21 Tutorial" data-md-component="logo">
+    <a href=".." title="SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory" class="md-header__button md-logo" aria-label="SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18-.21 0-.41-.06-.57-.18l-7.9-4.44A.991.991 0 0 1 3 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18.21 0 .41.06.57.18l7.9 4.44c.32.17.53.5.53.88v9M12 4.15 6.04 7.5 12 10.85l5.96-3.35L12 4.15M5 15.91l6 3.38v-6.71L5 9.21v6.7m14 0v-6.7l-6 3.37v6.71l6-3.38z"/></svg>
@@ -93,13 +95,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            SIAM LA 21 Tutorial
+            SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Chapter1
+              Perron-Frobenius theory for linear mappings
             
           </span>
         </div>
@@ -168,65 +170,6 @@
       
       
         
-          
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-tabs__inner md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href=".." class="md-tabs__link">
-      Home
-    </a>
-  </li>
-
-      
-        
-  
-  
-    
-  
-
-
-  <li class="md-tabs__item">
-    <a href="./" class="md-tabs__link md-tabs__link--active">
-      Chapter1
-    </a>
-  </li>
-
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="../centrality/" class="md-tabs__link">
-      Centrality
-    </a>
-  </li>
-
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="../chapter3/" class="md-tabs__link">
-      Chapter3
-    </a>
-  </li>
-
-      
-    </ul>
-  </div>
-</nav>
-        
       
       <main class="md-main" data-md-component="main">
         <div class="md-main__inner md-grid">
@@ -238,20 +181,18 @@
                   <div class="md-sidebar__inner">
                     
 
-  
-
 
   
 
-<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="SIAM LA 21 Tutorial" class="md-nav__button md-logo" aria-label="SIAM LA 21 Tutorial" data-md-component="logo">
+    <a href=".." title="SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory" class="md-nav__button md-logo" aria-label="SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18-.21 0-.41-.06-.57-.18l-7.9-4.44A.991.991 0 0 1 3 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18.21 0 .41.06.57.18l7.9 4.44c.32.17.53.5.53.88v9M12 4.15 6.04 7.5 12 10.85l5.96-3.35L12 4.15M5 15.91l6 3.38v-6.71L5 9.21v6.7m14 0v-6.7l-6 3.37v6.71l6-3.38z"/></svg>
 
     </a>
-    SIAM LA 21 Tutorial
+    SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -280,6 +221,31 @@
     
   
   
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      <label class="md-nav__link" for="__nav_2">
+        Chapter 1
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Chapter 1" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 1
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
@@ -289,12 +255,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Chapter1
+          Perron-Frobenius theory for linear mappings
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Chapter1
+        Perron-Frobenius theory for linear mappings
       </a>
       
         
@@ -312,23 +278,50 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the_cone_of_nonnegative_vectors" class="md-nav__link">
-    The cone of nonnegative vectors
+  <a href="#brief_history" class="md-nav__link">
+    Brief history
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#hilbert_projective_distance" class="md-nav__link">
-    Hilbert projective distance
+  <a href="#preliminary" class="md-nav__link">
+    Preliminary
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#est_deus_pericula_exigere_figit" class="md-nav__link">
-    Est deus pericula exigere figit
+  <a href="#nonnegative_irreducible_primitive_and_positive_matrices" class="md-nav__link">
+    Nonnegative, irreducible, primitive and positive matrices
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the_perron-frobenius_theorem_and_the_collatz-wielandt_formula" class="md-nav__link">
+    The Perron-Frobenius theorem and the Collatz-Wielandt formula
+  </a>
+  
+    <nav class="md-nav" aria-label="The Perron-Frobenius theorem and the Collatz-Wielandt formula">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#application_stochastic_matrices_and_homogeneous_markov_chains_on_n" class="md-nav__link">
+    Application: Stochastic matrices and homogeneous Markov chains on \([n]\)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application_spectral_norm_of_a_nonnegative_matrix" class="md-nav__link">
+    Application: Spectral norm of a nonnegative matrix
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -339,18 +332,9 @@
     </li>
   
 
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../centrality/" class="md-nav__link">
-        Centrality
-      </a>
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -362,10 +346,163 @@
   
   
   
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        Chapter 2
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Chapter 2" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 2
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../chapter3/" class="md-nav__link">
-        Chapter3
+      <a href="../ch2/sec1/" class="md-nav__link">
+        Network centrality
       </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch2/sec2/" class="md-nav__link">
+        Higher-order network models
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" data-md-state="indeterminate" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        Chapter 3
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Chapter 3" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 3
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch3/sec1/" class="md-nav__link">
+        Section 1
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch3/sec2/" class="md-nav__link">
+        Section 2
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
+      
+      <label class="md-nav__link" for="__nav_5">
+        Chapter 4
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Chapter 4" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 4
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch4/sec1/" class="md-nav__link">
+        Optimization with nonlinear Perron eigenvectors
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch4/sec2/" class="md-nav__link">
+        Section 2
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -383,7 +520,139 @@
               
                 
                 
-                <h1 id="the_perron-frobenius_theorem_for_multihomogeneous_mappings">The Perron-Frobenius theorem for multihomogeneous mappings</h1>
+                <h1 id="perron-frobenius_theory_for_linear_mappings">Perron-Frobenius theory for linear mappings</h1>
+<h2 id="brief_history">Brief history</h2>
+<p>In 1907, in [&hellip;], Oskar Perron proves that the spectral radius of primitive matrices is an algebraically simple eigenvalue and the corresponding eigenvector can be scaled to have all entries positive.
+In 1908, in [&hellip;], George Frobenius extends the result by showing that the spectral radius of irreducible matrices is a geometrically simple eigenvalue and the corresponding eigenvector can be scaled to have positive entries.
+Furthermore, Perron observes that when the spectral radius is an algebraically simple eigenvalue, one can use the power method introduced by &hellip; in &hellip; to compute a maximal eigenvector, i.e. an eigenvector corresponding with the spectral radius as eigenvalue. 
+These results have been then complemented by a broad diversity of results about nonnegative matrix and we refer to [Plemmons] for further readings on the topic. In particular, we will discuss the Collatz-Wielandt ratio, which provides a sup-min and an inf-max characterization of the spectral radius.</p>
+<h2 id="preliminary">Preliminary</h2>
+<p>We briefly recall here well-known results and concepts of linear algebra which will are useful to understand the subsequent discussion.</p>
+<p>Given a matrix <span class="arithmatex">\(A\in\RR^{n\times n}\)</span>, <span class="arithmatex">\(\lambda\in \RR\)</span> is an eigenvalue of <span class="arithmatex">\(A\)</span> if there exists <span class="arithmatex">\(x\in \RR^n\)</span> with <span class="arithmatex">\(x\neq 0\)</span> and <span class="arithmatex">\(Ax = \lambda x\)</span>. A vector <span class="arithmatex">\(x\)</span> is called an eigenvector of <span class="arithmatex">\(A\)</span> if <span class="arithmatex">\(x\neq 0\)</span> and there exists a corresponding eigenvalue <span class="arithmatex">\(\lambda\in \RR\)</span> such that <span class="arithmatex">\(Ax=x\)</span>. </p>
+<p>An eigenvalue <span class="arithmatex">\(\lambda\)</span> of <span class="arithmatex">\(A\)</span> is algebraically simple if it is a simple root of the polynomial <span class="arithmatex">\(p(t)=\det(A-tI)\)</span>, where <span class="arithmatex">\(I\in\RR^{n\times n}\)</span> is the identity matrix. An eigenvalue <span class="arithmatex">\(\lambda\)</span> of <span class="arithmatex">\(A\)</span> is geometrically simple if <span class="arithmatex">\(\dim(\ker(A-\lambda I))=1\)</span>, i.e. there is a unique up to scale eigenvector corresponding to <span class="arithmatex">\(\lambda\)</span>. Algebraic simplicity implies geometric simplicity but the converse is not true in general.</p>
+<p>The spectral radius of <span class="arithmatex">\(A\in\RR^{n\times n}\)</span> is denoted by <span class="arithmatex">\(\rho(A)\)</span> and defined as</p>
+<div class="arithmatex">\[\rho(A)=\max\{|\lambda| \colon \lambda \text{ is an eigenvalue of }A\}\]</div>
+<p>For <span class="arithmatex">\(p\in[1,\infty)\)</span>, let <span class="arithmatex">\(\|x\|_p = \big(\sum_{i=1}^n|x_i|^p\big)^{1/p}\)</span> denote the usual <span class="arithmatex">\(p\)</span>-norm for every <span class="arithmatex">\(x\in\RR^n\)</span>.</p>
+<h2 id="nonnegative_irreducible_primitive_and_positive_matrices">Nonnegative, irreducible, primitive and positive matrices</h2>
+<p>The classical Perron-Frobenius theory is mainly concerned with matrices having nonnegative entries. Based on the pattern of their positive entries, multiple results can be derived concerning the simplicity of their eigenvalues of maximal magnitude and the corresponding eigenvectors. 
+To characterize different patterns of positive entries, we recall the definition of primitive and irreducible matrices. We aslo recall characterizations of these definitions as they will be generalized in different ways in the nonlinear setting:</p>
+<section class="theorem">
+<p><strong>Definition.</strong> Let <span class="arithmatex">\(A\in\RR^{n\times n}\)</span> be a matrix.</p>
+<ul>
+<li><span class="arithmatex">\(A\)</span> is <em>nonnegative</em> if <span class="arithmatex">\(A_{ij}\geq 0\)</span> for all <span class="arithmatex">\(i,j=1,\ldots,n\)</span>.</li>
+<li><span class="arithmatex">\(A\)</span> is <em>positive</em> if <span class="arithmatex">\(A_{ij}&gt;0\)</span> for all <span class="arithmatex">\(i,j=1,\ldots,n\)</span>.</li>
+<li><span class="arithmatex">\(A\)</span> is <em>irreducible</em> if <span class="arithmatex">\(A\)</span> is nonnegative and there exists an integer <span class="arithmatex">\(m\)</span> such that <span class="arithmatex">\((I+A)^m\)</span> is positive.</li>
+<li><span class="arithmatex">\(A\)</span> is <em>primitive</em> if <span class="arithmatex">\(A\)</span> is nonnegative and there exists an integer <span class="arithmatex">\(m\)</span> such that <span class="arithmatex">\(A^m\)</span> is positive.</li>
+</ul>
+</section>
+<p>A matrix <span class="arithmatex">\(A\)</span> is positive, if and only if <span class="arithmatex">\(A^{\top}\)</span> is positive. This observation holds for all four definitions above, i.e. <span class="arithmatex">\(A\)</span> is nonnegative, irreducible, primitive, respectively, if and only if $A^{\top} has the corresponding property. We illustrate these definitions with an example.</p>
+<section class="theorem">
+<p><strong>Example.</strong> Consider the matrices in <span class="arithmatex">\(\RR^{2\times 2}\)</span> defined as</p>
+<div class="arithmatex">\[\begin{equation}\label{def:Example_ABCD} A=\bigg(\begin{matrix}0 &amp; 0 \\ 1 &amp; 1\end{matrix}\bigg), \qquad B=\bigg(\begin{matrix}0 &amp; 1 \\ 1 &amp; 0\end{matrix}\bigg), \qquad C=\bigg(\begin{matrix}0 &amp; 1 \\ 1 &amp; 1\end{matrix}\bigg),\qquad  D=\bigg(\begin{matrix}1 &amp; 2 \\ 1 &amp; 1\end{matrix}\bigg)
+\end{equation}\]</div>
+<p>Then: <span class="arithmatex">\(A,B,C,D\)</span> are nonnegative; <span class="arithmatex">\(B,C,D\)</span> are irreducible; <span class="arithmatex">\(C,D\)</span> are primitive; <span class="arithmatex">\(D\)</span> is positive; <span class="arithmatex">\(A,B,C\)</span> are not positive; <span class="arithmatex">\(A,B\)</span> are not primitive; <span class="arithmatex">\(A\)</span> is not irreducible.</p>
+</section>
+<p>These defintions can be interpret in the context of graphs. Indeed, one can associated a directed graph <span class="arithmatex">\(G(A)=(V,E)\)</span> to a nonnegative matrix <span class="arithmatex">\(A\in \RR^{n\times n}\)</span> as follows: The vertexes are <span class="arithmatex">\(V=\{1,\ldots,n\}\)</span> and there is an edge from <span class="arithmatex">\(i\)</span> to <span class="arithmatex">\(j\)</span>, i.e. <span class="arithmatex">\((i,j)\in E\)</span>, if <span class="arithmatex">\(A_{ij}&gt;0\)</span>. A directed path from <span class="arithmatex">\(i\in V\)</span> to <span class="arithmatex">\(j\in V\)</span>, is a sequence of <span class="arithmatex">\(\ell\)</span> edges <span class="arithmatex">\((k_1,k_2),(k_2,k_3),\ldots,(k_{\ell},k_{\ell+1})\in E\)</span> such that <span class="arithmatex">\(k_1=1\)</span> and <span class="arithmatex">\(k_{\ell+1}= j\)</span>. The length of a directed path is the number of edges it traverses, namely <span class="arithmatex">\(\ell\)</span>. The above definitions can now be equivalently formulated as follows:
+<section markdown="block" class="theorem">
+<strong>Proposition.</strong> Let <span class="arithmatex">\(A\in\RR^{n\times n}\)</span> be a nonnegative matrix and <span class="arithmatex">\(G(A)=(V,E)\)</span> be its associated graph.</p>
+<ul>
+<li><span class="arithmatex">\(A\)</span> is positive if, and only if, <span class="arithmatex">\(G(A)\)</span> is complete, i.e. <span class="arithmatex">\(E=\{(i,j)\mid \forall i,j\in V\}\)</span>.</li>
+<li><span class="arithmatex">\(A\)</span> is irreducible if, and only if, <span class="arithmatex">\(G(A)\)</span> is connected, i.e. for all <span class="arithmatex">\(i,j\in V\)</span> there exists a directed path from <span class="arithmatex">\(i\)</span> to <span class="arithmatex">\(j\)</span> (see Theorem &hellip;). </li>
+<li><span class="arithmatex">\(A\)</span> is primitive if, and only if, <span class="arithmatex">\(G(A)\)</span> is connected and the greatest common divisor of the lengths of all the directed paths starting and ending at the same node equals <span class="arithmatex">\(1\)</span> (see Theorem 8.5.3 [Horn]).
+</section>
+Note that the above characterizations highlight the fact that positivivity, irreducibility and primtivity are concepts related to the pattern of the positive entries rather than the magnitude of these entries.</li>
+</ul>
+<p>Another way to characterize nonnegative, positive, irreducible and primitive matrices, is to analyze their image on vectors with nonnegative entries. Consider </p>
+<div class="arithmatex">\[\RR^n_+=\{x\in \RR^n\mid x_1,\ldots,x_n\geq 0\}\quad \text{and}\quad \RR^n_{++}=\{x\in \RR^n\mid x_1,\ldots,x_n&gt;0\}.\]</div>
+<p>Note for instance that a matrix <span class="arithmatex">\(A\in\RR^{n\times n}\)</span> is nonnegative if, and only if, <span class="arithmatex">\(Ax\in\RR^n_+\)</span> for all <span class="arithmatex">\(x\in\RR^n_+\)</span>.
+<section markdown="block" class="theorem">
+<strong>Proposition.</strong> Let <span class="arithmatex">\(A\in\RR^{n\times n}\)</span> be a nonnegative matrix.</p>
+<ul>
+<li><span class="arithmatex">\(A\)</span> is positive if, and only if, <span class="arithmatex">\(Ax\in\RR^n_{++}\)</span> for all <span class="arithmatex">\(x\in\RR^n_+\setminus\{0\}\)</span>.</li>
+<li><span class="arithmatex">\(A\)</span> is irreducible if, and only if, there exists an integer <span class="arithmatex">\(m\)</span> such that <span class="arithmatex">\(\sum_{k= 0}^m A^{k}x\in\RR^n_{++}\)</span> for all <span class="arithmatex">\(x\in\RR^n_+\setminus\{0\}\)</span> (see Theorem &hellip;).</li>
+<li><span class="arithmatex">\(A\)</span> is primitive if, and only if, there exists an integer <span class="arithmatex">\(m\)</span> such that <span class="arithmatex">\(A^{m}x\in\RR^n_{++}\)</span> for all <span class="arithmatex">\(x\in\RR^n_+\setminus\{0\}\)</span> (see Theorem &hellip;).
+</section></li>
+</ul>
+<p>From the above characterization and the matrices <span class="arithmatex">\(A,B,C,D\)</span> of the Example, one can deduce the following inclusions:
+<section markdown="block" class="theorem">
+<strong>Lemma.</strong> Let <span class="arithmatex">\(n&gt;1\)</span> be an integer and consider the following sets of matrices: </p>
+<div class="arithmatex">\[\begin{equation*}
+\begin{array}{l c l}
+M_{\text{nneg}}=\{A\in\RR^{n\times n}\colon A \text{ is nonnegative}\}, &amp;&amp; M_{\text{irr}}=\{A\in\RR^{n\times n}\colon A \text{ is irreducible}\},\\ 
+M_{\text{prim}}=\{A\in\RR^{n\times n}\colon A \text{ is primitive}\}, &amp;&amp; M_{\text{pos}}=\{A\in\RR^{n\times n}\colon A \text{ is positive}\}.\end{array}
+\end{equation*}\]</div>
+<p>Then, it hold <span class="arithmatex">\(M_{\text{nneg}} \subsetneq M_{\text{irr}} \subsetneq M_{\text{prim}} \subsetneq M_{\text{pos}}\)</span>.</p>
+</section>
+
+<p>We refer to [&hellip;] for an extended discussion on nonnegative, irreducible, primitive and positive matrices.</p>
+<h2 id="the_perron-frobenius_theorem_and_the_collatz-wielandt_formula">The Perron-Frobenius theorem and the Collatz-Wielandt formula</h2>
+<p>We can now state the celebrated theorem of Perron and Frobenius which provides conditions for the existence of a nonnegative eigenvector, i.e. an eigenvector in <span class="arithmatex">\(\RR^n_+\)</span>, the existence and uniqueness of a positive eigenvector, i.e. an eigenvector in <span class="arithmatex">\(\RR_{++}^n\)</span>, and the convergence of a sequence towards a unique positive eigenvector. Note that, by unique eigenvector, we mean unique up to scale so that <span class="arithmatex">\(u\)</span> and <span class="arithmatex">\(\alpha u\)</span> are considered to be the same eigenvector.</p>
+<section class="theorem">
+<p><strong>Theorem (Perron-Frobenius).</strong> Let <span class="arithmatex">\(A\in\RR^{n\times n}\)</span> be a matrix and <span class="arithmatex">\(\|\cdot\|\)</span> a norm on <span class="arithmatex">\(\RR^n\)</span>.</p>
+<ul>
+<li>If <span class="arithmatex">\(A\)</span> is nonnegative, then there exists an eigenvector <span class="arithmatex">\(u\in\RR^n_+\)</span> such that <span class="arithmatex">\(Au=\rho(A)u\)</span>.</li>
+<li>If <span class="arithmatex">\(A\)</span> is irreducible, then <span class="arithmatex">\(u\)</span> is the unique up to scale eigenvector of <span class="arithmatex">\(A\)</span> in <span class="arithmatex">\(\RR^n_+\)</span>. Furthermore <span class="arithmatex">\(u\in\RR^n_{++}\)</span> and <span class="arithmatex">\(\rho(A)\)</span> is a geometrically simple eigenvalue.</li>
+<li>If <span class="arithmatex">\(A\)</span> is primitive, then <span class="arithmatex">\(\rho(A)\)</span> is algebraically simple and for every <span class="arithmatex">\(x^0\in \RR^n_+\setminus\{0\}\)</span>, the sequence <span class="arithmatex">\((x^k)_{k=0}^{\infty}\subset\RR^n\)</span> defined as <span class="arithmatex">\(x^k = A x^{k-1}\)</span> for all <span class="arithmatex">\(k\geq 1\)</span> satisfies</li>
+</ul>
+<div class="arithmatex">\[\lim_{k\to \infty} \frac{x^k}{\|x^k\|}= \frac{u}{\|u\|}.\]</div>
+</section>
+<p>The matrices of the previous example shows that the assumptions in the Perron-Frobenius theorem are well calibrated.</p>
+<section class="theorem">
+<p><strong>Remark.</strong> Consider the matrices <span class="arithmatex">\(A,B,C,D\)</span> defined in <span class="arithmatex">\(\eqref{def:Example_ABCD}\)</span>. Then <span class="arithmatex">\(B,C,D\)</span> have <span class="arithmatex">\((1,1)^\top\)</span> as positive eigenvector. The matrix <span class="arithmatex">\(A\)</span>, is an example of nonnegative matrix which is not irreducible, and have no positive eigenvector. The matrix <span class="arithmatex">\(B\)</span>, is an example of irreducible matrix which is not primitive, and for which the sequence <span class="arithmatex">\((x^k)_{k=0}^{\infty}\)</span> defined in the Perron-Frobenius theorem do not converge whenever <span class="arithmatex">\(x^{0}\in\RR^2\)</span> satisfy <span class="arithmatex">\(x^{0}_1\neq x^{0}_2\)</span>.</p>
+</section>
+<p>We mention one additional result from Collatz and Wielandt which provides a sup-min and an inf-max characterization of the spectral radius. The expressions in the Collatz-Wielandt formula is closely related to the Hilbert metric which is a key ingredient to generalize the Perron-Frobenius theorem. As illustrated by the applications below, the Collatz-Wielandt formula is useful to prove the maximality of an eigenvalue.</p>
+<section class="theorem">
+<p><strong>Theorem (Collatz-Wielandt).</strong> Let <span class="arithmatex">\(A\in\RR^{n\times n}\)</span> be a nonnegative matrix. Then, it holds</p>
+<div class="arithmatex">\[\begin{equation}\label{def:cw_up} \rho(A)\quad =\quad \inf_{x\in\RR_{++}^n}\quad \max_{i=1,\ldots,n}\quad \frac{(Ax)_i}{x_i}.
+\end{equation}\]</div>
+<p>If additionally, <span class="arithmatex">\(A\)</span> has an eigenvector <span class="arithmatex">\(u\in\RR^n_{++}\)</span>, then it holds</p>
+<div class="arithmatex">\[\begin{equation}\label{def:cw_down}
+\rho(A)\quad = \quad\sup_{\substack{x\in\RR_{+}^n\\ x\neq 0}} \quad\min_{\substack{i=1,\ldots,n\\ x_i &gt;0}}\quad \frac{(Ax)_i}{x_i}.
+\end{equation}\]</div>
+<p>and both, the infimum and the supremum above, are attained at <span class="arithmatex">\(u\)</span>.</p>
+</section>
+<p>The Collatz-Wielandt formula is useful to discuss the maximality of eigenvalues, i.e. the egivenvalue of any positive eigenvector equals the spectral radius.</p>
+<h3 id="application_stochastic_matrices_and_homogeneous_markov_chains_on_n">Application: Stochastic matrices and homogeneous Markov chains on <span class="arithmatex">\([n]\)</span></h3>
+<p>Let <span class="arithmatex">\(S\in\RR^{n\times n}\)</span> be a stochastic matrix, i.e. <span class="arithmatex">\(S\)</span> is nonnegative and <span class="arithmatex">\(S\mathbf{1}=\mathbf{1}\)</span> with <span class="arithmatex">\(\mathbf{1}=(1,\ldots,1)^\top \in\RR^n\)</span>. Let us connsider the set of probability vectors <span class="arithmatex">\(\Delta_+=\{x\in\RR^n_+\colon x_1+\ldots+x_n=1\}\)</span>. Note that <span class="arithmatex">\(S\)</span> is a nonnegative matrix and <span class="arithmatex">\(u=\frac{1}{n}\mathbf{1}\)</span> is a positive eigenvector of <span class="arithmatex">\(S\)</span> corresponding to the eigenvalue <span class="arithmatex">\(\lambda=1\)</span>. We show the existence and uniqueness of a startionary distribution.</p>
+<p>First, note that by the Collatz-Wielandt formula,</p>
+<div class="arithmatex">\[\rho(S) =\inf_{x\in\RR_{++}^n} \max_{i=1,\ldots,n} \frac{(Sx)_i}{x_i} =  \max_{i=1,\ldots,n} \frac{(Su)_i}{u_i} = 1.
+\]</div>
+<p>As <span class="arithmatex">\(S^\top\)</span> is a nonnegative matrix, by the Perron-Frobenius theorem, we know that there exists <span class="arithmatex">\(\pi\in \RR^n_+\)</span> with <span class="arithmatex">\(\pi_1+\ldots+\pi_n=1\)</span> and <span class="arithmatex">\(S^\top \pi = \rho(S^\top) \pi\)</span>. As <span class="arithmatex">\(\rho(S^\top)=\rho(S)=1\)</span>, we have <span class="arithmatex">\(S^\top \pi =\pi\)</span>, i.e. <span class="arithmatex">\(\pi\)</span> is a stationary distribution of <span class="arithmatex">\(S\)</span>. This proves the existence. </p>
+<p>If <span class="arithmatex">\(S\)</span> is irreducible, then <span class="arithmatex">\(S^T\)</span> is irreducible as well and by the Perron-Frobenius theorem, <span class="arithmatex">\(\pi\)</span> is the unique stationary distribution of <span class="arithmatex">\(S\)</span> and <span class="arithmatex">\(\pi_1,\ldots,\pi_n&gt;0\)</span>.</p>
+<p>Consider a sequence of random variables <span class="arithmatex">\(X_0,X_1,\ldots\)</span> with values in <span class="arithmatex">\([n]=\{1,\ldots,n\}\)</span>. Suppose that</p>
+<div class="arithmatex">\[\operatorname{Pr}(X_k=j_k\mid X_{k-1}=j_{k-1},\ldots X_0=j_0)=\operatorname{Pr}(X_1=j_k\mid X_0=j_0)= S_{j_kj_0}\]</div>
+<p>for all <span class="arithmatex">\(k=1,2,\ldots\)</span> <span class="arithmatex">\(X_0,X_1,\ldots\)</span> is a homogeneous Markov chain. Note that if <span class="arithmatex">\(X_0\)</span> has distribution <span class="arithmatex">\(x^0\in\Delta_+\)</span>, i.e. <span class="arithmatex">\(\operatorname{Pr}(X_0 = j)=x^0_j\)</span> for all <span class="arithmatex">\(j\in [n]\)</span>, then the distribution <span class="arithmatex">\(x^k\in\Delta_+\)</span> of <span class="arithmatex">\(X_k\)</span> satisfies <span class="arithmatex">\(x^k=(S^\top)^k x^{0}\)</span> for all <span class="arithmatex">\(k\geq 0\)</span>. 
+So, if <span class="arithmatex">\(S\)</span> is primitive, then so is <span class="arithmatex">\(S^T\)</span>. Let <span class="arithmatex">\(\|\cdot\|_1\)</span> be the <span class="arithmatex">\(1\)</span>-norm, i.e. <span class="arithmatex">\(\|x\|_1=|x_1|+\ldots+|x_n|\)</span>. Note that as <span class="arithmatex">\(x^k\in \Delta_+\)</span>, it holds <span class="arithmatex">\(\|x^k\|_1=1\)</span> for all <span class="arithmatex">\(k\geq 0\)</span>. Suppose, that <span class="arithmatex">\(S\)</span> is primitive, then the Perron-Frobenius theorem, with <span class="arithmatex">\(\|\cdot\|=\|\cdot\|_1\)</span>, implies that for every initial distribution <span class="arithmatex">\(x^0\in \Delta_+\)</span> of <span class="arithmatex">\(X_0\)</span>, it holds <span class="arithmatex">\(\lim_{k\to \infty}x^k = \pi\)</span>.</p>
+<h3 id="application_spectral_norm_of_a_nonnegative_matrix">Application: Spectral norm of a nonnegative matrix</h3>
+<p>Let <span class="arithmatex">\(\|\cdot\|_2\)</span> be the <span class="arithmatex">\(2\)</span>-norm on <span class="arithmatex">\(\RR^n\)</span>, the induced matrix norm <span class="arithmatex">\(\|\cdot\|_{2,2}\)</span> on <span class="arithmatex">\(\RR^{n\times n}\)</span> is the spectral norm defined as</p>
+<div class="arithmatex">\[ \|A\|_{2,2}=\max_{x\in\RR^n}\{\|Ax\|_2 \colon \|x\|_2\leq 1\}=\max_{x\neq 0}\frac{\| Ax \|_2}{\| x \|_2}. 
+\]</div>
+<p>The function <span class="arithmatex">\(x\mapsto \|Ax\|_2\)</span> is continuous on the compact set <span class="arithmatex">\(\{x\colon \|x\|_2\leq 1\}\)</span> and therefore attains a maximum <span class="arithmatex">\(x^*\in\RR^n, x^*\neq 0\)</span>. Now, note that since <span class="arithmatex">\(A\)</span> is nonnegative, we have <span class="arithmatex">\(|Ax| \leq A|x|\)</span> where the absolute value and the inequality are understood component-wise. In particular, this implies that</p>
+<div class="arithmatex">\[ 
+\|A\|_{2,2}=\frac{\| Ax^* \|_2}{\| x^* \|_2}=\frac{\| \,|Ax^*|\, \|_2}{\|\,| x^*|\, \|_2}\leq \frac{\| \,|Ax^*|\, \|_2}{\|\,| x^*|\, \|_2}, 
+\]</div>
+<p>and therefore we may assume without loss of generality that <span class="arithmatex">\(x^*\in\RR^n_+\)</span>. Now, note that if <span class="arithmatex">\(v\in\RR^n_+\)</span> is a critical point of <span class="arithmatex">\(x\mapsto\|Ax\|_2/\|x\|_2\)</span>, the gradient of the later function vanishes at <span class="arithmatex">\(x\)</span> and therefore it satisfies</p>
+<div class="arithmatex">\[A^TAv = \lambda v \qquad \text{with} \qquad \lambda =\Big(\frac{\| Av \|_2}{\| v \|_2}\Big)^2=\|A\|_{2,2}^2, \]</div>
+<p>i.e. <span class="arithmatex">\(v\)</span> is an eigenvector of <span class="arithmatex">\(A^TA\)</span>. The converse of this statement holds true as well, that is, if <span class="arithmatex">\(v\)</span> is an eigenvector of <span class="arithmatex">\(A^TA\)</span> with eigenvalue <span class="arithmatex">\(\lambda\)</span>, then <span class="arithmatex">\(v\)</span> is a critical point of <span class="arithmatex">\(x\mapsto\|Ax\|_2/\|x\|_2\)</span> and 
+<span class="arithmatex">\(\lambda = (\|Ax\|_2/\|x\|_2)^2\)</span>. Therefore, the eigenvalues of <span class="arithmatex">\(A^TA\)</span> and the square of the critical values of <span class="arithmatex">\(x\mapsto\|Ax\|_2/\|x\|_2\)</span> are equal. In particular, this implies that <span class="arithmatex">\(\rho(A^TA) =\|A\|_{2,2}^2\)</span>.</p>
+<p>Now, <span class="arithmatex">\(A^TA\)</span> is a nonnegative matrix and if it is irreducible, by the Perron-Frobenius theorem, <span class="arithmatex">\(A^TA\)</span> has a unique positive eigenvector <span class="arithmatex">\(u\in \RR^n_{+}\)</span> such that <span class="arithmatex">\(\|u\|_2=1\)</span>. Furthermore, <span class="arithmatex">\(u\in \RR^n_{++}\)</span> and the corresponding eigenvalue is <span class="arithmatex">\(\rho(A^TA)\)</span>. From the above discussion: <span class="arithmatex">\(x^*\)</span> is a global maximizer of <span class="arithmatex">\(x\mapsto\|Ax\|_2/\|x\|_2\)</span> and we may assume <span class="arithmatex">\(x^*\in\RR^n_+\)</span>. Hence, <span class="arithmatex">\(x^*\)</span> is a nonnegative eigenvector of <span class="arithmatex">\(A^TA\)</span> and since <span class="arithmatex">\(u\)</span> is the unique eigenvector of <span class="arithmatex">\(A^TA\)</span>, we have <span class="arithmatex">\(x^*/\|x^*\|_2 = u\)</span>.</p>
+<p>Finally, if <span class="arithmatex">\(A^TA\)</span> is primitive, then for every <span class="arithmatex">\(x^0\in\RR^n_+\setminus \{0\}\)</span>, the sequence <span class="arithmatex">\(x^k=A^TAx^{k-1}\)</span>
+satsifies <span class="arithmatex">\(\lim_{k\to\infty} x^k/\|x^k\| = x^*/\|x^*\|_2\)</span>, i.e. this sequence converges to a global maximizer of <span class="arithmatex">\(x\mapsto\|Ax\|_2/\|x\|_2\)</span>.</p>
+<p>We conclude by noting that, while the irreducibility of <span class="arithmatex">\(A\)</span> implies the irreducibility of <span class="arithmatex">\(A^TA\)</span>, the converse is not true in general. Indeed, the matrix <span class="arithmatex">\(A\)</span> of <span class="arithmatex">\(\eqref{def:Example_ABCD}\)</span> is not irreducible, but <span class="arithmatex">\(A^TA\)</span> is a positive matrix and is therefore irreducible and primitive.</p>
+<h1 id="the_perron-frobenius_theorem_for_homogeneous_mappings">The Perron-Frobenius theorem for homogeneous mappings</h1>
+<h2 id="cones_hilbert_metric">Cones, Hilbert metric</h2>
+<h2 id="the_birkhoff-hopf_theorem">The Birkhoff-hopf theorem</h2>
+<h2 id="homogeneous_and_order-preserving_mappings">Homogeneous and order-preserving mappings</h2>
+<h2 id="the_perron-frobenius_theorem_and_the_collatz-wielandt_formula_1">The Perron-Frobenius theorem and the Collatz-Wielandt formula</h2>
+<h3 id="application_computing_the_qto_p_norm_of_a_nonnegative_matrix">Application: Computing the <span class="arithmatex">\(q\to p\)</span> norm of a nonnegative matrix</h3>
+<h3 id="application_the_sinkhorn_method">Application: The Sinkhorn method</h3>
+<h1 id="the_perron-frobenius_theorem_for_multi-homogeneous_mappings">The Perron-Frobenius theorem for multi-homogeneous mappings</h1>
+<h2 id="nonnegative_tensors_and_their_norm">Nonnegative tensors and their norm</h2>
+<h2 id="product_of_cones_and_multi-homogeneous_mappings">Product of cones and multi-homogeneous mappings</h2>
+<h2 id="eigenvalues_and_eigenvectors_of_multi-homogeneous_mappings">Eigenvalues and eigenvectors of multi-homogeneous mappings</h2>
+<h2 id="the_perron-frobenius_theorem_and_the_collatz-wielandt_formula_2">The Perron-Frobenius theorem and the Collatz-Wielandt formula</h2>
+<h3 id="application_computing_the_norm_of_a_nonnegative_tensor">Application: Computing the norm of a nonnegative tensor</h3>
+<h3 id="application">Application: &hellip;</h3>
 <h2 id="the_cone_of_nonnegative_vectors">The cone of nonnegative vectors</h2>
 <p>The Perron-Frobenius theory deals with operators that leave a normal, convex and pointed cone invariant. The cone of nonnegative vectors is the most common example of such a cone and the one that most often arises in applications. We denote such cone as <span class="arithmatex">\(C_+ \subseteq \mathbb R^n\)</span> or, when the dimension is clear from the context, simply as <span class="arithmatex">\(C_+.\)</span> The elements of <span class="arithmatex">\(C_+\)</span> are vectors whose components are all nonnegative. Whereas the interior <span class="arithmatex">\(C_{++}\)</span> of <span class="arithmatex">\(C_+\)</span> is the set of entrywise positive vectors:</p>
 <ul>
@@ -404,7 +673,16 @@
 loca remoraminaque terram iniustaque tempora luctusque vitam; tela iunxit gratia
 fontibus ut tempus cupiasque relevasse altis. Mutantur carpere geratis Scorpius.
 Visa ego delendaque, victae esse pervenit et arentia gentem.</p>
-<pre><code>if (5 + net) {
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>if (5 + net) {
     alignment = jumperPpi;
     ppl_server = multiplatform(2, -1) + switchCable;
 }
@@ -414,7 +692,9 @@ metafileCdPram -= scareware.barMultiprocessingIo.box(fiber,
 if (processorSdk) {
     taskCcd = client_clipboard_syntax;
 }
-</code></pre>
+</code></pre></div>
+</td></tr></table>
+
 <p>Prope sine coepta: reddi tabo virens expositum amaris saxo <a href="http://www.redeat.io/et">medio
 fons</a> esse Nisi. Dixit <strong>dolorem simulamina</strong> motus.
 Gradibus tuta quae addere vero iuvenis candida; ictu Phocaico, tempore addicere
@@ -427,10 +707,14 @@ advertite candore. Mora invitusque casses,
 iamque: quae? Ab nec fecit et idonea nunc lumine Spartana nunc vertice brevis
 pendebant levius contraria aere? Iram orba ferarum dei eburnea; voce
 praestantes, me squamas victor contigit pia!</p>
-<pre><code>pitch_ecc.serp_clip = -5 + -1;
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>pitch_ecc.serp_clip = -5 + -1;
 box.tape_digital(subnet_only);
 esports_query_multiprocessing.fontPiconetServices -= document_laptop;
-</code></pre>
+</code></pre></div>
+</td></tr></table>
+
 <p>Ipse nomen, certum ego; heros nam, donec et semper parenti formatae
 <a href="http://dryope.org/et-condidit">si</a> iuvenum. Insidias dextera anumque est
 habitandae nubes. Quo Latina, quidem: positisque, inter regia puer iurgia, illa
@@ -488,13 +772,13 @@ quod aut intrarunt et graves urbes, telluris carmen coget corpus.</p>
         </a>
       
       
-        <a href="../centrality/" class="md-footer__link md-footer__link--next" rel="next">
+        <a href="../ch2/sec1/" class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Centrality
+              Network centrality
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -523,7 +807,7 @@ quod aut intrarunt et graves urbes, telluris carmen coget corpus.</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.top", "toc.integrate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "toc.integrate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.4ea5477f.min.js"></script>
@@ -534,7 +818,9 @@ quod aut intrarunt et graves urbes, telluris carmen coget corpus.</p>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
-        <script src="http://tikzjax.com/v1/tikzjax.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+      
+        <script src="../assets/config.js"></script>
       
     
   </body>
