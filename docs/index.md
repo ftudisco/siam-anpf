@@ -29,6 +29,6 @@ In this minitutorial we will introduce the concept of multihomogeneous operators
 The website is developed and maintained by [Antoine Gautier](https://scholar.google.com/citations?user=ymx43BUAAAAJ&hl=en) and [Francesco Tudisco](https://ftudisco.gitlab.io/). 
 
 <center>
-<a href="https://scholar.google.com/citations?user=ymx43BUAAAAJ&hl=en"><img style="width:15em;border-style:solid;border-width:2px;border-radius: 50%;margin-right:2em;" src="/img/antoine-gautier.jpeg" alt="antoine-gautier" /></a>
-<a href="https://ftudisco.gitlab.io/"><img style="width:15em;border-style:solid;border-width:2px;border-radius: 50%;margin-left:2em;" src="/img/francesco-tudisco.jpg" alt="francesco-tudisco" /></a>
+<a href="https://scholar.google.com/citations?user=ymx43BUAAAAJ&hl=en"><img style="width:15em;border-style:solid;border-width:2px;border-radius: 50%;margin-right:2em;" src="./img/antoine-gautier.jpeg" alt="antoine-gautier" /></a>
+<a href="https://ftudisco.gitlab.io/"><img style="width:15em;border-style:solid;border-width:2px;border-radius: 50%;margin-left:2em;" src="./img/francesco-tudisco.jpg" alt="francesco-tudisco" /></a>
 </center>
