@@ -1,0 +1,682 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Francesco Tudiscos">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
+    
+    
+      
+        <title>Network centrality - SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e35208c4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Open Sans";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="http://tikzjax.com/v1/fonts.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="deep-orange">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#network_centrality" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory" class="md-header__button md-logo" aria-label="SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18-.21 0-.41-.06-.57-.18l-7.9-4.44A.991.991 0 0 1 3 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18.21 0 .41.06.57.18l7.9 4.44c.32.17.53.5.53.88v9M12 4.15 6.04 7.5 12 10.85l5.96-3.35L12 4.15M5 15.91l6 3.38v-6.71L5 9.21v6.7m14 0v-6.7l-6 3.37v6.71l6-3.38z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Network centrality
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="deep-orange" type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="deep-orange" type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory" class="md-nav__button md-logo" aria-label="SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18-.21 0-.41-.06-.57-.18l-7.9-4.44A.991.991 0 0 1 3 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18.21 0 .41.06.57.18l7.9 4.44c.32.17.53.5.53.88v9M12 4.15 6.04 7.5 12 10.85l5.96-3.35L12 4.15M5 15.91l6 3.38v-6.71L5 9.21v6.7m14 0v-6.7l-6 3.37v6.71l6-3.38z"/></svg>
+
+    </a>
+    SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
+      
+      <label class="md-nav__link" for="__nav_2">
+        Chapter 1
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Chapter 1" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 1
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter1/" class="md-nav__link">
+        Perron-Frobenius theory for linear mappings
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        Chapter 2
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Chapter 2" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 2
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Network centrality
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Network centrality
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#eigenvector_centrality_101" class="md-nav__link">
+    Eigenvector centrality 101
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nonlinear_eigenvector_centrality" class="md-nav__link">
+    Nonlinear eigenvector centrality
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sec2/" class="md-nav__link">
+        Higher-order network models
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" data-md-state="indeterminate" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        Chapter 3
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Chapter 3" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 3
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ch3/sec1/" class="md-nav__link">
+        Section 1
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ch3/sec2/" class="md-nav__link">
+        Section 2
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
+      
+      <label class="md-nav__link" for="__nav_5">
+        Chapter 4
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Chapter 4" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 4
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ch4/sec1/" class="md-nav__link">
+        Optimization with nonlinear Perron eigenvectors
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ch4/sec2/" class="md-nav__link">
+        Section 2
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="network_centrality">Network centrality</h1>
+<p>Complex networks is a common name for various real networks which are usually presented by
+graphs with a large number of nodes: Internet graphs, collaboration graphs, e-mail graphs, social
+networks, transport networks, protein-protein interaction networks, and many other. </p>
+<p>The term network analysis refers to a wealth of mathematical techniques
+aiming at describing the structure, function, and evolution of complex networks. One of the main tasks in network analysis is the localization of nodes that, in some sense,
+are the &ldquo;most important&rdquo; in a given graph. The main tool to quantify the relevance of nodes
+in a graph is through the computation of suitably defined centrality indices. Many centrality
+indices have been invented during time. Each one of them refers to a particular definition of
+&ldquo;importance&rdquo; or &ldquo;relevance&rdquo; that is most useful in a given context.....</p>
+<h2 id="eigenvector_centrality_101">Eigenvector centrality 101</h2>
+<p>Ranking the nodes of a network according to suitable &ldquo;centrality measures&rdquo; is a recurring and fundamental question in network science and data mining.  Among the various  network centrality models,  the class of <strong>eigenvector centrality</strong> is one of the most widely used and effective. This family of models  dates back to the 19th Century when it was proposed as a mean to rank professional chess players by Edmund Landau<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> and was then  popularized in the network science community starting from the late &rsquo;80s with Bonacich<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>, PageRank<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup> and HITS<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup> models. </p>
+<p>This class of scores assigns importances to the nodes of a graph, based on the leading eigenvector <span class="arithmatex">\(x\)</span> (or the leading singular vectors <span class="arithmatex">\(x,y\)</span>) of suitable network matrices and strongly rely on the matrix Perron-Frobenius theorem. 
+One of the keys of the success of eigenvector  centralities is that they naturally incorporate <strong>mutual reinforcement</strong>: important objects are those that interact with many other important objects. To clarify this idea, we review below two widely used centrality models (we consider the case of binary &ldquo;unweighted&rdquo; graphs for simplicity, but everything transfer with minor adjustments  to the weighted setting.)</p>
+<p><strong>Bonacich centrality</strong> Let <span class="arithmatex">\(G=(V,E)\)</span> be a graph with adjacency matrix </p>
+<div class="arithmatex">\[
+A_{ij} = \begin{cases}1 &amp; j\to i \\
+0 &amp; \text{otherwise}
+\end{cases} \quad , 
+\]</div>
+<p>where <span class="arithmatex">\(j\to i\)</span> means that there is an edge in <span class="arithmatex">\(G\)</span> going from <span class="arithmatex">\(j\)</span> to <span class="arithmatex">\(i\)</span>. 
+Bonacich centrality model defines the importance <span class="arithmatex">\(x_i\)</span> of node <span class="arithmatex">\(i\in V\)</span> as </p>
+<div class="arithmatex">\[
+x_i\propto \sum_{j: \, j\to i} x_j = (Ax)_i  \, , 
+\]</div>
+<!-- $A_  -->
+
+<p>that is, the importance of node <span class="arithmatex">\(x_i\)</span> is linearly proportional to the importances <span class="arithmatex">\(x_j\)</span> of the nodes that points towards <span class="arithmatex">\(i\)</span>. The Perron-Frobenius theory teaches us that, <strong>if the graph is strongly connected</strong>,  only one such vector <span class="arithmatex">\(x\)</span> exists, the Perron eigenvector of the  adjacency matrix <span class="arithmatex">\(A x=\rho(A)x\)</span>, and it provides us with sufficient conditions to compute such <span class="arithmatex">\(x\)</span> via the simple Power Method scheme. </p>
+<p><strong>HITS centrality</strong> Another widely used approach defines two centralities indices, the <em>hub score</em> and the <em>authority score</em>, via the mutual reinforcing informal idea that <em>&ldquo;a node is a good hub if it points to good authorities; and a node is a good authority if it is pointed by good hubs&rdquo;</em>. If <span class="arithmatex">\(x_i\)</span> and <span class="arithmatex">\(y_i\)</span> are the hub and the authority scores of node <span class="arithmatex">\(i\)</span>, respectively, then  </p>
+<div class="arithmatex">\[\begin{equation}\label{eq:sing-vec}
+x_i \propto \sum_{j: i\to j}y_j =  (A^\top y)_i \qquad y_i \propto  \sum_{j:j\to i} x_j = (Ax)_i
+\end{equation}\]</div>
+<!-- $A_  -->
+
+<p>Again, by the Perron-Frobenius theorem, <strong>if the graph is strongly connected</strong> there is only one nonnegative solution, the dominant left and right singular vectors of the adjacency matrix.</p>
+<h2 id="nonlinear_eigenvector_centrality">Nonlinear eigenvector centrality</h2>
+<p>While powerful and useful, these models have two main drawbacks:   </p>
+<ol>
+<li>they only allow for linear proportionality relations to define the importance model </li>
+<li>they may not be unique, even for simple graphs</li>
+</ol>
+<p>The nonlinear Perron-Frobenius theory allows us to overcome both these two drawbacks in a very natural way. This will be particularly important when moving to the case of <a href="#higher-order-networks">higher-order networks</a>, as we will discuss next. Here we discuss two simple illustrative examples. </p>
+<p>Suppose <span class="arithmatex">\(A=I\)</span> is the identity matrix. This is certainly not irreducible and in fact <span class="arithmatex">\(Ax = x\)</span> for all nonnegative vectors <span class="arithmatex">\(x\in C_+\)</span>. While from a linear algebra point of view there is no preferred nonnegative solution to <span class="arithmatex">\(x=Ax\)</span>, from the graph centrality perspective this is not the case. The graph of <span class="arithmatex">\(A\)</span> is a set of isolated nodes, each with a self-loop of weight exactly one. Thus, a centrality score for these nodes would assign same score to all the nodes. This corresponds to the eigenvector <span class="arithmatex">\(x = \one\)</span> of <span class="arithmatex">\(A\)</span>. While this is only one of the nonnegative solutions of <span class="arithmatex">\(x=Ax\)</span>, <span class="arithmatex">\(\one\)</span> is the only nonlinear Perron eigenvector of a &ldquo;nonlinear version&rdquo; of the eigenvalue problem for <span class="arithmatex">\(A\)</span>. Precisely, consider the nonlinear eigenvalue equation</p>
+<div class="arithmatex">\[\begin{equation}\label{eq:Af(x)}
+\lambda x = A  x^{1-\varepsilon}
+\end{equation}\]</div>
+<p>It is easy to verify that the mapping <span class="arithmatex">\(F(x) := Ax^{1-\varepsilon}\)</span> is (multi)homogeneous with homogeneity matrix the scalar <span class="arithmatex">\(\M=1-\varepsilon\)</span>. Thus, for any <span class="arithmatex">\(\varepsilon \in (0,1)\)</span>, <span class="arithmatex">\(\rho(\M)&lt;1\)</span> and by the nonlinear Perron-Frobenius theorem we have that <span class="arithmatex">\(\eqref{eq:Af(x)}\)</span> has a unique positive solution. It is easy to verify that such solution is entrywise constant, yielding the desired centrality assignment. </p>
+<p>A similar situation holds for the singular vector case. Consider the graph in the figure below:</p>
+<p><center>
+<img style="width:13em;border-style:solid;border:5px;" src="/tikz-figures/example-graph-hits.png" alt="example-graph" />
+</center></p>
+<p>This is a well-known example where HITS centrality may fail to output a reasonable centrality. 
+While this graph is not a strongly connected graph, we all most probably agree that node <span class="arithmatex">\(1\)</span> is the most relevant <em>hub</em> while node <span class="arithmatex">\(6\)</span> is the most relevant <em>authority</em>. Despite this simple setting, using the dominant singular vectors of <span class="arithmatex">\(A\)</span> as in the HITS model may fail to identify these relevant hub and authority nodes. In fact, both the following pairs</p>
+<div class="arithmatex">\[\begin{align*}
+x = (1,1,1,1,1, 0) \qquad y = (0,1,1,1,1,4)  \\
+x = (4, 1, 1, 1, 1, 0) \qquad y =(0,1,1,1,1,1)
+\end{align*}\]</div>
+<p>are (up to scaling) singular pairs of the dominant singular value of <span class="arithmatex">\(A\)</span>. This shows that, in the  first case,  the  hub  vector  fails  to  detect  that  node <span class="arithmatex">\(1\)</span>  is  a  better  hub  than  nodes  <span class="arithmatex">\(2\)</span>−<span class="arithmatex">\(5\)</span>.   Similarly,  in  the second case, the authority vector fails to identify node <span class="arithmatex">\(6\)</span>  as  a  the  best  authority. 
+Also in this case, a small nonlinear modification of <span class="arithmatex">\(\eqref{eq:sing-vec}\)</span> solves this issue. Consider the singular vector equation</p>
+<div class="arithmatex">\[\begin{equation}\label{eq:nonlin-sing-vec}
+\lambda x = A^\top y^\alpha \quad \mu y = A x^\beta\, .
+\end{equation}\]</div>
+<p>It is easy to see that any such pair of vectors is an eigenvector of a  multihomogeneous mapping with homogeneity matrix</p>
+<div class="arithmatex">\[
+\M = \begin{bmatrix}0 &amp; \alpha \\ \beta &amp; 0 \end{bmatrix}, \qquad \rho(H) = \sqrt{|\alpha\beta|}
+\]</div>
+<p>Thus for any <span class="arithmatex">\(\alpha\beta&lt;1\)</span> the nonlinear eigenvector equation <span class="arithmatex">\(\eqref{eq:nonlin-sing-vec}\)</span> has a unique solution. Below we show the value of the two solution vectors <span class="arithmatex">\(x,y\)</span> for different choices of <span class="arithmatex">\(\alpha\)</span> and <span class="arithmatex">\(\beta\)</span>, showing that these two vectors capture the actual roles of nodes in this example graph. </p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    │     │ α = 0.5  │ α = 0.9  │ α = 0.5  │ α = 0.9  │ β = 0.5  │ β = 0.9  │ β = 0.9  │ β = 0.5  │
+    │entry│ x1       │ x2       │ x3       │ x4       │ y1       │ y2       │ y3       │ y4       │
+    ├-----│----------│----------│----------│----------│----------│----------│----------│----------│
+    │ 1   │ 0.386488 │ 0.341489 │ 0.468535 │ 0.243379 │ 0.0      │ 0.0      │ 0.0      │ 0.0      │
+    │ 2   │ 0.153378 │ 0.164628 │ 0.132866 │ 0.189155 │ 0.153378 │ 0.164628 │ 0.189155 │ 0.132866 │
+    │ 3   │ 0.153378 │ 0.164628 │ 0.132866 │ 0.189155 │ 0.153378 │ 0.164628 │ 0.189155 │ 0.132866 │
+    │ 4   │ 0.153378 │ 0.164628 │ 0.132866 │ 0.189155 │ 0.153378 │ 0.164628 │ 0.189155 │ 0.132866 │
+    │ 5   │ 0.153378 │ 0.164628 │ 0.132866 │ 0.189155 │ 0.153378 │ 0.164628 │ 0.189155 │ 0.132866 │
+    │ 6   │ 0.0      │ 0.0      │ 0.0      │ 0.0      │ 0.386488 │ 0.341489 │ 0.243379 │ 0.468535 │
+</code></pre></div>
+</td></tr></table>
+
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>J. P. Schäfermeyer. On Edmund Landau&rsquo;s contribution to the ranking of chess players. Technical Report, Unpublished manuscript, 2019.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>P. Bonacich. Power and centrality: a family of measures. <em>American Journal of Sociology</em>, 92:1170–1182, 1987.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>Lawrence Page, Sergey Brin, Rajeev Motwani, and Terry Winograd. The PageRank citation ranking: Bringing order to the web. Technical Report, Stanford InfoLab, 1999.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>Jon M Kleinberg. Authoritative sources in a hyperlinked environment. <em>Journal of the ACM <span class="arithmatex">\(JACM\)</span></em>, 46<span class="arithmatex">\(5\)</span>:604–632, 1999.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../../chapter1/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Perron-Frobenius theory for linear mappings
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../sec2/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Higher-order network models
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "toc.integrate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4ea5477f.min.js"></script>
+      
+        <script src="../../assets/mathjaxhelper.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+      
+        <script src="../../assets/config.js"></script>
+      
+    
+  </body>
+</html>

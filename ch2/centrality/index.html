@@ -1,0 +1,859 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Francesco Tudiscos">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
+    
+    
+      
+        <title>Network centrality - SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e35208c4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Open Sans";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="http://tikzjax.com/v1/fonts.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="deep-orange">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#network_centrality" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory" class="md-header__button md-logo" aria-label="SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18-.21 0-.41-.06-.57-.18l-7.9-4.44A.991.991 0 0 1 3 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18.21 0 .41.06.57.18l7.9 4.44c.32.17.53.5.53.88v9M12 4.15 6.04 7.5 12 10.85l5.96-3.35L12 4.15M5 15.91l6 3.38v-6.71L5 9.21v6.7m14 0v-6.7l-6 3.37v6.71l6-3.38z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Network centrality
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="deep-orange" type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="deep-orange" type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory" class="md-nav__button md-logo" aria-label="SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18-.21 0-.41-.06-.57-.18l-7.9-4.44A.991.991 0 0 1 3 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18.21 0 .41.06.57.18l7.9 4.44c.32.17.53.5.53.88v9M12 4.15 6.04 7.5 12 10.85l5.96-3.35L12 4.15M5 15.91l6 3.38v-6.71L5 9.21v6.7m14 0v-6.7l-6 3.37v6.71l6-3.38z"/></svg>
+
+    </a>
+    SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
+      
+      <label class="md-nav__link" for="__nav_2">
+        Chapter 1
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Chapter 1" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 1
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter1/" class="md-nav__link">
+        Perron-Frobenius theory for linear mappings
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        Chapter 2
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Chapter 2" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 2
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sec1/" class="md-nav__link">
+        Network centrality
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sec2/" class="md-nav__link">
+        Higher-order network models
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" data-md-state="indeterminate" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        Chapter 3
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Chapter 3" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 3
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ch3/sec1/" class="md-nav__link">
+        Section 1
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ch3/sec2/" class="md-nav__link">
+        Section 2
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
+      
+      <label class="md-nav__link" for="__nav_5">
+        Chapter 4
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Chapter 4" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 4
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ch4/sec1/" class="md-nav__link">
+        Optimization with nonlinear Perron eigenvectors
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ch4/sec2/" class="md-nav__link">
+        Section 2
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="network_centrality">Network centrality</h1>
+<p>Ranking the nodes of a network according to suitable &ldquo;centrality measures&rdquo; is a recurring and fundamental question in network science and data mining.  Among the various  network centrality models,  the class of <strong>eigenvector centrality</strong> is one of the most widely used and effective. This family of models  dates back to the 19th Century when it was proposed as a mean to rank professional chess players by Edmund Landau<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> and was then  popularized in the network science community starting from the late &rsquo;80s with Bonacich<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>, PageRank<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup> and HITS<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup> models. </p>
+<p>This class of scores assigns importances to the nodes of a graph, based on the leading eigenvector <span class="arithmatex">\(x\)</span> (or the leading singular vectors <span class="arithmatex">\(x,y\)</span>) of suitable network matrices and strongly rely on the matrix Perron-Frobenius theorem. 
+One of the keys of the success of eigenvector  centralities is that they naturally incorporate <strong>mutual reinforcement</strong>: important objects are those that interact with many other important objects. To clarify this idea, we review below two widely used centrality models (we consider the case of binary &ldquo;unweighted&rdquo; graphs for simplicity, but everything transfer with minor adjustments  to the weighted setting.)</p>
+<p><strong>Bonacich centrality</strong> Let <span class="arithmatex">\(G=(V,E)\)</span> be a graph with adjacency matrix </p>
+<div class="arithmatex">\[
+A_{ij} = \begin{cases}1 &amp; j\to i \\
+0 &amp; \text{otherwise}
+\end{cases} \quad , 
+\]</div>
+<p>where <span class="arithmatex">\(j\to i\)</span> means that there is an edge in <span class="arithmatex">\(G\)</span> going from <span class="arithmatex">\(j\)</span> to <span class="arithmatex">\(i\)</span>. 
+Bonacich centrality model defines the importance <span class="arithmatex">\(x_i\)</span> of node <span class="arithmatex">\(i\in V\)</span> as </p>
+<div class="arithmatex">\[
+x_i\propto \sum_{j: \, j\to i} x_j = (Ax)_i  \, , 
+\]</div>
+<!-- $A_  -->
+
+<p>that is, the importance of node <span class="arithmatex">\(x_i\)</span> is linearly proportional to the importances <span class="arithmatex">\(x_j\)</span> of the nodes that points towards <span class="arithmatex">\(i\)</span>. The Perron-Frobenius theory teaches us that, <strong>if the graph is strongly connected</strong>,  only one such vector <span class="arithmatex">\(x\)</span> exists, the Perron eigenvector of the  adjacency matrix <span class="arithmatex">\(A x=\rho(A)x\)</span>, and it provides us with sufficient conditions to compute such <span class="arithmatex">\(x\)</span> via the simple Power Method scheme. </p>
+<p><strong>HITS centrality</strong> Another widely used approach defines two centralities indices, the <em>hub score</em> and the <em>authority score</em>, via the mutual reinforcing informal idea that <em>&ldquo;a node is a good hub if it points to good authorities; and a node is a good authority if it is pointed by good hubs&rdquo;</em>. If <span class="arithmatex">\(x_i\)</span> and <span class="arithmatex">\(y_i\)</span> are the hub and the authority scores of node <span class="arithmatex">\(i\)</span>, respectively, then  </p>
+<div class="arithmatex">\[\begin{equation}\label{eq:sing-vec}
+x_i \propto \sum_{j: i\to j}y_j =  (A^\top y)_i \qquad y_i \propto  \sum_{j:j\to i} x_j = (Ax)_i
+\end{equation}\]</div>
+<!-- $A_  -->
+
+<p>Again, by the Perron-Frobenius theorem, <strong>if the graph is strongly connected</strong> there is only one nonnegative solution, the dominant left and right singular vectors of the adjacency matrix.</p>
+<h2 id="nonlinear_eigenvector_centrality">Nonlinear eigenvector centrality</h2>
+<p>While powerful and useful, these models have two main drawbacks:   </p>
+<ol>
+<li>they only allow for linear proportionality relations to define the importance model </li>
+<li>they may not be unique, even for simple graphs</li>
+</ol>
+<p>The nonlinear Perron-Frobenius theory allows us to overcome both these two drawbacks in a very natural way. This will be particularly important when moving to the case of <a href="#higher-order-networks">higher-order networks</a>, as we will discuss next. Here we discuss two simple illustrative examples. </p>
+<p>Suppose <span class="arithmatex">\(A=I\)</span> is the identity matrix. This is certainly not irreducible and in fact <span class="arithmatex">\(Ax = x\)</span> for all nonnegative vectors <span class="arithmatex">\(x\in C_+\)</span>. While from a linear algebra point of view there is no preferred nonnegative solution to <span class="arithmatex">\(x=Ax\)</span>, from the graph centrality perspective this is not the case. The graph of <span class="arithmatex">\(A\)</span> is a set of isolated nodes, each with a self-loop of weight exactly one. Thus, a centrality score for these nodes would assign same score to all the nodes. This corresponds to the eigenvector <span class="arithmatex">\(x = \one\)</span> of <span class="arithmatex">\(A\)</span>. While this is only one of the nonnegative solutions of <span class="arithmatex">\(x=Ax\)</span>, <span class="arithmatex">\(\one\)</span> is the only nonlinear Perron eigenvector of a &ldquo;nonlinear version&rdquo; of the eigenvalue problem for <span class="arithmatex">\(A\)</span>. Precisely, consider the nonlinear eigenvalue equation</p>
+<div class="arithmatex">\[\begin{equation}\label{eq:Af(x)}
+\lambda x = A  x^{1-\varepsilon}
+\end{equation}\]</div>
+<p>It is easy to verify that the mapping <span class="arithmatex">\(F(x) := Ax^{1-\varepsilon}\)</span> is (multi)homogeneous with homogeneity matrix the scalar <span class="arithmatex">\(\M=1-\varepsilon\)</span>. Thus, for any <span class="arithmatex">\(\varepsilon \in (0,1)\)</span>, <span class="arithmatex">\(\rho(\M)&lt;1\)</span> and by the nonlinear Perron-Frobenius theorem we have that <span class="arithmatex">\(\eqref{eq:Af(x)}\)</span> has a unique positive solution. It is easy to verify that such solution is entrywise constant, yielding the desired centrality assignment. </p>
+<p>A similar situation holds for the singular vector case. Consider the graph in the figure below:</p>
+<p><center>
+<img style="width:13em;border-style:solid;border:5px;" src="/tikz-figures/example-graph-hits.png" alt="example-graph" />
+</center></p>
+<p>This is a well-known example where HITS centrality may fail to output a reasonable centrality. 
+While this graph is not a strongly connected graph, we all most probably agree that node <span class="arithmatex">\(1\)</span> is the most relevant <em>hub</em> while node <span class="arithmatex">\(6\)</span> is the most relevant <em>authority</em>. Despite this simple setting, using the dominant singular vectors of <span class="arithmatex">\(A\)</span> as in the HITS model may fail to identify these relevant hub and authority nodes. In fact, both the following pairs</p>
+<div class="arithmatex">\[\begin{align*}
+x = (1,1,1,1,1, 0) \qquad y = (0,1,1,1,1,4)  \\
+x = (4, 1, 1, 1, 1, 0) \qquad y =(0,1,1,1,1,1)
+\end{align*}\]</div>
+<p>are (up to scaling) singular pairs of the dominant singular value of <span class="arithmatex">\(A\)</span>. This shows that, in the  first case,  the  hub  vector  fails  to  detect  that  node <span class="arithmatex">\(1\)</span>  is  a  better  hub  than  nodes  <span class="arithmatex">\(2\)</span>−<span class="arithmatex">\(5\)</span>.   Similarly,  in  the second case, the authority vector fails to identify node <span class="arithmatex">\(6\)</span>  as  a  the  best  authority. 
+Also in this case, a small nonlinear modification of <span class="arithmatex">\(\eqref{eq:sing-vec}\)</span> solves this issue. Consider the singular vector equation</p>
+<div class="arithmatex">\[\begin{equation}\label{eq:nonlin-sing-vec}
+\lambda x = A^\top y^\alpha \quad \mu y = A x^\beta\, .
+\end{equation}\]</div>
+<p>It is easy to see that any such pair of vectors is an eigenvector of a  multihomogeneous mapping with homogeneity matrix</p>
+<div class="arithmatex">\[
+\M = \begin{bmatrix}0 &amp; \alpha \\ \beta &amp; 0 \end{bmatrix}, \qquad \rho(H) = \sqrt{|\alpha\beta|}
+\]</div>
+<p>Thus for any <span class="arithmatex">\(\alpha\beta&lt;1\)</span> the nonlinear eigenvector equation <span class="arithmatex">\(\eqref{eq:nonlin-sing-vec}\)</span> has a unique solution. Below we show the value of the two solution vectors <span class="arithmatex">\(x,y\)</span> for different choices of <span class="arithmatex">\(\alpha\)</span> and <span class="arithmatex">\(\beta\)</span>, showing that these two vectors capture the actual roles of nodes in this example graph. </p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    │     │ α = 0.5  │ α = 0.9  │ α = 0.5  │ α = 0.9  │ β = 0.5  │ β = 0.9  │ β = 0.9  │ β = 0.5  │
+    │entry│ x1       │ x2       │ x3       │ x4       │ y1       │ y2       │ y3       │ y4       │
+    ├-----│----------│----------│----------│----------│----------│----------│----------│----------│
+    │ 1   │ 0.386488 │ 0.341489 │ 0.468535 │ 0.243379 │ 0.0      │ 0.0      │ 0.0      │ 0.0      │
+    │ 2   │ 0.153378 │ 0.164628 │ 0.132866 │ 0.189155 │ 0.153378 │ 0.164628 │ 0.189155 │ 0.132866 │
+    │ 3   │ 0.153378 │ 0.164628 │ 0.132866 │ 0.189155 │ 0.153378 │ 0.164628 │ 0.189155 │ 0.132866 │
+    │ 4   │ 0.153378 │ 0.164628 │ 0.132866 │ 0.189155 │ 0.153378 │ 0.164628 │ 0.189155 │ 0.132866 │
+    │ 5   │ 0.153378 │ 0.164628 │ 0.132866 │ 0.189155 │ 0.153378 │ 0.164628 │ 0.189155 │ 0.132866 │
+    │ 6   │ 0.0      │ 0.0      │ 0.0      │ 0.0      │ 0.386488 │ 0.341489 │ 0.243379 │ 0.468535 │
+</code></pre></div>
+</td></tr></table>
+
+<h1 id="higher-order_network_models">Higher-order network models</h1>
+<p>While graph and networks are ubiquitous in the natural sciences, in many real-world applications we  are confronted with higher-order interaction data. Relational data is full of interactions that happen in groups. For example, friendship relations very often happen in groups that are strictly larger than two individuals.  Moreover, interactions naturally occur on multiple layers, for example  work relations, sport relations, friendship relations, etc.  </p>
+<p>To model higher-order interactions we need higher-order network models, which include <em>multilayer networks</em>,  where we have a set of networks (so-called layers) with connections internally  and  across the layers, and <em>non-dyadic networks</em>, such as hypergraphs or simplicial complexes, where we have access to interactions involving multiple nodes. </p>
+<p>For simplicity, here we consider the following two settings:  </p>
+<ul>
+<li><strong>Multiplex</strong>: This is a set <span class="arithmatex">\(\{G_i\}\)</span> of <span class="arithmatex">\(m\)</span> graphs <span class="arithmatex">\(G_i=(V,E_i)\)</span> <span class="arithmatex">\(i=1,\dots,m\)</span>, the <em>layers</em>, each defined on the same set of nodes but with possibly different edge sets </li>
+<li><strong>Hypergraph</strong>: Just like a standard graph, this is a pair <span class="arithmatex">\(H=(V,\mathcal E)\)</span> where the set of <em>hyperedges</em> <span class="arithmatex">\(\mathcal E\)</span> is such that each <span class="arithmatex">\(e\in \mathcal E\)</span> can involve an arbitrary number of nodes, rather than just two nodes as in the standard graph case. </li>
+</ul>
+<!-- Here we focus on the hypergraph setting, where  interactions across multiple nodes are described by a hypergraph $H=(V,E)$, made by a set of nodes $V=\{1,\dots,n\}$ and a set of hyperedges $E$ where each $e\in E$ can involve an arbitrary number of nodes, rather than just two nodes as in the standard graph case.  -->
+
+<!-- <center>
+<img style="width:8rem" src="../img/coauthorship-hypergraph.png" alt="hypergraph" />
+</center> -->
+
+<h2 id="eigenvector_centrality_for_multiplex">Eigenvector centrality for multiplex</h2>
+<p>A multiplex network <span class="arithmatex">\(\{G_k\}\)</span> can be naturally described by means of an adjacency tensor <span class="arithmatex">\(T\)</span> with three modes</p>
+<div class="arithmatex">\[
+T_{ijk} = \begin{cases}
+1 &amp; i\to j \text{ on layer }k \\
+0 &amp; \text{otherwise}
+\end{cases}
+\]</div>
+<p>where  <span class="arithmatex">\(i\to j\)</span> means that there is an edge from node <span class="arithmatex">\(i\)</span> to node <span class="arithmatex">\(j\)</span>, i.e. <span class="arithmatex">\((i,j)\in E_k\)</span>. </p>
+<p>How can we define a mutual reinforcing centrality score for nodes (and layers) in <span class="arithmatex">\(\{G_k\}\)</span> so that a larger  centrality is assigned to nodes that form  links  with other central nodes in  highly  influential  layers? Here we discuss the model proposed in <sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup> based on <span class="arithmatex">\(T\)</span> and a multihomogeneous order-preserving mapping associated to it.  Other approaches are discussed in <a href="#related-work">#Related work</a>. </p>
+<p>In this model, mutual reinforcement happens at both layer and node levels, as layers are more influential if highly central nodes are active in them. Thus, if <span class="arithmatex">\(x_i\)</span> denotes the centrality of node <span class="arithmatex">\(i\)</span> and <span class="arithmatex">\(y_k\)</span> the influence of layer <span class="arithmatex">\(k\)</span>, we require that </p>
+<div class="arithmatex">\[\begin{equation}\label{eq:tensor_singvec}
+\left\{
+\begin{array}{l}
+    \sum_{j,k}T_{i,j,k}x_jy_k = \lambda \, |x_i|^{p} \mathrm{sign}(x_i)\\[.5em] \sum_{i,j}T_{i,j,k}x_ix_j = \mu\,   |y_k|^{q} \mathrm{sign}(y_k)
+\end{array}
+\right.
+\end{equation}\]</div>
+<p>which imposes that the <span class="arithmatex">\(p\)</span>-power of the importance of node <span class="arithmatex">\(i\)</span> is proportional to the sum of the importances of the nodes that point at <span class="arithmatex">\(i\)</span>, times the influence of the layer where such connections take place and, similarly, defines the <span class="arithmatex">\(q\)</span>-power of the influence of the layer <span class="arithmatex">\(k\)</span> as being proportional the product of the centrality of the nodes that are connected in that layer. </p>
+<!-- $$x_i \propto \sum_{jk}\mathcal A_{ijk}x_jy_k \quad  \text{ and } \quad y_k \propto \sum_{ij}\mathcal A_{ijk}x_ix_j$$ -->
+
+<p>Since the centrality score is a positive number it is natural to add the constraint <span class="arithmatex">\(\lambda,\mu&gt;0\)</span> and <span class="arithmatex">\(x,y\succ 0\)</span> in <span class="arithmatex">\(\eqref{eq:tensor_singvec}\)</span>. Thus, our centrality problem boils down to a constrained nonlinear system of equations. When <span class="arithmatex">\(p=q=1\)</span>, the equations are homogeneous polynomials and <span class="arithmatex">\(\eqref{eq:tensor_singvec}\)</span> is directly reminiscent of a singular vector equation. However, unlike the matrix case, even positive tensors may admit multiple solutions here, as shown by the following example:
+<!-- ###### A entrywise positive 2x2x2 example --></p>
+<section class="example">
+<p>Consider the positive adjacency tensor <span class="arithmatex">\(T\)</span> with entries</p>
+<div class="arithmatex">\[
+\left\{
+\begin{array}{llll} 
+T_{1,1,1} = 6 &amp; T_{1,2,1} = 199/7 &amp; T_{2,1,1} = 16/7 &amp; T_{2,2,1} = 11 \\ 
+T_{1,1,2} = 61/7 &amp;  T_{1,2,2} = 6 &amp; T_{2,1,2} = 29 &amp; T_{2,2,2} = 16/7
+\end{array}\right.
+\]</div>
+<p>then both the pair <span class="arithmatex">\(x = \frac 1 3(2,1)\)</span>, <span class="arithmatex">\(y = \frac 1 3(1,2)\)</span> and the pair <span class="arithmatex">\(x = \frac 1 4(1,3)\)</span>,  <span class="arithmatex">\(y  = \frac 1 4(3,1)\)</span> are positive solutions to <span class="arithmatex">\(\eqref{eq:tensor_singvec}\)</span>.</p>
+</section>
+<p>In order to practically use the centrality model <span class="arithmatex">\(\eqref{eq:tensor_singvec}\)</span> we need it to define a unique score. To this end, we recast the vectors <span class="arithmatex">\(x,y\)</span> solutions of <span class="arithmatex">\(\eqref{eq:tensor_singvec}\)</span> as eigenvectors of the multihomogeneous mapping</p>
+<div class="arithmatex">\[
+F(x,y) := \begin{bmatrix} F_1(x,y) \\ F_2(x,y) \end{bmatrix} =  \begin{bmatrix} (T_{(1)}xy)^{1/p} \\ (T_{(3)}xx)^{1/q} \end{bmatrix} = \begin{bmatrix} (\sum_{jk} T_{ijk}  x_jy_k)^{1/p} \\ (\sum_{ij}T_{ijk}x_ix_j)^{1/q} \end{bmatrix}\, .
+\]</div>
+<p>In fact, it is easy to see that <span class="arithmatex">\(\eqref{eq:tensor_singvec}\)</span> holds iff <span class="arithmatex">\(F(x,y)= (\lambda,\mu)\krog  (x,y)\)</span>. Moreover, one easily realizes that </p>
+<div class="arithmatex">\[
+\M = \begin{bmatrix}
+1/p &amp; 1/p \\ 2/q &amp; 0
+\end{bmatrix}
+\]</div>
+<p>is the homogeneity matrix of <span class="arithmatex">\(F\)</span>. Thus, using a slightly different cone than <span class="arithmatex">\(C_+\)</span>, one obtains the following:</p>
+<!-- Let $\mathcal C = C_+^1\times \dots \times C_+^m$, $x = (x^{(1)}, \dots, x^{(m)}) \in \mathcal C$  -->
+
+<section class="theorem">
+<p><strong>Theorem.</strong> Let <span class="arithmatex">\(n\)</span> and <span class="arithmatex">\(\ell\)</span> be the number of nodes and the number of layers in <span class="arithmatex">\(\{G_k\}\)</span>, respectively. Consider the following set of pairs of vectors</p>
+<div class="arithmatex">\[
+C_+(T) =\left\{(x,y)\succeq 0  \quad : \quad 
+\begin{array}{c}
+ x_i \propto   \textstyle{\sum_{j,k} T_{ijk}}, \quad \forall i = 1, \dots, n\\
+ y_k \propto \textstyle{\sum_{i,j} T_{ijk}}, \quad \forall k =1,\dots, \ell
+\end{array}\right\}\, .
+\]</div>
+<p>This is a cone of vectors that depends on the nonzero pattern of <span class="arithmatex">\(T\)</span>: for <span class="arithmatex">\((x,y)\in C_+(T)\)</span>, <span class="arithmatex">\(x_i\)</span> is zero if and only if <span class="arithmatex">\(T_{ijk}=0\)</span> for all <span class="arithmatex">\(j,k\)</span>, that is node <span class="arithmatex">\(i\)</span> is isolated in all the layers and, similarly, <span class="arithmatex">\(y_k=0\)</span> if and only if layer <span class="arithmatex">\(k\)</span> is empty (there is no edge in that layer).  </p>
+<p>Then <span class="arithmatex">\(\rho(\M) = \frac{\sqrt{8p+q}+\sqrt{q}}{2p\sqrt{q}}\)</span> and if <span class="arithmatex">\(\rho(\M)&lt;1\)</span> we have:</p>
+<p><strong>1.</strong> The system of nonlinear equations <span class="arithmatex">\(\eqref{eq:tensor_singvec}\)</span> has a unique solution <span class="arithmatex">\((x^*,y^*)\in C_+(T)\)</span> such that <span class="arithmatex">\(\|x^*\|=\|y^*\|=1\)</span>. </p>
+<p><strong>2.</strong> The power method iteration</p>
+<pre><code class="julia">x = ones(n,1) 
+y = ones(l,1)
+for r = 0,1,2,3,..
+        x = F_1(x,y)
+        x = x / norm(x)
+        y = F_2(x,y)
+        y = y / norm(y)
+</code></pre>
+
+<p>converges to <span class="arithmatex">\((x^*,y^*)\)</span> and after <span class="arithmatex">\(m\)</span> steps we have </p>
+<div class="arithmatex">\[
+\|(x,y)-(x^*,y^*)\|_{\infty} \leq \rho(\M)^m \Big\{ \rho(\M) \, p\, \frac{\max_{i\in\mathcal I} x_i^*}{\min_{i'\in\mathcal I} x_{i'}^*}+\, \frac{\max_{k\in\mathcal J} y_k^*}{\min_{k'\in\mathcal J} y_{k'}^*}\Big\}
+\]</div>
+<p>with  <span class="arithmatex">\(\mathcal I=\{i \, : \, x^{*}_i&gt;0\}\)</span> and <span class="arithmatex">\(\mathcal J =\{k \, :\, y_k^{*}&gt;0\}\)</span>.</p>
+</section>
+<h3 id="related_work">Related work</h3>
+<p>Other models for eigenvector centrality on multiplex networks are available. 
+Many of them are based on a &ldquo;flattening&rdquo; or &ldquo;projection&rdquo; approach which essentially transforms the multiplex into a graph and uses matrix eigenvectors on that graph to model node importances. These include, the aggregated graph of a multiplex graph <sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup> <sup id="fnref:7"><a class="footnote-ref" href="#fn:7">7</a></sup> <sup id="fnref:8"><a class="footnote-ref" href="#fn:8">8</a></sup> <sup id="fnref:9"><a class="footnote-ref" href="#fn:9">9</a></sup>, where multiple layers with adjacency matrices <span class="arithmatex">\(A_1,\dots, A_m\)</span> are aggregated via a linear (possibly weighted) combination into a single denser  adjacency matrix <span class="arithmatex">\(A_{\mathrm{agg}} = w_1A_1 + \dots + w_mA_m\)</span>;  the supra-adjacency graph of a multilayer graph <sup id="fnref:10"><a class="footnote-ref" href="#fn:10">10</a></sup> <sup id="fnref:11"><a class="footnote-ref" href="#fn:11">11</a></sup> <sup id="fnref:12"><a class="footnote-ref" href="#fn:12">12</a></sup>, where a new graph  of larger size is built by taking the Cartesian product of all the layers with weighted layer couplings obtaining a large adjacency matrix   of the form</p>
+<div class="arithmatex">\[A_{\mathrm{supra}}=
+\begin{bmatrix}
+A_1 &amp; I &amp; \dots  &amp; I \\
+I &amp; \ddots &amp; \ddots &amp;\vdots  \\
+\vdots &amp;  \ddots &amp; \ddots &amp; I \\
+I &amp; \dots &amp; I &amp; A_m
+\end{bmatrix}
+\]</div>
+<p>Once a standard graph is obtained from the multiplex data, standard techniques can be applied to define and compute mutual-reinforcing centralities. In particular, the classical Perron&ndash;Frobenius theory for matrices can be directly applied to the flattened graphs. To this end, it is interesting to notice that </p>
+<!-- <section markdown="block" class="definition"> -->
+
+<div class="arithmatex">\[
+A_{\mathrm{supra}} \text{  is irreducible } \iff A_{\mathrm{agg}} \text{ is irreducbile}
+\]</div>
+<!-- </section> -->
+
+<p>A different approach is proposed in <sup id="fnref:13"><a class="footnote-ref" href="#fn:13">13</a></sup> where the centrality for nodes and layers is computed by summing up powers of entries of the incidence matrix of the multiplex. </p>
+<h2 id="nonlinear_eigenvector_centrality_for_hypergraphs">Nonlinear eigenvector centrality for hypergraphs</h2>
+<p>A hypergraph <span class="arithmatex">\(H=(V,E)\)</span> consists of a set of nodes <span class="arithmatex">\(V\)</span> and a set of hyperedges <span class="arithmatex">\(E\)</span>, but, unlike graphs, an hyperedge <span class="arithmatex">\(e\in E\)</span> can contain an arbitrary number of nodes. In the weighted setting, we assume a weight function <span class="arithmatex">\(w:E\to \RR_+\)</span> that assigns the weight <span class="arithmatex">\(w(e)&gt;0\)</span> to each hyperedge. </p>
+<p>Also in this setting, a relatively standard way to extend graph mappings and their eigenvectors is via a &ldquo;flattening&rdquo; or a &ldquo;projection&rdquo;. These are forms of linearizations where the whole hypergraph is flattened into a standard graph to which standard centrality models are applied.  There are many approaches that follow this line, including linear-weighted clique expansions <sup id="fnref:14"><a class="footnote-ref" href="#fn:14">14</a></sup> <sup id="fnref:15"><a class="footnote-ref" href="#fn:15">15</a></sup> <sup id="fnref:16"><a class="footnote-ref" href="#fn:16">16</a></sup> <sup id="fnref:17"><a class="footnote-ref" href="#fn:17">17</a></sup> <sup id="fnref:18"><a class="footnote-ref" href="#fn:18">18</a></sup> <sup id="fnref:19"><a class="footnote-ref" href="#fn:19">19</a></sup>  where hyperedges are replaced by cliques in the flattened graph, whose adjacency matrix becomes </p>
+<div class="arithmatex">\[\begin{equation}\label{eq:clique-expansion-adjacency}
+    A_{ij} = \sum_{e: \, i,j\in e}w(e) 
+\end{equation}\]</div>
+<p>with <span class="arithmatex">\(w(e)\)</span> the weights of the original hypergraph; clique averaging  <sup id="fnref:20"><a class="footnote-ref" href="#fn:20">20</a></sup>, where  the weights <span class="arithmatex">\(w(e)\)</span> in the sum <span class="arithmatex">\(\eqref{eq:clique-expansion-adjacency}\)</span>  are averaged with generalized mean functions;  connectivity graph expansion <sup id="fnref:21"><a class="footnote-ref" href="#fn:21">21</a></sup> <sup id="fnref:22"><a class="footnote-ref" href="#fn:22">22</a></sup>, where the weights in the clique expansion are based on hyperedge degrees, for example replacing <span class="arithmatex">\(w(e)\)</span> with <span class="arithmatex">\(1/(|e|-1)\)</span> in <span class="arithmatex">\(\eqref{eq:clique-expansion-adjacency}\)</span>; the  star expansion  <sup id="fnref:23"><a class="footnote-ref" href="#fn:23">23</a></sup>, where the flattened graph is obtained by introducing new vertices for each hyperedge, which are then connected according to the hypergraph structure. </p>
+<p>Another popular approach for centrality on hypergraphs uses a  tensor representation of the data and tensor  eigenvectors. 
+This is a particularly natural approach in the case of uniform hypergraphs. A <span class="arithmatex">\(m\)</span>-uniform hypergraph is a hypergraph <span class="arithmatex">\(H=(V,E)\)</span> such that each hyperedge <span class="arithmatex">\(e\in E\)</span> contains exactly <span class="arithmatex">\(m\)</span> nodes. Thus, a <span class="arithmatex">\(2\)</span>-uniform hypergraph is a standard graph. As every hyperedge contains exactly <span class="arithmatex">\(m\)</span> nodes, we can associate to <span class="arithmatex">\(H\)</span> the adjacency tensor  <span class="arithmatex">\(T\)</span> such that <span class="arithmatex">\(T_{i_1,\dots,i_m} = w(e)\)</span> if the hyperedge <span class="arithmatex">\(e = \{i_1,\dots,i_m\}\in E\)</span>, and <span class="arithmatex">\(T_{i_1,\dots,i_m}=0\)</span> otherwise. Clearly, <span class="arithmatex">\(T\)</span> coincides with the adjacency matrix of the graph when <span class="arithmatex">\(m=2\)</span>. </p>
+<p>A centrality score <span class="arithmatex">\(x_i\)</span> for the node <span class="arithmatex">\(i\in V\)</span>   of a <span class="arithmatex">\(m\)</span>-uniform hypergraph  is defined in <sup id="fnref:24"><a class="footnote-ref" href="#fn:24">24</a></sup> as being linearly proportional to the product of the centrality scores of the nodes in each hyperedge that involves <span class="arithmatex">\(i\)</span>. This mutual reinforcing relation boils down to the constrained eigenvector equation</p>
+<div class="arithmatex">\[\begin{equation}\label{eq:tensor_eig}
+    \sum_{i_2,\dots,i_k}T_{i,i_2,\dots,i_m}x_{i_2}x_{i_3}\cdots x_{i_m} = \lambda \, |x_{i}|^{p-2}x_{i} 
+\end{equation}\]</div>
+<p>with <span class="arithmatex">\(x&gt;0\)</span>, <span class="arithmatex">\(\lambda&gt;0\)</span> and <span class="arithmatex">\(p&gt;1\)</span>.
+The special cases <span class="arithmatex">\(p=2\)</span> and <span class="arithmatex">\(p={m}\)</span> correspond to so-called <span class="arithmatex">\(Z\)</span>- and <span class="arithmatex">\(H\)</span>-eigenvectors for <span class="arithmatex">\(T\)</span>. </p>
+<h3 id="beyond_matrices_and_tensors">Beyond matrices and tensors</h3>
+<p>Matrix and tensor eigenvector approaches are constrained to model the interaction of nodes at higher-order and across layers as either an additive  or a multiplicative function. 
+For example, in <span class="arithmatex">\(\eqref{eq:tensor_eig}\)</span> the importance <span class="arithmatex">\(x_i\)</span> of node <span class="arithmatex">\(i\)</span> is inherited by the <strong>product</strong> of the importances of the nodes on each hyperedge node <span class="arithmatex">\(i\)</span> belongs to.  Moreover, tensor representations seem inadequate to model general hypergraphs as they require a constant number of nodes in the hyperedges. </p>
+<p>We discuss below a model introduced in <sup id="fnref:25"><a class="footnote-ref" href="#fn:25">25</a></sup>, based on the incidence matrix of the hypergraph and a general nonlinear multihomogeneous mapping. </p>
+<p>If <span class="arithmatex">\(n=|V|\)</span> and <span class="arithmatex">\(m = |E|\)</span>, the <em>incidence matrix</em> and the <em>diagonal weight matrix</em> of <span class="arithmatex">\(H\)</span> are <span class="arithmatex">\(n\times m\)</span> and the <span class="arithmatex">\(m\times m\)</span> matrices defined respectively as </p>
+<div class="arithmatex">\[
+B_{i,e} = 
+\begin{cases}
+1 &amp; i\in e \\
+0 &amp; \text{otherwise }
+\end{cases} \qquad W = \begin{bmatrix} w(e_1) &amp; &amp; \\ &amp; \ddots &amp; \\ &amp; &amp; w(e_m)\end{bmatrix}\, .
+\]</div>
+<p>These matrices fully describe  the hypergraph. For example, when each <span class="arithmatex">\(e\)</span> has size exactly 2, i.e. we are considering a standard graph, then <span class="arithmatex">\(BWB^\top = A + D\)</span> where <span class="arithmatex">\(A\)</span> is the adjacency matrix of <span class="arithmatex">\(H\)</span> and <span class="arithmatex">\(D = \mathrm{Diag}(d_1, \dots, d_n)\)</span> is the digonal matrix of the weighted node degrees <span class="arithmatex">\(d_i = \sum_{j}A_{ij}\)</span>.
+Similarly, for a general hypergraph <span class="arithmatex">\(H\)</span>, we have <span class="arithmatex">\(BWB^\top = A+D\)</span> where <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(D\)</span> this time are the adjacency and degree matrices of the clique-expansion graph associated with <span class="arithmatex">\(H\)</span>, as defined in <span class="arithmatex">\(\eqref{eq:clique-expansion-adjacency}\)</span>. 
+However, unlike the clique-expanded adjacency matrix, <span class="arithmatex">\(B\)</span> allows us to model the structure of <span class="arithmatex">\(H\)</span> &ldquo;before&rdquo; the flattening step. 
+This is the basis of the model below where we describe a spectral (thus mutually reinforcing) model for both  nodes and edges of a hypergraph. </p>
+<p>Let <span class="arithmatex">\(x\)</span> and  <span class="arithmatex">\(y\)</span> be nonnegative vectors whose entries will provide centrality scores for the nodes and 
+hyperedges of <span class="arithmatex">\(H\)</span>, respectively. We would like the importance <span class="arithmatex">\(y_e\)</span> for an edge <span class="arithmatex">\(e\in E\)</span> to be a nonnegative number proportional to a function of  the importances of the nodes in <span class="arithmatex">\(e\)</span>, for example  <span class="arithmatex">\(y_e \propto \sum_{i\in e} x_i\)</span>. Similarly, we require that the centrality <span class="arithmatex">\(x_i\)</span> of node <span class="arithmatex">\(i\in V\)</span> is a nonnegative number proportional 
+to a function of the importances of the edges it participates in, for example <span class="arithmatex">\(x_i \propto \sum_{e: i\in e}w(e)y_e\)</span>. As the centralities <span class="arithmatex">\(x_i\)</span> and <span class="arithmatex">\(y_e\)</span> are all nonnegative, these sums coincide with the weighted <span class="arithmatex">\(\ell^1\)</span> norm of specific sets of centrality scores. Thus, we can generalize this idea by considering the weighted <span class="arithmatex">\(\ell^p\)</span> norm of node and edge importances. This leads to </p>
+<div class="arithmatex">\[
+x_i \propto \Big(\sum_{e: i\in e}w(e)y_e^p\Big)^{1/p},\qquad y_e \propto \Big(\sum_{i\in e} x_i^q\Big)^{1/q},  
+\]</div>
+<p>for some <span class="arithmatex">\(p,q\geq 1\)</span>. More generally, we can consider four functions <span class="arithmatex">\(f,g,\varphi,\psi:\RR_+\to\RR_+\)</span> of the nonnegative real line   and require that </p>
+<div class="arithmatex">\[
+x_i \propto g\Big(\sum_{e: i\in e}w(e)f(y_e)\Big),\qquad y_e \propto \psi\Big(\sum_{i\in e}\nu(i)\varphi(x_i)\Big)  \, .
+\]</div>
+<p>If we extend real functions on vectors by defining them as mappings that act in a componentwise fashion, the previous relations can be compactly written as the following constrained nonlinear  equations</p>
+<div class="arithmatex">\[\begin{equation}\label{eq:NEP}
+    \begin{cases}
+    \lambda x = g\big(BW f(y)\big) &amp; \\
+    \mu  y = \psi\big(B^\top   \varphi(x)\big)
+    \end{cases}\qquad   x,  y \succ  0, \quad  \lambda, \mu &gt; 0  \, .
+\end{equation}\]</div>
+<p>If <span class="arithmatex">\(f,g,\psi\)</span> and <span class="arithmatex">\(\varphi\)</span> are all identity functions, then <span class="arithmatex">\(\eqref{eq:NEP}\)</span> boils down to a linear system of equations which is structurally reminiscent of the  HITS  centrality model for directed graphs, briefly reviewed above: the importance of a node is proportional to the sum of the importances of the hyperedges it belongs to and, vice-versa, the importancesof a hyperdge is proportional 
+to the sum of the importances of the nodes it involves.</p>
+<p>As for HITS centrality, when <span class="arithmatex">\(f=g=\varphi=\psi=\text{id}\)</span> and we have no edge nor node weights (i.e.  <span class="arithmatex">\(W,N\)</span> are identity matrices), then  <span class="arithmatex">\(x, y\)</span> in <span class="arithmatex">\(\eqref{eq:NEP}\)</span> are the left and right  singular vectors of a graph matrix,  in this case <span class="arithmatex">\(B\)</span>, and the matrix Perron-Frobenius theory tells us that if the bipartite graph with adjacency matrix </p>
+<div class="arithmatex">\[\begin{equation}\label{eq:bipartite}
+\begin{bmatrix}
+0 &amp; B\\
+B^\top &amp; 0
+\end{bmatrix}
+\end{equation}\]</div>
+<p>is connected, then <span class="arithmatex">\(\eqref{eq:NEP}\)</span> has a unique solution. Instead, when either <span class="arithmatex">\(f,g,\varphi\)</span> or <span class="arithmatex">\(\psi\)</span> is not linear, even the most basic question of existence of a solution to <span class="arithmatex">\(\eqref{eq:NEP}\)</span> may be not straightforward. However, for homogeneous functions <span class="arithmatex">\(f,g,\varphi\)</span> and <span class="arithmatex">\(\psi\)</span>, the nonlinear Perron-Frobenius theory for multihomogeneous operators  allows us to give guarantees on existence, uniqueness and computability for the nonlinear singular-vector centrality model in <span class="arithmatex">\(\eqref{eq:NEP}\)</span>. </p>
+<section class="theorem">
+<p><strong>Theorem.</strong>  Let <span class="arithmatex">\(f,g,\varphi,\psi\)</span> be order preserving and homogeneous of degrees <span class="arithmatex">\(\alpha,\beta,\gamma,\delta\)</span>, respectively. Define the coefficient <span class="arithmatex">\(\rho = |\alpha\beta\gamma\delta|\)</span>.</p>
+<p>If either  (<strong>1</strong>) <span class="arithmatex">\(\rho&lt;1\)</span>, or (<strong>2</strong>) <span class="arithmatex">\(\rho=1\)</span>,  <span class="arithmatex">\(f,g,\varphi,\psi\)</span> are differentiable and the bipartite graph with adjacency matrix as in <span class="arithmatex">\(\eqref{eq:bipartite}\)</span> is connected, then there exist unique <span class="arithmatex">\(x^*,y^* \succ  0\)</span> (up to scaling) and unique <span class="arithmatex">\(\lambda, \mu &gt;0\)</span> solution of <span class="arithmatex">\(\eqref{eq:NEP}\)</span> and the nonlinear power iteration</p>
+<pre><code class="julia">x = ones(n,1)  
+y = ones(l,1)
+for r = 0,1,2,3,...
+        x = sqrt.(x .* g(B*W*f(y)))
+        x = x / norm(x)
+        y = sqrt.(y .* ψ(B'*N*φ(x)))
+        y = y / norm(y)
+</code></pre>
+
+<p>converges to such <span class="arithmatex">\(x^*,y^*\)</span>. </p>
+</section>
+<p>You can find <a href="https://github.com/ftudisco/node-edge-hypergraph-centrality">here <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg></span></a> the <code>julia</code> code that implements this algorithm and that runs it on a number of example datasets.</p>
+<h4 id="the_hypergraph_sunflower">The hypergraph sunflower</h4>
+<p>A sunflower is a hypergraph whose hyperedges all have one common intersection in one single node, called the <em>core</em>. Let <span class="arithmatex">\(u\in V\)</span> be that intersection. Also let <span class="arithmatex">\(r\)</span> be the number of <em>petals</em> (the hyperedges) each containing <span class="arithmatex">\(|e_i|\)</span> nodes, for <span class="arithmatex">\(i=1,\dots,r\)</span>. By definition <span class="arithmatex">\(u\)</span> is the only element in all the edges <span class="arithmatex">\(\cap_i e_i = \{u\}\)</span>. </p>
+<p><center>
+<img style="width:13em;border-style:solid;border:5px;" src="/img/sunflower.jpg" alt="example-sunflower" />
+</center></p>
+<p>If <span class="arithmatex">\(|e_i|=k+1\)</span> for all <span class="arithmatex">\(i\)</span>, we say that the hypergraph is a uniform sunflower. The tensor eigenvector centrality of a uniform sunflower is studied for example in <sup id="fnref2:24"><a class="footnote-ref" href="#fn:24">24</a></sup>. In this case we can assume that all the hyperedges have the same centrality score and that the same holds for all the nodes, besides the core, which is assigned a specific value. </p>
+<p>Assuming no weights, 
+by symmetry we may impose the constraints <span class="arithmatex">\(x_{v_i}=x_v\)</span> for all <span class="arithmatex">\(v_i\neq u\)</span> and <span class="arithmatex">\(y_e = y\)</span> for all <span class="arithmatex">\(e\in E\)</span>
+in <span class="arithmatex">\(\eqref{eq:NEP}\)</span> to obtain</p>
+<div class="arithmatex">\[
+x_v \propto g(f(y)),\qquad  x_u \propto g(rf(y)), \qquad y \propto \psi(\varphi(x_u) + k\varphi(x_v)). 
+\]</div>
+<p>So, for example, with the choices of Theorem <span class="arithmatex">\(\ref{thm:tensor-eig} we get <span class="arithmatex">\(x_u/x_v = g(r) = r^{1/(p+1)}\)</span> which coincides with the value computed in \cite{benson2019three}, for the two choices <span class="arithmatex">\(p = 1\)</span> and <span class="arithmatex">\(p=m-1\)</span>, \new{i.e., the tensor <span class="arithmatex">\(Z\)</span>-eigenvector and <span class="arithmatex">\(H\)</span>-eigenvector based centralities, respectively}. More generally, if <span class="arithmatex">\(g\)</span> is homogeneous of degree <span class="arithmatex">\(\beta\)</span> we have
+\begin{equation}\label{eq:sunflower-centrality-ratio}
+    \frac{x_u}{x_v} \propto r^\beta\, .
+\end{equation}
+This shows that the node centrality assignment in the case of a uniform sunflower hypergraph only depends on the homogeneity degree of <span class="arithmatex">\(g\)</span> and, in particular,  when <span class="arithmatex">\(\beta\to 0\)</span> all the centralities tend to coincide, while <span class="arithmatex">\(x_u &gt; x_v\)</span> for all <span class="arithmatex">\(\beta&gt;0\)</span>,  confirming and  extending the observation in \cite{benson2019three} for the setting of uniform hypergraph centralities based on tensor eigenvectors. Figure \ref{fig:uniform-sunflower} illustrates this behaviour on an example uniform sunflower hypergraph with eight petals (\)</span>r=8<span class="arithmatex">\() each having three nodes (\)</span>k=3$). The figure shows the nodes of the hypergraph with a blue dot whose size is proportional to its centrality value computed according to the three singular vector hypergraph centrality models defined in Section \ref{sec:comp}.  The value of <span class="arithmatex">\(\beta\)</span> for these three centralities is <span class="arithmatex">\(1\)</span> for both the <code>max' and the</code>linear&rsquo; centrality&rsquo;, and <span class="arithmatex">\(1/2\)</span> for `log-exp&rsquo; centrality&rsquo;. Thus, all the three models assign essentially the same centrality score: the core node <span class="arithmatex">\(u\)</span> has strictly larger centrality, while all other nodes have same centrality score. \new{Similarly, the computed edge centrality is constant across all models and all petals.}</p>
+<p>\subsubsection*{Generic sunflower}
+The situation is different for the case of a nonuniform hypergraph sunflower where we have <span class="arithmatex">\(r\)</span> petals each containing an arbitrary number of nodes. 
+The computational results in Figure~\ref{fig:non-uniform-sunflower} indicate that the three models in Section \ref{sec:comp} capture significantly different centrality properties:
+All three models recognize the core node as the most central one, however while the <code>linear' model favours nodes that belong to large hyperedges, the multiplicative</code>log-exp&rsquo; model behaves in the opposite way assigning a larger centrality score to nodes being part of small hyperedges. Finally, the <code>max' model behaves like in the uniform case, assigning the same centrality value to all the nodes in the petals (core node excluded). \new{For this hypergraph, we observe that the edge centrality follows directly from the node one: for the</code>linear&rsquo; model the edge centrality is proportional to the number of nodes in the edge, 
+for the <code>log-exp' model it is inversely proportional to the number of nodes, while for the</code>max&rsquo; model all edges have the same centrality.} 
+It would be of interest to pursue these differences analytically and hence gain further 
+insights into the effect of <span class="arithmatex">\(f,g,\varphi\)</span> and <span class="arithmatex">\(\psi\)</span>.</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>J. P. Schäfermeyer. On Edmund Landau&rsquo;s contribution to the ranking of chess players. Technical Report, Unpublished manuscript, 2019.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>P. Bonacich. Power and centrality: a family of measures. <em>American Journal of Sociology</em>, 92:1170–1182, 1987.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>Lawrence Page, Sergey Brin, Rajeev Motwani, and Terry Winograd. The PageRank citation ranking: Bringing order to the web. Technical Report, Stanford InfoLab, 1999.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>Jon M Kleinberg. Authoritative sources in a hyperlinked environment. <em>Journal of the ACM <span class="arithmatex">\(JACM\)</span></em>, 46<span class="arithmatex">\(5\)</span>:604–632, 1999.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>Francesco Tudisco, Francesca Arrigo, and Antoine Gautier. Node and layer eigenvector centralities for multiplex networks. <em>SIAM Journal on Applied Mathematics</em>, 78<span class="arithmatex">\(2\)</span>:853–876, 2018.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p>Luis Solá, Miguel Romance, Regino Criado, Julio Flores, Alejandro García del Amo, and Stefano Boccaletti. Eigenvector centrality of nodes in multiplex networks. <em>Chaos: An Interdisciplinary Journal of Nonlinear Science</em>, 23<span class="arithmatex">\(3\)</span>:033131, 2013.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>Federico Battiston, Vincenzo Nicosia, and Vito Latora. Structural measures for multiplex networks. <em>Physical Review E</em>, 89<span class="arithmatex">\(3\)</span>:032804, 2014.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:8">
+<p>Dengyong Zhou and Christopher JC Burges. Spectral clustering and transductive learning with multiple views. In <em>International Conference on Machine Learning <span class="arithmatex">\(ICML\)</span></em>, 1159–1166. 2007.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:9">
+<p>Koji Tsuda, Hyunjung Shin, and Bernhard Schölkopf. Fast protein classification with multiple networks. <em>Bioinformatics</em>, 21<span class="arithmatex">\(suppl\_2\)</span>:ii59–ii65, 2005.&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+<li id="fn:10">
+<p>Manlio De Domenico, Elisa Omodei, Sergio Gómez, Alex Arenas, and Albert Solé-Ribalta. Centrality in interconnected multilayer networks. <em>Nature Communications</em>, 6<span class="arithmatex">\(arXiv: 1311\.2906\)</span>:6868, 2013.&#160;<a class="footnote-backref" href="#fnref:10" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+</li>
+<li id="fn:11">
+<p>Dane Taylor, Sean A Myers, Aaron Clauset, Mason A Porter, and Peter J Mucha. Eigenvector-based centrality measures for temporal networks. <em>Multiscale Modeling &amp; Simulation <span class="arithmatex">\(SIAM\)</span></em>, 15<span class="arithmatex">\(1\)</span>:537–574, 2017.&#160;<a class="footnote-backref" href="#fnref:11" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+</li>
+<li id="fn:12">
+<p>Dane Taylor, Mason A Porter, and Peter J Mucha. Tunable eigenvector-based centralities for multiplex and temporal networks. <em>Multiscale Modeling &amp; Simulation <span class="arithmatex">\(SIAM\)</span></em>, 19<span class="arithmatex">\(1\)</span>:113–147, 2021.&#160;<a class="footnote-backref" href="#fnref:12" title="Jump back to footnote 12 in the text">&#8617;</a></p>
+</li>
+<li id="fn:13">
+<p>Christoph Rahmede, Jacopo Iacovacci, Alex Arenas, and Ginestra Bianconi. Centralities of nodes and influences of layers in large multiplex networks. <em>Journal of Complex Networks</em>, 6<span class="arithmatex">\(5\)</span>:733–752, 2018.&#160;<a class="footnote-backref" href="#fnref:13" title="Jump back to footnote 13 in the text">&#8617;</a></p>
+</li>
+<li id="fn:14">
+<p>Timoteo Carletti, Federico Battiston, Giulia Cencetti, and Duccio Fanelli. Random walks on hypergraphs. <em>Physical Review E</em>, 101<span class="arithmatex">\(2\)</span>:022308, 2020.&#160;<a class="footnote-backref" href="#fnref:14" title="Jump back to footnote 14 in the text">&#8617;</a></p>
+</li>
+<li id="fn:15">
+<p>Juan Alberto Rodriguez. On the Laplacian eigenvalues and metric parameters of hypergraphs. <em>Linear and Multilinear Algebra</em>, 50<span class="arithmatex">\(1\)</span>:1–14, 2002.&#160;<a class="footnote-backref" href="#fnref:15" title="Jump back to footnote 15 in the text">&#8617;</a></p>
+</li>
+<li id="fn:16">
+<p>Juan Alberto Rodriguez. On the Laplacian spectrum and walk-regular hypergraphs. <em>Linear and Multilinear Algebra</em>, 51<span class="arithmatex">\(3\)</span>:285–297, 2003.&#160;<a class="footnote-backref" href="#fnref:16" title="Jump back to footnote 16 in the text">&#8617;</a></p>
+</li>
+<li id="fn:17">
+<p>Juan Alberto Rodriguez. Laplacian eigenvalues and partition problems in hypergraphs. <em>Applied Mathematics Letters</em>, 22<span class="arithmatex">\(6\)</span>:916–921, 2009.&#160;<a class="footnote-backref" href="#fnref:17" title="Jump back to footnote 17 in the text">&#8617;</a></p>
+</li>
+<li id="fn:18">
+<p>Sameer Agarwal, Kristin Branson, and Serge Belongie. Higher order learning with graphs. In <em>International Conference on Machine Learning <span class="arithmatex">\(ICML\)</span></em>, 17–24. 2006.&#160;<a class="footnote-backref" href="#fnref:18" title="Jump back to footnote 18 in the text">&#8617;</a></p>
+</li>
+<li id="fn:19">
+<p>Dengyong Zhou, Jiayuan Huang, and Bernhard Schölkopf. Learning with hypergraphs: clustering, classification, and embedding. In <em>Advances in Neural Information Processing Systems <span class="arithmatex">\(NeurIPS\)</span></em>, 1601–1608. 2007.&#160;<a class="footnote-backref" href="#fnref:19" title="Jump back to footnote 19 in the text">&#8617;</a></p>
+</li>
+<li id="fn:20">
+<p>Sameer Agarwal, Jongwoo Lim, Lihi Zelnik-Manor, Pietro Perona, David Kriegman, and Serge Belongie. Beyond pairwise clustering. In <em>Conference on Computer Vision and Pattern Recognition <span class="arithmatex">\(CVPR\)</span></em>, volume 2, 838–845. IEEE, 2005.&#160;<a class="footnote-backref" href="#fnref:20" title="Jump back to footnote 20 in the text">&#8617;</a></p>
+</li>
+<li id="fn:21">
+<p>Anirban Banerjee. On the spectrum of hypergraphs. <em>Linear Algebra and its Applications</em>, 614:82–110, 2021.&#160;<a class="footnote-backref" href="#fnref:21" title="Jump back to footnote 21 in the text">&#8617;</a></p>
+</li>
+<li id="fn:22">
+<p>Guilherme Ferraz de Arruda, Michele Tizzani, and Yamir Moreno. Phase transitions and stability of dynamical processes on hypergraphs. <em>Communications Physics</em>, 4<span class="arithmatex">\(1\)</span>:1–9, 2021.&#160;<a class="footnote-backref" href="#fnref:22" title="Jump back to footnote 22 in the text">&#8617;</a></p>
+</li>
+<li id="fn:23">
+<p>Jason Y Zien, Martine DF Schlag, and Pak K Chan. Multilevel spectral hypergraph partitioning with arbitrary vertex sizes. <em>IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems</em>, 18<span class="arithmatex">\(9\)</span>:1389–1399, 1999.&#160;<a class="footnote-backref" href="#fnref:23" title="Jump back to footnote 23 in the text">&#8617;</a></p>
+</li>
+<li id="fn:24">
+<p>Austin R Benson. Three hypergraph eigenvector centralities. <em>SIAM Journal on Mathematics of Data Science</em>, 1<span class="arithmatex">\(2\)</span>:293–312, 2019.&#160;<a class="footnote-backref" href="#fnref:24" title="Jump back to footnote 24 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:24" title="Jump back to footnote 24 in the text">&#8617;</a></p>
+</li>
+<li id="fn:25">
+<p>Francesco Tudisco and Desmond J. Higham. Node and edge eigenvector centrality for hypergraphs. <em>arXiv:2101.06215</em>, 2021.&#160;<a class="footnote-backref" href="#fnref:25" title="Jump back to footnote 25 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "toc.integrate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4ea5477f.min.js"></script>
+      
+        <script src="../../assets/mathjaxhelper.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+      
+        <script src="../../assets/config.js"></script>
+      
+    
+  </body>
+</html>

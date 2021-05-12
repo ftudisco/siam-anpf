@@ -8,22 +8,22 @@
       
       
       
-        <meta name="author" content="Francesco Tudisco">
+        <meta name="author" content="Francesco Tudiscos">
       
       
-      <link rel="icon" href="../assets/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
     
     
       
-        <title>Chapter3 - SIAM LA 21 Tutorial</title>
+        <title>Section 2 - SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.e35208c4.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e35208c4.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ef6f36e2.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ef6f36e2.min.css">
         
       
     
@@ -32,15 +32,17 @@
       
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>:root{--md-text-font-family:"Raleway";--md-code-font-family:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Open Sans";--md-code-font-family:"Roboto Mono"}</style>
       
     
     
     
-      <link rel="stylesheet" href="../css/extra.css">
+      <link rel="stylesheet" href="../../css/extra.css">
     
       <link rel="stylesheet" href="http://tikzjax.com/v1/fonts.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css">
     
     
       
@@ -59,7 +61,7 @@
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="deep-orange">
   
     
-    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
       <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
@@ -69,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#node_and_layer_eigenvector_centrality_for_multiplex" class="md-skip">
+        <a href="#section_2" class="md-skip">
           Skip to content
         </a>
       
@@ -80,7 +82,7 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="SIAM LA 21 Tutorial" class="md-header__button md-logo" aria-label="SIAM LA 21 Tutorial" data-md-component="logo">
+    <a href="../.." title="SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory" class="md-header__button md-logo" aria-label="SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18-.21 0-.41-.06-.57-.18l-7.9-4.44A.991.991 0 0 1 3 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18.21 0 .41.06.57.18l7.9 4.44c.32.17.53.5.53.88v9M12 4.15 6.04 7.5 12 10.85l5.96-3.35L12 4.15M5 15.91l6 3.38v-6.71L5 9.21v6.7m14 0v-6.7l-6 3.37v6.71l6-3.38z"/></svg>
@@ -93,13 +95,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            SIAM LA 21 Tutorial
+            SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Chapter3
+              Section 2
             
           </span>
         </div>
@@ -168,65 +170,6 @@
       
       
         
-          
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-tabs__inner md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href=".." class="md-tabs__link">
-      Home
-    </a>
-  </li>
-
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="../chapter1/" class="md-tabs__link">
-      Chapter1
-    </a>
-  </li>
-
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="../centrality/" class="md-tabs__link">
-      Centrality
-    </a>
-  </li>
-
-      
-        
-  
-  
-    
-  
-
-
-  <li class="md-tabs__item">
-    <a href="./" class="md-tabs__link md-tabs__link--active">
-      Chapter3
-    </a>
-  </li>
-
-      
-    </ul>
-  </div>
-</nav>
-        
       
       <main class="md-main" data-md-component="main">
         <div class="md-main__inner md-grid">
@@ -238,20 +181,18 @@
                   <div class="md-sidebar__inner">
                     
 
-  
-
 
   
 
-<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="SIAM LA 21 Tutorial" class="md-nav__button md-logo" aria-label="SIAM LA 21 Tutorial" data-md-component="logo">
+    <a href="../.." title="SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory" class="md-nav__button md-logo" aria-label="SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18-.21 0-.41-.06-.57-.18l-7.9-4.44A.991.991 0 0 1 3 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18.21 0 .41.06.57.18l7.9 4.44c.32.17.53.5.53.88v9M12 4.15 6.04 7.5 12 10.85l5.96-3.35L12 4.15M5 15.91l6 3.38v-6.71L5 9.21v6.7m14 0v-6.7l-6 3.37v6.71l6-3.38z"/></svg>
 
     </a>
-    SIAM LA 21 Tutorial
+    SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -264,7 +205,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         Home
       </a>
     </li>
@@ -278,10 +219,39 @@
   
   
   
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
+      
+      <label class="md-nav__link" for="__nav_2">
+        Chapter 1
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Chapter 1" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 1
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../chapter1/" class="md-nav__link">
-        Chapter1
+      <a href="../../chapter1/" class="md-nav__link">
+        Perron-Frobenius theory for linear mappings
       </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -293,10 +263,51 @@
   
   
   
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        Chapter 2
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Chapter 2" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 2
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../centrality/" class="md-nav__link">
-        Centrality
+      <a href="../../ch2/sec1/" class="md-nav__link">
+        Network centrality
       </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ch2/sec2/" class="md-nav__link">
+        Higher-order network models
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -305,6 +316,43 @@
       
       
 
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        Chapter 3
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Chapter 3" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 3
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sec1/" class="md-nav__link">
+        Section 1
+      </a>
+    </li>
+  
+
+          
+            
   
   
     
@@ -319,12 +367,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Chapter3
+          Section 2
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Chapter3
+        Section 2
       </a>
       
         
@@ -342,8 +390,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#related_work" class="md-nav__link">
-    Related work
+  <a href="#subsec_21" class="md-nav__link">
+    Subsec 2.1
   </a>
   
 </li>
@@ -352,6 +400,68 @@
   
 </nav>
       
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
+      
+      <label class="md-nav__link" for="__nav_5">
+        Chapter 4
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Chapter 4" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 4
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ch4/sec1/" class="md-nav__link">
+        Optimization with nonlinear Perron eigenvectors
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ch4/sec2/" class="md-nav__link">
+        Section 2
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -369,36 +479,8 @@
               
                 
                 
-                <h1 id="node_and_layer_eigenvector_centrality_for_multiplex">Node and layer eigenvector centrality for multiplex</h1>
-<p>A multiplex network <span class="arithmatex">\(\{G_k\}\)</span> can be naturally described by means of an adjacency tensor <span class="arithmatex">\(\mathcal A\)</span> with three modes</p>
-<div class="arithmatex">\[
-\mathcal A_{ijk} = \begin{cases}
-\omega_k(ij) &amp; i\to j \text{ on layer }k \\
-0 &amp; \text{otherwise}
-\end{cases}
-\]</div>
-<p>where <span class="arithmatex">\(\omega_k:E_k\to \RR_{++}\)</span> is a positive weight function for the edges of the <span class="arithmatex">\(k\)</span>-th layer and <span class="arithmatex">\(i\to j\)</span> means that there is an edge from node <span class="arithmatex">\(i\)</span> to node <span class="arithmatex">\(j\)</span>, i.e. <span class="arithmatex">\(i,j\in E_k\)</span>. </p>
-<p>How can we define a mutual reinforcing centrality score for nodes (and layers) in <span class="arithmatex">\(\{G_k\}\)</span> so that a larger  centrality is assigned to nodes that form  links  in  highly  influential  layers with other central nodes? Here we discuss the model proposed in <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> based on <span class="arithmatex">\(\mathcal A\)</span> and a multihomogeneous order-preserving mapping associated to it.  Other approaches are discussed briefly in <a href="#related-work"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.67 4.42a6.08 6.08 0 0 0-3.22-.86c-1.58 0-2.79.78-2.79 2 0 1.4 1.34 1.91 3.34 2.58 2.5.81 4.4 1.83 4.4 4.24a4.01 4.01 0 0 1-1.8 3.23c.65.61 1.01 1.47 1 2.36 0 2.82-2.6 4-5.1 4-1.46.06-2.91-.33-4.15-1.1L8 19.34c1.04.71 2.27 1.09 3.53 1.1 1.72 0 3-.78 3-2.2 0-1.24-.78-1.93-3.28-2.79C8.5 14.5 6.6 13.5 6.6 11.21c.07-1.32.83-2.52 2-3.14-.63-.57-.99-1.4-1-2.26C7.6 3.45 9.77 2 12.53 2c1.29 0 2.56.29 3.7.89l-.56 1.53m-4.32 9c1.06.33 2.09.76 3.06 1.29.65-.49 1.02-1.26 1-2.07 0-1-.64-1.88-2.41-2.5-1.11-.37-2.22-.83-3.28-1.37-.75.45-1.22 1.26-1.22 2.14 0 .97.73 1.77 2.85 2.51z"/></svg></span>Related work</a>. </p>
-<p>In this model, mutual reinforcement happens at both layer and node levels, as layers are more influential if highly central nodes are active in them. Thus, if <span class="arithmatex">\(x_i\)</span> denotes the centrality of node <span class="arithmatex">\(i\)</span> and <span class="arithmatex">\(y_k\)</span> the influence of layer <span class="arithmatex">\(k\)</span>, we require that </p>
-<p><center>
-<span class="arithmatex">\(x_i \propto \sum_{jk}\mathcal A_{ijk}x_jy_k\)</span>, and <span class="arithmatex">\(y_k \propto \sum_{ij}\mathcal A_{ijk}x_ix_j\)</span>
-</center></p>
-<p>Since the centrality score is</p>
-<h2 id="related_work">Related work</h2>
-<p>Extending eigenvector centrality to higher-order graph models is nontrivial as it first requires extending standard one-dimensional graph mappings, then generalizing mutual-reinforcing properties via suitable eigenequations and finally providing the supporting mathematics for their well-posedeness and computation. </p>
-<p>A relatively standard way to extend graph mappings and their eigenvectors to the higher-order setting is via a &ldquo;flattening&rdquo; or a &ldquo;projection&rdquo;. These are forms of linearizations where the whole higher-order graph is flattened into a standard graph to which standard centrality models are applied.  There are many approaches that follow this line, including linear-weighted clique expansions \cite{carletti2020random,rodri2002laplacian,rodriguez2003laplacian,rodriguez2009laplacian,agarwal2006higher,zhou2007hypergraph}, where hyperedges are replaced by cliques in the flattened graph, whose adjacency matrix becomes </p>
-<div class="arithmatex">\[\begin{equation}\label{eq:clique-expansion-adjacency}
-    A_{ij} = \sum_{e: \, i,j\in e}w(e) 
-\end{equation}\]</div>
-<p>with <span class="arithmatex">\(w(e)\)</span> the weights of the original hypergraph; clique averaging \cite{agarwal2005beyond}, where  the weights <span class="arithmatex">\(w(e)\)</span> in the sum \eqref{eq:clique-expansion-adjacency}  are averaged with generalized mean functions;  connectivity graph expansion \cite{banerjee2021spectrum,de2021phase}, where the weights in the clique expansion are based on hyperedge degrees, for example replacing <span class="arithmatex">\(w(e)\)</span> with <span class="arithmatex">\(1/(|e|-1)\)</span> in \eqref{eq:clique-expansion-adjacency}; the  star expansion \cite{zien1999multilevel}, where the flattened graph is obtained by introducing new vertices for each hyperedge, which are then connected according to the hypergraph structure;   </p>
-<div class="footnote">
-<hr />
-<ol>
-<li id="fn:1">
-<p>Francesco Tudisco, Francesca Arrigo, and Antoine Gautier. Node and layer eigenvector centralities for multiplex networks. <em>SIAM Journal on Applied Mathematics</em>, 78<span class="arithmatex">\(2\)</span>:853–876, 2018.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
-</li>
-</ol>
-</div>
+                <h1 id="section_2">Section 2</h1>
+<h2 id="subsec_21">Subsec 2.1</h2>
                 
               
               
@@ -421,7 +503,7 @@
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../centrality/" class="md-footer__link md-footer__link--prev" rel="prev">
+        <a href="../sec1/" class="md-footer__link md-footer__link--prev" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -430,11 +512,25 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Centrality
+              Section 1
             </div>
           </div>
         </a>
       
+      
+        <a href="../../ch4/sec1/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Optimization with nonlinear Perron eigenvectors
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
       
     </nav>
   
@@ -457,18 +553,20 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.top", "toc.integrate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "toc.integrate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.4ea5477f.min.js"></script>
+      <script src="../../assets/javascripts/bundle.4ea5477f.min.js"></script>
       
-        <script src="../assets/mathjaxhelper.js"></script>
+        <script src="../../assets/mathjaxhelper.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
-        <script src="http://tikzjax.com/v1/tikzjax.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+      
+        <script src="../../assets/config.js"></script>
       
     
   </body>
