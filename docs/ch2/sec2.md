@@ -281,7 +281,7 @@ A sunflower is a hypergraph whose hyperedges all have one common intersection in
 
 
 <center>
-<img style="width:17em;border-style:solid;border:5px;" src="./img/sunflower.jpg" alt="example-sunflower" />
+<img style="width:17em;border-style:solid;border:5px;" src="../img/sunflower.jpg" alt="example-sunflower" />
 </center>
 
 
@@ -304,7 +304,7 @@ This shows that the node centrality assignment in the case of a uniform sunflowe
 
 
 <center>
-<img style="width:35em;border-style:solid;border:5px;" src="./img/uniform-sunflower.png" alt="centrality-uniform-sunflower" />
+<img style="width:35em;border-style:solid;border:5px;" src="../img/uniform-sunflower.png" alt="centrality-uniform-sunflower" />
 </center>
 
 
@@ -322,7 +322,7 @@ The situation is different for the case of a nonuniform hypergraph sunflower whe
 on an example sunflower
 
 <center>
-<img style="width:35em;border-style:solid;border:5px;" src="./img/non-uniform-sunflower.png" alt="centrality-nonuniform-sunflower" />
+<img style="width:35em;border-style:solid;border:5px;" src="../img/non-uniform-sunflower.png" alt="centrality-nonuniform-sunflower" />
 </center>
 
 
