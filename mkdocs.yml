@@ -4,7 +4,8 @@ site_author: Francesco Tudiscos
 nav:
     - Home: index.md
     - Chapter 1: 
-        - chapter1.md
+        - ch1/sec1.md
+        - ch1/sec2.md
     - Chapter 2: 
         # - ch2/centrality.md
         - ch2/sec1.md
