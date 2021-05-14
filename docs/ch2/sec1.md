@@ -70,7 +70,7 @@ It is easy to verify that the mapping $F(x) := Ax^{1-\varepsilon}$ is (multi)hom
 A similar situation holds for the singular vector case. Consider the graph in the figure below:
 
 <center>
-<img style="width:13em;border-style:solid;border:5px;" src="../tikz-figures/example-graph-hits.png" alt="example-graph" />
+<img style="width:13em;border-style:solid;border:5px;" src="../../tikz-figures/example-graph-hits.png" alt="example-graph" />
 </center>
 
 This is a well-known example where HITS centrality may fail to output a reasonable centrality. 

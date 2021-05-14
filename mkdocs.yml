@@ -90,7 +90,7 @@ markdown_extensions:
     - pymdownx.highlight:
         linenums: true
     - pymdownx.superfences
-    
+    - codehilite
     - pymdownx.arithmatex:
         generic: true
 

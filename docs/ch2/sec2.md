@@ -104,7 +104,7 @@ C_+(T) =\left\{(x,y)\succeq 0  \quad : \quad
 This is a cone of vectors that depends on the nonzero pattern of $T$: for $(x,y)\in C_+(T)$, $x_i$ is zero if and only if $T_{ijk}=0$ for all $j,k$, that is node $i$ is isolated in all the layers and, similarly, $y_k=0$ if and only if layer $k$ is empty (there is no edge in that layer).  
 
 
-Then $\rho(\M) = \frac{\sqrt{8p+q}+\sqrt{q}}{2p\sqrt{q}}$ and if $\rho(\M)<1$ we have:
+Then $\rho(\M) =  ( \sqrt{8p+q}+\sqrt{q}) / (2p\sqrt{q})$ and if $\rho(\M)<1$ we have:
 
 **1.** The system of nonlinear equations $\eqref{eq:tensor_singvec}$ has a unique solution $(x^*,y^*)\in C_+(T)$ such that $\|x^*\|=\|y^*\|=1$. 
 
@@ -281,7 +281,7 @@ A sunflower is a hypergraph whose hyperedges all have one common intersection in
 
 
 <center>
-<img style="width:17em;border-style:solid;border:5px;" src="../img/sunflower.jpg" alt="example-sunflower" />
+<img style="width:17em;border-style:solid;border:5px;" src="../../img/sunflower.jpg" alt="example-sunflower" />
 </center>
 
 
@@ -304,7 +304,7 @@ This shows that the node centrality assignment in the case of a uniform sunflowe
 
 
 <center>
-<img style="width:35em;border-style:solid;border:5px;" src="../img/uniform-sunflower.png" alt="centrality-uniform-sunflower" />
+<img style="width:35em;border-style:solid;border:5px;" src="../../img/uniform-sunflower.png" alt="centrality-uniform-sunflower" />
 </center>
 
 
@@ -322,7 +322,7 @@ The situation is different for the case of a nonuniform hypergraph sunflower whe
 on an example sunflower
 
 <center>
-<img style="width:35em;border-style:solid;border:5px;" src="../img/non-uniform-sunflower.png" alt="centrality-nonuniform-sunflower" />
+<img style="width:35em;border-style:solid;border:5px;" src="../../img/non-uniform-sunflower.png" alt="centrality-nonuniform-sunflower" />
 </center>
 
 
