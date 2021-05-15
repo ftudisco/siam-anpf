@@ -61,7 +61,7 @@ Then: $A,B,C,D$ are nonnegative; $B,C,D$ are irreducible; $C,D$ are primitive; $
 
 These defintions can be interpret in the context of graphs. Indeed, one can associated a directed graph $G(A)=(V,E)$ to a nonnegative matrix $A\in \RR^{n\times n}$ as follows: The vertexes are $V=\{1,\ldots,n\}$ and there is an edge from $i$ to $j$, i.e. $(i,j)\in E$, if $A_{ij}>0$. A directed path from $i\in V$ to $j\in V$, is a sequence of $\ell$ edges $(k_1,k_2),(k_2,k_3),\ldots,(k_{\ell},k_{\ell+1})\in E$ such that $k_1=1$ and $k_{\ell+1}= j$. The length of a directed path is the number of edges it traverses, namely $\ell$. The above definitions can now be equivalently formulated as follows:
 <section markdown="block" class="theorem">
-**Proposition.** Let $A\in\RR^{n\times n}$ be a nonnegative matrix and $G(A)=(V,E)$ be its associated graph.
+**Proposition.** (Graph characterization) Let $A\in\RR^{n\times n}$ be a nonnegative matrix and $G(A)=(V,E)$ be its associated graph.
 
 - $A$ is positive if, and only if, $G(A)$ is complete, i.e. $E=\{(i,j)\mid \forall i,j\in V\}$.
 - $A$ is irreducible if, and only if, $G(A)$ is connected, i.e. for all $i,j\in V$ there exists a directed path from $i$ to $j$ (see Theorem ...). 
@@ -72,7 +72,7 @@ Note that the above characterizations highlight the fact that positivivity, irre
 Another way to characterize nonnegative, positive, irreducible and primitive matrices, is to analyze their image on vectors with nonnegative entries.
 Note for instance that a matrix $A\in\RR^{n\times n}$ is nonnegative if, and only if, $Ax\in C_+$ for all $x\in C_+$.
 <section markdown="block" class="theorem">
-**Proposition.** Let $A\in\RR^{n\times n}$ be a nonnegative matrix.
+**Proposition.** (operator characterization) Let $A\in\RR^{n\times n}$ be a nonnegative matrix.
 
 - $A$ is positive if, and only if, $Ax\in C_{++}$ for all $x\in\RR^n_+\setminus\{0\}$.
 - $A$ is irreducible if, and only if, there exists an integer $m$ such that $\sum_{k= 0}^m A^{k}x\in C_{++}$ for all $x\in\RR^n_+\setminus\{0\}$ (see Theorem ...).
@@ -195,79 +195,3 @@ We conclude by noting that, while the irreducibility of $A$ implies the irreduci
 ### Application: Computing the norm of a nonnegative tensor
 
 ### Application: ...
-
-
-## The cone of nonnegative vectors
-
-The Perron-Frobenius theory deals with operators that leave a normal, convex and pointed cone invariant. The cone of nonnegative vectors is the most common example of such a cone and the one that most often arises in applications. We denote such cone as $C_+ \subseteq \mathbb R^n$ or, when the dimension is clear from the context, simply as $C_+.$ The elements of $C_+$ are vectors whose components are all nonnegative. Whereas the interior $C_{++}$ of $C_+$ is the set of entrywise positive vectors:
-
-
-- $C_+ = \{x\in \mathbb R^n : x_i\geq 0$ for all $i=1,\dots,n\}=\{x\in \mathbb R^n : x\succeq 0\}$ 
-- $C_{++} = \{x\in \mathbb R^n : x_i> 0$ for all $i=1,\dots,n\}=\{x\in \mathbb R^n : x\succ 0\}.$  
-
-$C_+$ is convex, pointed and normal as $\alpha x\in C_+$ for all $x\in C_+$ and all scalar coefficients $\alpha \geq 0$,  $C_+\cap -C_+ = \{0\}$ and for all pair of vectors $x,y\in C_+$ such that $x\preceq y$ there exists a $\gamma>0$ such that $\|x\|\leq \gamma \|y\|$. Here $\|\cdot\|$ is any norm on $\mathbb R^n$. 
-
-This tutorial will  focus only on $C_+$ however, however we point out that all the results we will present can be  relatively directly transferred to arbitrary normal, convex and pointed cones.  
-
-## Hilbert projective distance 
-One of the key tools for the Perron-Frobenius theory for nonlinear mappings is the Hilbert distance. For any two positive vectors $x,y\succ 0$, this is defined as:[^1]
-
-\\[d_H(x,y) = \ln\Big(\max_{i=1,\dots,n}\frac{x_i}{y_i}\max_{i=1,\dots,n}\frac{y_i}{x_i}\Big)\\]
-
-[^1]: This definition is strictly related to the choice of the nonnegative cone $C_+$. For general cones, the definition of $d_H$ changes. However, all its properties do not change. 
-
-$d_H$ is a metric on the space of rays in $C_{++}$, that is it holds[^2]
-
-<center>
-$d_H(\alpha x, \beta y) =d_H(x,y)$ for all scalar coefficients $\alpha,\beta >0$
-</center>
-
-[^2]: :material-file-document-outline: *Lemmens, Nussbaum, Citation test*
-
-ds
-
-Lorem markdownum fuit peragit eunti, cum illuc heu ferrumque gentis. Curvarique
-loca remoraminaque terram iniustaque tempora luctusque vitam; tela iunxit gratia
-fontibus ut tempus cupiasque relevasse altis. Mutantur carpere geratis Scorpius.
-Visa ego delendaque, victae esse pervenit et arentia gentem.
-
-    if (5 + net) {
-        alignment = jumperPpi;
-        ppl_server = multiplatform(2, -1) + switchCable;
-    }
-    var integerCarrier = uml_p_tween;
-    metafileCdPram -= scareware.barMultiprocessingIo.box(fiber,
-            plugSyn.integrated_add(gif, camera, export_vga_multithreading));
-    if (processorSdk) {
-        taskCcd = client_clipboard_syntax;
-    }
-
-Prope sine coepta: reddi tabo virens expositum amaris saxo [medio
-fons](http://www.redeat.io/et) esse Nisi. Dixit **dolorem simulamina** motus.
-Gradibus tuta quae addere vero iuvenis candida; ictu Phocaico, tempore addicere
-pluma terra?
-
-## Est deus pericula exigere figit
-
-Iani rumpere raptos o columbae non et leonis [ferre qui
-quinque](http://www.signaverat.org/oblita.aspx) arva idem *dixit* haec;
-advertite candore. Mora invitusque casses,
-[totidemque](http://www.relatu-carnibus.io/victae) et erat in nonne novat
-iamque: quae? Ab nec fecit et idonea nunc lumine Spartana nunc vertice brevis
-pendebant levius contraria aere? Iram orba ferarum dei eburnea; voce
-praestantes, me squamas victor contigit pia!
-
-    pitch_ecc.serp_clip = -5 + -1;
-    box.tape_digital(subnet_only);
-    esports_query_multiprocessing.fontPiconetServices -= document_laptop;
-
-Ipse nomen, certum ego; heros nam, donec et semper parenti formatae
-[si](http://dryope.org/et-condidit) iuvenum. Insidias dextera anumque est
-habitandae nubes. Quo Latina, quidem: positisque, inter regia puer iurgia, illa
-illos **ille** limine flammifera dracones et. Retenta Metione atque iam quoque
-Iunone pabula.
-
-Canna ora maxima non penates cautum cruorem quid quid falsi. Ara plus templa,
-nymphe innato [parum vestrae](http://www.undae-forma.org/sacerdosdisiecit), tunc
-caput instat quo. Tum moras si Euagrus freta ferrove urbs nec etiam ipsis. Nunc
-quod aut intrarunt et graves urbes, telluris carmen coget corpus.
