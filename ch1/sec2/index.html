@@ -1,0 +1,809 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Francesco Tudiscos">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
+    
+    
+      
+        <title>The Perron-Frobenius theorem for homogeneous mappings - SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e35208c4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Open Sans";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="http://tikzjax.com/v1/fonts.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="deep-orange">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#the_perron-frobenius_theorem_for_homogeneous_mappings" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory" class="md-header__button md-logo" aria-label="SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18-.21 0-.41-.06-.57-.18l-7.9-4.44A.991.991 0 0 1 3 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18.21 0 .41.06.57.18l7.9 4.44c.32.17.53.5.53.88v9M12 4.15 6.04 7.5 12 10.85l5.96-3.35L12 4.15M5 15.91l6 3.38v-6.71L5 9.21v6.7m14 0v-6.7l-6 3.37v6.71l6-3.38z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              The Perron-Frobenius theorem for homogeneous mappings
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="deep-orange" type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="deep-orange" type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory" class="md-nav__button md-logo" aria-label="SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18-.21 0-.41-.06-.57-.18l-7.9-4.44A.991.991 0 0 1 3 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18.21 0 .41.06.57.18l7.9 4.44c.32.17.53.5.53.88v9M12 4.15 6.04 7.5 12 10.85l5.96-3.35L12 4.15M5 15.91l6 3.38v-6.71L5 9.21v6.7m14 0v-6.7l-6 3.37v6.71l6-3.38z"/></svg>
+
+    </a>
+    SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      <label class="md-nav__link" for="__nav_2">
+        Chapter 1
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Chapter 1" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 1
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sec1/" class="md-nav__link">
+        Perron-Frobenius theory for linear mappings
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          The Perron-Frobenius theorem for homogeneous mappings
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        The Perron-Frobenius theorem for homogeneous mappings
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#brief_history_birkhoff_1950_hilbert_metric_nussbaum_homogeneous_mappings_strict_contractivity" class="md-nav__link">
+    Brief history: Birkhoff (1950): Hilbert metric, Nussbaum: homogeneous mappings, ...: strict contractivity.
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hilbert_projective_distance_and_the_birkhoff-hopf_theorem" class="md-nav__link">
+    Hilbert projective distance and the Birkhoff-Hopf theorem
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#homogeneous_and_order-preserving_mappings" class="md-nav__link">
+    Homogeneous and order-preserving mappings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the_perron-frobenius_theorem_and_the_collatz-wielandt_formula" class="md-nav__link">
+    The Perron-Frobenius theorem and the Collatz-Wielandt formula
+  </a>
+  
+    <nav class="md-nav" aria-label="The Perron-Frobenius theorem and the Collatz-Wielandt formula">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#application_computing_the_qto_p_norm_of_a_nonnegative_matrix" class="md-nav__link">
+    Application: Computing the \(q\to p\) norm of a nonnegative matrix
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application_the_sinkhorn_method" class="md-nav__link">
+    Application: The Sinkhorn method
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        Chapter 2
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Chapter 2" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 2
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ch2/sec1/" class="md-nav__link">
+        Network centrality
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ch2/sec2/" class="md-nav__link">
+        Higher-order network models
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" data-md-state="indeterminate" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        Chapter 3
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Chapter 3" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 3
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ch3/sec1/" class="md-nav__link">
+        Section 1
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ch3/sec2/" class="md-nav__link">
+        Section 2
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
+      
+      <label class="md-nav__link" for="__nav_5">
+        Chapter 4
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Chapter 4" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 4
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ch4/sec1/" class="md-nav__link">
+        Optimization with nonlinear Perron eigenvectors
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ch4/sec2/" class="md-nav__link">
+        The core-periphery detection problem
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="the_perron-frobenius_theorem_for_homogeneous_mappings">The Perron-Frobenius theorem for homogeneous mappings</h1>
+<h2 id="brief_history_birkhoff_1950_hilbert_metric_nussbaum_homogeneous_mappings_strict_contractivity">Brief history: Birkhoff (1950): Hilbert metric, Nussbaum: homogeneous mappings, &hellip;: strict contractivity.</h2>
+<h2 id="hilbert_projective_distance_and_the_birkhoff-hopf_theorem">Hilbert projective distance and the Birkhoff-Hopf theorem</h2>
+<p>A key observation for the development of the nonlinear Perron-Frobenius theory was made by Birkhoff, when he noticed that nonnegative matrices are non-expansive with respect to the Hilbert metric induced by the cone <span class="arithmatex">\(C_+\)</span>.</p>
+<p>The Hilbert (projective) metric <span class="arithmatex">\(d_H\colon C_+\times C_+\to [0,\infty]\)</span> is defined by <span class="arithmatex">\(d_H(0,0)=0\)</span>, <span class="arithmatex">\(d(x,y)=\infty\)</span> if <span class="arithmatex">\(x\not\sim y\)</span>, and</p>
+<div class="arithmatex">\[d_H(x,y) = \ln\Big(\max_{i,j \in \mathcal I} \frac{x_i}{y_i}\frac{y_j}{x_j}\Big) \quad \text{ where }\quad \mathcal I =\{i\colon x_i&gt;0\},\]</div>
+<p>for all <span class="arithmatex">\(x,y\in C_+\setminus \{0\}\)</span> such that <span class="arithmatex">\(x\sim y\)</span>.</p>
+<p>Technically, <span class="arithmatex">\(d_H\)</span> is not a metric but a pseudometric since <span class="arithmatex">\(d(x,y)=0\)</span> may not imply <span class="arithmatex">\(x=y\)</span>. However, it is a complete metric on the set of unit vectors contained in the same part of <span class="arithmatex">\(C_+\)</span>.</p>
+<section class="theorem">
+<p><strong>Lemma.</strong> Let <span class="arithmatex">\(\|\cdot\|\)</span> be a norm on <span class="arithmatex">\(\RR^n\)</span> and <span class="arithmatex">\(B=\{x\in \RR^n \colon \|x\|=1\}\)</span>.</p>
+<ul>
+<li>
+<p>For every <span class="arithmatex">\(x,y\in C_+\)</span> it holds <span class="arithmatex">\(d_H(x,y)=0\)</span> if and only if there exists <span class="arithmatex">\(\lambda &gt;0\)</span> such that <span class="arithmatex">\(x= \lambda y\)</span>.</p>
+</li>
+<li>
+<p>If <span class="arithmatex">\(P\subset C_+\)</span> is a part of <span class="arithmatex">\(C_+\)</span>, then <span class="arithmatex">\(x\sim y\)</span> for all <span class="arithmatex">\(x,y\in P\)</span>, and <span class="arithmatex">\((P\cap B, d_H)\)</span> is a complete metric space.</p>
+</li>
+</ul>
+</section>
+<p>A direct consequence of the first property in the above Lemma is that for any mapping <span class="arithmatex">\(f\colon C_+\to C_+\)</span> and any <span class="arithmatex">\(x\in C_+\)</span>, there exists <span class="arithmatex">\(\lambda &gt;0\)</span> such that <span class="arithmatex">\(f(x)=\lambda x\)</span> if, and only if, <span class="arithmatex">\(d_H(f(x),x)=0\)</span>. This observation suggest that the Hilbert metric is particularly appropriate to study eigenvectors of mappings leaving a cone invariant.</p>
+<section class="theorem">
+<p>We should put the picture of my talk here.</p>
+</section>
+<p>If <span class="arithmatex">\(M\)</span> is any nonnegative matrix in <span class="arithmatex">\(\RR^{n\times n}\)</span>, then for every <span class="arithmatex">\(x,y\in C_{++}\)</span> it holds </p>
+<div class="arithmatex">\[\begin{equation}\label{eq:nonexpansive}
+Mx \preceq M \Big(\max_{i=1,\ldots,n}\frac{x_i}{y_i}\Big) y = \Big(\max_{i=1,\ldots,n}\frac{x_i}{y_i}\Big) My
+\end{equation}\]</div>
+<p>and therefore, <span class="arithmatex">\(d_H(Mx,My)\leq d_H(x,y)\)</span>, i.e. <span class="arithmatex">\(M\)</span> is nonnexpansive with respect to the Hilbert metric. </p>
+<p>The Birkhoff-Hopf theorem refines this observation by offering an explicit formula for the smallest Lipschitz constant of a positive matrix with respect to the Hilbert metric.</p>
+<section class="theorem">
+<p><strong>Theorem. (Birkhoff-Hopf)</strong> Let <span class="arithmatex">\(M\in \RR^{n\times n}\)</span> be a positive matrix and let</p>
+<div class="arithmatex">\[\kappa(M)=\inf\big\{\alpha \geq 0 \colon d_H(Mx,My)\leq d_H(x,y), \forall x,y\in C_+, x\sim y\big\},\]</div>
+<p>then, it holds </p>
+<div class="arithmatex">\[\kappa(M)=\tanh(\tfrac{1}{4}\Delta(M)) \quad \text{with}\quad \Delta(M)=\max_{i,j,k,\ell = 1,\ldots,n} \frac{M_{ij}M_{k\ell}}{M_{i\ell}M_{kj}}\]</div>
+</section>
+<p>The Birkhoff-Hopf theorem holds for considerably more general settings such as linear mappings defined on general cones in finite or infinite dimensional spaces. We refer to [NBproof] for a very elegant proof in the general setting. Note that from the formula for <span class="arithmatex">\(\Delta(M)\)</span> one can see that the smallest Lipschitz constant of <span class="arithmatex">\(M\)</span> with respect to <span class="arithmatex">\(d_H\)</span> does not depend on the scale of <span class="arithmatex">\(M\)</span>, i.e. <span class="arithmatex">\(\Delta(\alpha M)=\Delta(M)\)</span> for all <span class="arithmatex">\(\alpha &gt;0\)</span>. Furthermore, it holds <span class="arithmatex">\(\Delta(M^\top)=\Delta(M)\)</span>. The quantity <span class="arithmatex">\(\Delta(M)\)</span> is the projective diameter of the set <span class="arithmatex">\(M(C_+)\)</span> and can be characterized as </p>
+<div class="arithmatex">\[ \Delta(M)=\sup\{d_H(Mx,My)\colon x,y \in C_+, x\sim y\}. \]</div>
+<p>As discussed in the following remark, the Birkhoff-Hopf theorem can be used to prove results of the Perron-Frobenius theorem for positive matrices. Furthermore, <span class="arithmatex">\(\kappa(M)\)</span> provides a bound on the linear convergence rate of the sequence converging towards a unique positive eigenvector.</p>
+<section class="theorem">
+<p><strong>Remark.</strong> Given a positive matrix <span class="arithmatex">\(M\in\RR^{n\times n}\)</span>, the Perron-Frobenius theorem implies that <span class="arithmatex">\(M\)</span> has a unique eigenvector <span class="arithmatex">\(u \in C_{++}\)</span> with <span class="arithmatex">\(\|u\|=1\)</span>, and the sequence <span class="arithmatex">\(x^{k}=Ax^{k-1}\)</span> satisfies <span class="arithmatex">\(\lim_{k\to \infty} x^k/\|x^k\|=u\)</span> for every <span class="arithmatex">\(x^0\in C_{++}\)</span>. Thanks to the Birkhoff-Hopf theorem, these results can be obtained as a direct consequence of the Banach fixed point theorem. Indeed, let <span class="arithmatex">\(B\)</span> be the unit ball in <span class="arithmatex">\(\RR^n\)</span>. By the precedent Lemma we know that <span class="arithmatex">\((B\cap C_++,d_H)\)</span> is a complete metric space. Since the hyperbolic tangent takes values in <span class="arithmatex">\((0,1)\)</span>, the Birkhoff-Hopf theorem implies that <span class="arithmatex">\(x\mapsto Mx\)</span> is a strict contraction with respect to <span class="arithmatex">\(d_H\)</span>. Finally, note that the scale invariance of the Hilbert metric implies that <span class="arithmatex">\(x\mapsto Mx\)</span> and <span class="arithmatex">\(x\mapsto Mx/\|Mx\|\)</span> have the same Lipschitz constants. Hence, by the Banach fixed point theorem, the latter mapping has a unique fixed point, <span class="arithmatex">\(u\)</span>, and its iterates converge to <span class="arithmatex">\(u\)</span> with rate <span class="arithmatex">\(\kappa(M)\)</span>. However, it should be noted that the linear convergence rate provided by the Birkhoff-Hopf theorem is not as tight as the classical ratio between the second and first eigenvalues of <span class="arithmatex">\(M\)</span>.</p>
+</section>
+<p>The Hilbert metric can be used to prove a generalization of the Perron-Frobenius theorem to eigenvectors of nonlinear mappings on cones. We discuss the class of such mappings in the next section.</p>
+<h2 id="homogeneous_and_order-preserving_mappings">Homogeneous and order-preserving mappings</h2>
+<p>To prove that nonnegative matrices are nonexpansive with respect to <span class="arithmatex">\(d_H\)</span> in Equation <span class="arithmatex">\(\eqref{eq:nonexpansive}\)</span>, we have used two important properties of the nonnegative matrix <span class="arithmatex">\(M\)</span>: First, we have used the fact that for every <span class="arithmatex">\(x,y\in C_+\)</span> satisfying <span class="arithmatex">\(x\preceq y\)</span> it holds <span class="arithmatex">\(Mx\preceq My\)</span> and second, we have used the homogeneity of <span class="arithmatex">\(M\)</span>, i.e. if <span class="arithmatex">\(x\in \RR^n\)</span> and <span class="arithmatex">\(\alpha\geq 0\)</span>, then <span class="arithmatex">\(M(\alpha x)= \alpha M(x)\)</span>. This motivates the following definition:</p>
+<section class="theorem">
+<p><strong>Definition.</strong> Let <span class="arithmatex">\(K\subset C_+\)</span> be a convex cone, <span class="arithmatex">\(f\colon K \to C_+\)</span> and <span class="arithmatex">\(p\in \RR\)</span>.</p>
+<ul>
+<li><span class="arithmatex">\(f\)</span> is <span class="arithmatex">\(\textit{order-preserving}\)</span> if <span class="arithmatex">\(f(x)\preceq f(y)\)</span> for every <span class="arithmatex">\(x,y\in K\)</span> satisfying <span class="arithmatex">\(x\preceq y\)</span>.</li>
+<li><span class="arithmatex">\(f\)</span> is (positively) <span class="arithmatex">\(\textit{homogeneous of degree}\)</span> <span class="arithmatex">\(p\)</span>, if for every <span class="arithmatex">\(x\in K\)</span> and every <span class="arithmatex">\(\alpha\geq 0\)</span>, it holds <span class="arithmatex">\(f(\alpha\,x)=\alpha\, f(x)\)</span>.</li>
+</ul>
+</section>
+<p>If <span class="arithmatex">\(f\)</span> is homogeneous of degree <span class="arithmatex">\(1\)</span>, we simply say that <span class="arithmatex">\(f\)</span> is homogeneous. If <span class="arithmatex">\(f\)</span> is differentiable on an open set containing <span class="arithmatex">\(C_+\)</span>, then Theorem 1.3.1 of [NB] implies that <span class="arithmatex">\(f\)</span> is order-preserving if and only if <span class="arithmatex">\(D f(x)\in C_+\)</span> for all <span class="arithmatex">\(x\in C_+\)</span>. Similarly, the Euler theorem for homogeneous mappings shows that <span class="arithmatex">\(f\)</span> is homogeneous of degree <span class="arithmatex">\(p\)</span> if and only if <span class="arithmatex">\(D f(x) x\, = \, p\, f(x)\)</span> for all <span class="arithmatex">\(x\in C_+\)</span>. If <span class="arithmatex">\(C_+\subset \RR^1\)</span>, then being order-preserving is precisely the same as being increasing. The concept reducing to that of deacreasing functions is termed order-reversing. A mapping <span class="arithmatex">\(f\colon K\to C_+\)</span> is order-reversing, if <span class="arithmatex">\(f(y)\preceq f(x)\)</span> for every <span class="arithmatex">\(x,y\in K\)</span> satisfying <span class="arithmatex">\(x\preceq y\)</span>. We will however mainly discuss order-preserving functions.</p>
+<section class="theorem">
+<p><strong>Example.</strong></p>
+<ul>
+<li>Let <span class="arithmatex">\(M\)</span> be a nonnegative matrix with at least one positive entry per row. Let <span class="arithmatex">\(\alpha\in \RR\)</span> and consider the mapping <span class="arithmatex">\(f_{\alpha}\colon C_{++} \to C_{++}\)</span> defined as </li>
+</ul>
+<div class="arithmatex">\[\begin{equation}\label{def:f_a}
+f_{\alpha}(x) = (Mx)^{\alpha}
+\end{equation}\]</div>
+<p>where the power <span class="arithmatex">\(\alpha\)</span> is applied component-wise, i.e. <span class="arithmatex">\(y^{\alpha}=(y_1^{\alpha},\ldots,y_n^{\alpha})^\top\)</span> for all <span class="arithmatex">\(y\in C_{++}\)</span>. Then, this mapping is homogeneous of degree <span class="arithmatex">\(\alpha\)</span>. Furthermore, <span class="arithmatex">\(f_{\alpha}\)</span> is order-preserving if <span class="arithmatex">\(\alpha &gt; 0\)</span>, order-reversing if <span class="arithmatex">\(\alpha &lt;0\)</span> and constant if <span class="arithmatex">\(\alpha =0\)</span>.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></p>
+<ul>
+<li>Let <span class="arithmatex">\(T\in\RR^{n\times n \times n}\)</span> with <span class="arithmatex">\(T_{ijk}\geq 0\)</span> for all <span class="arithmatex">\(i,j,k=1,\ldots,n\)</span> and consider the mapping <span class="arithmatex">\(f\colon C_+\to C_+\)</span> defined as</li>
+</ul>
+<div class="arithmatex">\[\begin{equation}\label{def:f_T3}
+f(x)_i = \sum_{j,k} T_{ijk}x_jx_k \qquad \forall i = 1,\ldots,n.
+\end{equation}\]</div>
+<p>Then, this mapping is homogeneous of degree <span class="arithmatex">\(2\)</span> and order-preserving.</p>
+<ul>
+<li>
+<p>Let <span class="arithmatex">\(M\)</span> be a nonnegative matrix and <span class="arithmatex">\(b\in C_+\)</span>. Define <span class="arithmatex">\(f\colon C_+ \to C_+\)</span> by <span class="arithmatex">\(f(x)=Mx+b\)</span>. Then, <span class="arithmatex">\(f\)</span> is order-preserving but not homogeneous. Nevertheless, <span class="arithmatex">\(f\)</span> satisfies <span class="arithmatex">\(\alpha f(x)\leq f(\alpha x)\)</span> for all <span class="arithmatex">\(\alpha \in (0,1)\)</span> and <span class="arithmatex">\(x\in C_+\)</span>. We refer to [&hellip;] for further readings on subhomogeneous mappings.</p>
+</li>
+<li>
+<p>Let <span class="arithmatex">\(C_+\subset \RR^2\)</span> and <span class="arithmatex">\(f\colon C_+\to C_+\)</span> defined as</p>
+</li>
+</ul>
+<div class="arithmatex">\[\begin{equation}\label{def:f_disco}
+f(x_1,x_2)=\begin{cases} (x_2 , 0 )^\top &amp; \text{if }x_2&gt;0, x_1=0\\ (x_1 , x_1)^\top &amp; \text{if }x_2=0, x_1&gt;0\\ (0,x_2)^\top &amp; \text{otherwise} \end{cases}
+\end{equation}\]</div>
+<p>Then, <span class="arithmatex">\(f\)</span> is homogeneous and order-preserving.</p>
+<ul>
+<li>Let <span class="arithmatex">\(C_+ \subset \R^3\)</span> and <span class="arithmatex">\(f\colon C_+\to C_+\)</span> defined as</li>
+</ul>
+<div class="arithmatex">\[\begin{equation}\label{def:f_max}
+f(x_1,x_2,x_3)= \big(\max\{x_1,x_2,x_3\}, \max\{\tfrac{x_1}{2},x_2\}, \max\{\tfrac{x_2}{2},x_3\}\big)^\top
+\end{equation}\]</div>
+<p>Then <span class="arithmatex">\(f\)</span> is continuous, homogeneous and order-preserving. </p>
+</section>
+<p>A similar argument as in Equation <span class="arithmatex">\(\eqref{eq:nonexpansive}\)</span> yields the following:</p>
+<section class="theorem">
+<p><strong>Lemma.</strong> Let <span class="arithmatex">\(K\in\{C_+,C_{++}\}\)</span> and let <span class="arithmatex">\(f\colon K \to C_+\)</span> be homogeneous of degree <span class="arithmatex">\(p\in \RR\)</span>. Suppose that <span class="arithmatex">\(f\)</span> is either order-preserving or order-reversing, then</p>
+<div class="arithmatex">\[ d_H(f(x),f(y))\leq |p|\,d_H(x,y)\qquad \forall x,y\in C_{++}.\]</div>
+</section>
+<p>The classical Perron-Frobenius theorem is concerned with eigenvalues and eigenvectors of linear mappings and their spectral radius. 
+The notions of eigenvalues and eigenvectors for a general mapping <span class="arithmatex">\(f\colon K\to C_+\)</span> with <span class="arithmatex">\(K\subset C_+\)</span> can be extended as follows: We say that <span class="arithmatex">\(x\in C_+\)</span> is an eigenvector of  if there exists <span class="arithmatex">\(\lambda\geq 0\)</span> such that <span class="arithmatex">\(f(x)=\lambda x\)</span>, <span class="arithmatex">\(\lambda\)</span> is called an eigenvalue. However, the notion of spectral radius is more delicate to generalize. Indeed, without further assumptions on <span class="arithmatex">\(f\)</span>, the spectrum of <span class="arithmatex">\(f\)</span> (the set of its eigenvalues) can be empty or unbounded. We consider the following definition:</p>
+<section class="theorem">
+<p><strong>Definition.</strong> Let <span class="arithmatex">\(f\colon C_+ \to C_+\)</span> be continuous, order-preserving and homogeneous. The spectral radius of <span class="arithmatex">\(f\)</span> is defined by</p>
+<div class="arithmatex">\[\rho(f) = \lim_{k\to \infty} \|f^k\|_{C_+}^{1/k},\]</div>
+<p>where <span class="arithmatex">\(f^k=f\circ \cdots \circ f\)</span> is the <span class="arithmatex">\(k\)</span>-th composition of <span class="arithmatex">\(f\)</span> with itself and <span class="arithmatex">\(\|f\|_{C_+}=\max\{\|f(x)\| \colon x\in C_+, \|x\|\leq 1\}\)</span> is the induced norm of <span class="arithmatex">\(f\)</span> with respect to any norm <span class="arithmatex">\(\|\cdot \|\)</span> on <span class="arithmatex">\(\RR^n\)</span>.</p>
+</section>
+<p>The above definition of <span class="arithmatex">\(\rho(f)\)</span> is usually referred to as the Bonsall spectral radius of <span class="arithmatex">\(f\)</span>. Another definition of spectral radii have been proposed, namely the cone spectral radius of <span class="arithmatex">\(f\)</span>. Nevertheless, it is shown in [specrad] that both definitions are equivalent for continuous homogeneous order-preserving mappings on <span class="arithmatex">\(C_+\)</span>. Let us further observe that for mappings <span class="arithmatex">\(f\colon C_+\to C_+\)</span> which are homogeneous of degree <span class="arithmatex">\(p\neq 1\)</span>, the concept of eigenvalue is less clear as they depend on the scaling of the eigenvector. However, as discussed in the next section, if <span class="arithmatex">\(f\colon C_{++}\to C_{++}\)</span> is order-preserving and homogeneous of degree <span class="arithmatex">\(p&lt;1\)</span>, then <span class="arithmatex">\(f\)</span> always have a unique eigenvector.</p>
+<h2 id="the_perron-frobenius_theorem_and_the_collatz-wielandt_formula">The Perron-Frobenius theorem and the Collatz-Wielandt formula</h2>
+<p>We split the statement of the Perron-Frobenius theorem for homogeneous mappings in several parts in order to facilitate the discussion of the assumptions.</p>
+<p>First, we state the weak form of the Perron-Frobenius theorem which guarantees that the spectral radius is an egeivalue. We refer to Corollary 5.4.2 in [NB] for a proof. 
+<section markdown="block" class="theorem">
+<strong>Theorem 1.</strong> Let <span class="arithmatex">\(f\colon C_{+}\to C_{+}\)</span> be continuous, homogeneous and order-preserving. </p>
+<ul>
+<li>There exists <span class="arithmatex">\(u\in C_{+}, u \neq 0\)</span> such that <span class="arithmatex">\(f(u) = \rho(f) u\)</span>. ([NB] Corollary 5.4.2)
+</section></li>
+</ul>
+<p>Note that if <span class="arithmatex">\(f\colon \RR^n\to \RR^n\)</span> is linear and saisfies <span class="arithmatex">\(f(C_+)\subset C_+\)</span>, then <span class="arithmatex">\(f\)</span> is order-preserving and the matrix associated to <span class="arithmatex">\(f\)</span> has nononegative entries (in the canonical basis). Hence, if <span class="arithmatex">\(f\)</span> is linear, the assumption above matches the assumptiong of classical Perron-Frobenius theorem.</p>
+<p>There are two ways to prove the existence of a positive eigenvector of <span class="arithmatex">\(f\)</span>. Each follows from a different generalization of the notion of irreducibility (see Section 1). The first is the following:</p>
+<section class="theorem">
+<p><strong>Theorem 2.</strong> Let <span class="arithmatex">\(f\colon C_{+}\to C_{+}\)</span> be homogeneous and order-preserving.</p>
+<ul>
+<li>If for all <span class="arithmatex">\(x\in C_+\)</span>, there exists <span class="arithmatex">\(N&gt;0\)</span> such that <span class="arithmatex">\(\sum_{k=0}^N f^k(x)\in C_{++}\)</span>, then every eigenvector of <span class="arithmatex">\(f\)</span> lies in <span class="arithmatex">\(C_{++}\)</span>.</li>
+</ul>
+</section>
+<p>The above result has the advantage to guarantee that there is no eigenvectors of <span class="arithmatex">\(f\)</span> on the boundary of the cone <span class="arithmatex">\(C_+\)</span>. On the other hand, in most applications involving tensors, it turns out to be more restrictive than the assumption of the following theorem which considers a generalization of the graph associated to a matrix. We recall the following definition from [GaubertGunnar]. </p>
+<section class="theorem">
+<p><strong>Definition.</strong> Given <span class="arithmatex">\(f\colon C_{+}\to C_{+}\)</span> homogeneous and order-preserving, consider the graph <span class="arithmatex">\(G(f)=(V,E)\)</span> with <span class="arithmatex">\(V=\{1,\ldots,n\}\)</span> and <span class="arithmatex">\((i,j)\in E\)</span> if</p>
+<div class="arithmatex">\[\lim_{t\to \infty} f(\mathbf{1} + t e_j)_i =\infty,\]</div>
+<p>where <span class="arithmatex">\(\mathbf{1}\)</span> is the vector of all ones and <span class="arithmatex">\(e_i\)</span> is the <span class="arithmatex">\(i\)</span>-th vector of the canonical basis. </p>
+</section>
+<p>Note that if <span class="arithmatex">\(f(x)=Mx\)</span> for some nonnegative matrix <span class="arithmatex">\(M\)</span>, then <span class="arithmatex">\(G(f)\)</span> coincide with the directed graph induced by the positive entries of <span class="arithmatex">\(M\)</span> (see Section 1). </p>
+<section class="theorem">
+<p><strong>Theorem 3.</strong> Let <span class="arithmatex">\(f\colon C_{++}\to C_{++}\)</span> be homogeneous and order-preserving.</p>
+<ul>
+<li>If <span class="arithmatex">\(G(f)\)</span> is strongly connected then there exists <span class="arithmatex">\(u\in C_{++}\)</span> and <span class="arithmatex">\(\lambda &gt;0\)</span> such that <span class="arithmatex">\(f(u)=\lambda u\)</span>.</li>
+</ul>
+</section>
+<p>This result is a particular case of Theorem 1 in [CaubertGunar]. Example 5.4 of [ourPF] provides a mapping which satisfies the assumptions of Theorem 3 but not those of Theorem 2. For nonnegative tensors, the assumption of Theorem 1 implies that of Theorem 2, but not vice-versa (see [pqFriedland], Lemma &hellip;).</p>
+<p>Regarding uniqueness, another generalization of irreducibility is needed:
+<section markdown="block" class="theorem">
+<strong>Theorem 4.</strong> Let <span class="arithmatex">\(f\colon C_{++}\to C_{++}\)</span> be homogeneous and order-preserving. Suppose that there exists <span class="arithmatex">\(u\in C_{++}\)</span> and <span class="arithmatex">\(\lambda &gt;0\)</span> such that <span class="arithmatex">\(f(u)=\lambda u\)</span> and <span class="arithmatex">\(f\)</span> is differentiable at <span class="arithmatex">\(u\)</span>. If <span class="arithmatex">\(Df(u)\in\RR^{n\times n}\)</span> is an irreducible matrix, then <span class="arithmatex">\(u\)</span> is the unique positive eigenvector of <span class="arithmatex">\(f\)</span>.
+</section></p>
+<p>The assumptions for the convergence of the iterates is similar to the above Theorem:
+Regarding uniqueness, another generalization of irreducibility is needed:
+<section markdown="block" class="theorem">
+<strong>Theorem 4.</strong> Let <span class="arithmatex">\(f\colon C_{++}\to C_{++}\)</span> be homogeneous and order-preserving. Suppose that there exists <span class="arithmatex">\(u\in C_{++}\)</span> and <span class="arithmatex">\(\lambda &gt;0\)</span> such that <span class="arithmatex">\(f(u)=\lambda u\)</span> and <span class="arithmatex">\(f\)</span> is differentiable at <span class="arithmatex">\(u\)</span>. If <span class="arithmatex">\(Df(u)\in\RR^{n\times n}\)</span> is a primitive matrix, then for every <span class="arithmatex">\(x^0\in C_{++}\)</span>, the sequence <span class="arithmatex">\((x^k)_{k=0}^{\infty}\subset C_{+}\)</span> defined as <span class="arithmatex">\(x^k = f(x^{k-1})\)</span> for all <span class="arithmatex">\(k\geq 1\)</span> satisfies</p>
+<div class="arithmatex">\[\lim_{k\to \infty} \frac{x^k}{\|x^k\|}= \frac{u}{\|u\|}.\]</div>
+</section>
+
+<p>Finally, to guarantee the maximality of eigenvalues, one can use the following generalization of the Collatz-Wieland formula:</p>
+<section class="theorem">
+<p><strong>Theorem.</strong> Let <span class="arithmatex">\(f\colon C_{+}\to C_{+}\)</span> be order-preserving and homogeneous of degree <span class="arithmatex">\(p\)</span> with <span class="arithmatex">\(0&lt; p&lt;1\)</span>. Suppose that <span class="arithmatex">\(f(C_{++})\subset C_{++}\)</span> and let <span class="arithmatex">\(\|\cdot\|\)</span> be a monotonic norm on <span class="arithmatex">\(\RR^n\)</span>, i.e. <span class="arithmatex">\(x,y\in C_+\)</span> and <span class="arithmatex">\(x\preceq y\)</span> imply <span class="arithmatex">\(\|x\|\leq \|y\|\)</span>. Then, there exists <span class="arithmatex">\(u\in C_{++}\)</span> and <span class="arithmatex">\(\lambda&gt;0\)</span> such that <span class="arithmatex">\(f(u)=\lambda u\)</span>, and</p>
+<div class="arithmatex">\[\begin{align*}
+\rho(A)\quad &amp;= \quad\sup_{x\in C_{+}^n\cap B} \quad\min_{\substack{i=1,\ldots,n\\ x_i &gt;0}}\quad \frac{f(x)_i}{x_i}\\
+&amp; =\quad \inf_{x\in C_{++}^n\cap B}\quad \max_{i=1,\ldots,n}\quad \frac{f(x)_i}{x_i},\notag
+\end{align*}\]</div>
+<p>where <span class="arithmatex">\(B=\{x\colon \|x\|=1\}\)</span> is the unit ball in <span class="arithmatex">\(\RR^n\)</span>.</p>
+</section>
+<p>Finally, we discuss the case of contractive mappings. The follwoing result is proved by Bushell in [Bus57] and can be obtained by combining both Lemmas of this section together with the Banach fixed point theorem. </p>
+<section class="theorem">
+<p><strong>Theorem.</strong> Let <span class="arithmatex">\(f\colon C_{++}\to C_{++}\)</span> be homogeneous of degree <span class="arithmatex">\(p\)</span> with <span class="arithmatex">\(|p|&lt;1\)</span>. Suppose that <span class="arithmatex">\(f\)</span> is either order-preserving or order-reversing. Let <span class="arithmatex">\(\|\cdot\|\)</span> be a norm on <span class="arithmatex">\(\RR^n\)</span>.</p>
+<ul>
+<li>There exists a unique eigenvector <span class="arithmatex">\(u\in C_{++}\)</span> of <span class="arithmatex">\(f\)</span>. </li>
+<li>For every <span class="arithmatex">\(x^0\in C_{++}\)</span>, the sequence <span class="arithmatex">\((x^k)_{k=0}^{\infty}\subset\RR^n\)</span> defined as <span class="arithmatex">\(x^k = f(x^{k-1})\)</span> for all <span class="arithmatex">\(k\geq 1\)</span> satisfies</li>
+</ul>
+<div class="arithmatex">\[\lim_{k\to \infty} \frac{x^k}{\|x^k\|}= \frac{u}{\|u\|}.\]</div>
+<p>Furthermore, for every <span class="arithmatex">\(k\geq 1\)</span>, it holds</p>
+<div class="arithmatex">\[\begin{align*}
+    \mu(x^k, u) \leq \frac{|p|^k}{1-|p|}\mu(x^1,x^0).
+\end{align*}\]</div>
+</section>
+<p>It is worth remarking the simplicity in the assumptions of the above theorem. For instance, when <span class="arithmatex">\(\alpha\in (-1,1)\)</span>, the mapping <span class="arithmatex">\(f_{\alpha}\)</span> of Equation <span class="arithmatex">\(\eqref{def:f_a}\)</span> is guaranteed to have a unique positive eigenvector with the only assumption on <span class="arithmatex">\(M\)</span> that it needs to have at least one positive entry per row. This contrast strongly with the assumptions of the Perron-Frobenius theorem for nonnegative matrices which requires irreducibility. However, the above theorem does not improve the Perron-Frobenius theorem as the linear case would require <span class="arithmatex">\(\alpha = 1\)</span>.</p>
+<p>Another difference between the above theorem and the Perron-Frobenius theorem is that the former adresses mappings defined on <span class="arithmatex">\(C_{++}\)</span> while the later adresses mappings defined on <span class="arithmatex">\(C_+\)</span>. Thus, the Perron-Frobenius theorem is more informative in the sense that its uniqueness result imply that there is no nonnegative eigenvector. This may not be the case in the nonlinear case (take for example <span class="arithmatex">\(M\)</span> to be identity matrix in the definition of <span class="arithmatex">\(f_{\alpha}\)</span>). Furthermore, there is no maximality statement in the above theorem. As discussed above, eigenvalues of mappings which are homogeneous of degree <span class="arithmatex">\(p\)</span> with <span class="arithmatex">\(p\neq 1\)</span> is delicate as the eigenvalue changes with respect to the scaling of the corresponding eigenvector. Therefore, in order to compare eigenvalues of such mappings, we fix the scale of the corresponding eigenvectors. With this observation, the following variant of the Collatz-Wielandt formula for order-preserving contractive mappings implies that if <span class="arithmatex">\(u\)</span> is a positive eigenvector and <span class="arithmatex">\(v\)</span> is a nonnegative eigenvector such that <span class="arithmatex">\(\|u\|=\|v\|\)</span> and <span class="arithmatex">\(\|\cdot\|\)</span> is a monotonic norm, then the eigenvalue corresponding to <span class="arithmatex">\(u\)</span> is at least as large as that corresponding to <span class="arithmatex">\(v\)</span>.</p>
+<section class="theorem">
+<p><strong>Theorem.</strong> Let <span class="arithmatex">\(f\colon C_{+}\to C_{+}\)</span> be order-preserving and homogeneous of degree <span class="arithmatex">\(p\)</span> with <span class="arithmatex">\(0&lt; p&lt;1\)</span>. Suppose that <span class="arithmatex">\(f(C_{++})\subset C_{++}\)</span> and let <span class="arithmatex">\(\|\cdot\|\)</span> be a monotonic norm on <span class="arithmatex">\(\RR^n\)</span>, i.e. <span class="arithmatex">\(x,y\in C_+\)</span> and <span class="arithmatex">\(x\preceq y\)</span> imply <span class="arithmatex">\(\|x\|\leq \|y\|\)</span>. Then, there exists <span class="arithmatex">\(u\in C_{++}\)</span> and <span class="arithmatex">\(\lambda&gt;0\)</span> such that <span class="arithmatex">\(f(u)=\lambda u\)</span>, and</p>
+<div class="arithmatex">\[\begin{align}\label{def:cw_down}
+\rho(A)\quad &amp;= \quad\sup_{x\in C_{+}^n\cap B} \quad\min_{\substack{i=1,\ldots,n\\ x_i &gt;0}}\quad \frac{f(x)_i}{x_i}\\
+&amp; =\quad \inf_{x\in C_{++}^n\cap B}\quad \max_{i=1,\ldots,n}\quad \frac{f(x)_i}{x_i},\notag
+\end{align}\]</div>
+<p>where <span class="arithmatex">\(B=\{x\colon \|x\|=1\}\)</span> is the unit ball in <span class="arithmatex">\(\RR^n\)</span>.</p>
+</section>
+<h3 id="application_computing_the_qto_p_norm_of_a_nonnegative_matrix">Application: Computing the <span class="arithmatex">\(q\to p\)</span> norm of a nonnegative matrix</h3>
+<h3 id="application_the_sinkhorn_method">Application: The Sinkhorn method</h3>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>We use the convention <span class="arithmatex">\(t^{0}=1\)</span> for all <span class="arithmatex">\(t&gt;0\)</span>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../sec1/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Perron-Frobenius theory for linear mappings
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../../ch2/sec1/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Network centrality
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "toc.integrate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4ea5477f.min.js"></script>
+      
+        <script src="../../assets/mathjaxhelper.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+      
+        <script src="../../assets/config.js"></script>
+      
+    
+  </body>
+</html>
