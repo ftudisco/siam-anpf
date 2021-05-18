@@ -1,6 +1,3 @@
-# Section 1
-
-## Subsec 1.1
-
+# The Birkhoff-hopf theorem and norms of positive matrices
 
 \bibliography

@@ -1,4 +1,4 @@
-# The Perron-Frobenius theorem for homogeneous mappings
+# Homogeneous mappings
 
 ## Brief history: Birkhoff (1950): Hilbert metric, Nussbaum: homogeneous mappings, ...: strict contractivity.
 
