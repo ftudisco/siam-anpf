@@ -16,7 +16,7 @@
     
     
       
-        <title>Eigenvector centrality - SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory</title>
+        <title>Multihomogeneous mappings - SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory</title>
       
     
     
@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#eigenvector_centrality" class="md-skip">
+        <a href="#multihomogeneous_mappings" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Eigenvector centrality
+              Multihomogeneous mappings
             
           </span>
         </div>
@@ -218,14 +218,16 @@
 
   
   
+    
+  
   
     
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       <label class="md-nav__link" for="__nav_2">
         Perron-Frobenius Theorem
@@ -243,7 +245,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ch1/sec1/" class="md-nav__link">
+      <a href="../sec1/" class="md-nav__link">
         Linear mappings
       </a>
     </li>
@@ -255,7 +257,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ch1/sec2/" class="md-nav__link">
+      <a href="../sec2/" class="md-nav__link">
         Homogeneous mappings
       </a>
     </li>
@@ -265,11 +267,21 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../ch1/sec3/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Multihomogeneous mappings
       </a>
+      
     </li>
   
 
@@ -286,16 +298,14 @@
 
   
   
-    
-  
   
     
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
       
       <label class="md-nav__link" for="__nav_3">
         Network Centrality
@@ -311,58 +321,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Eigenvector centrality
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../ch2/sec1/" class="md-nav__link">
         Eigenvector centrality
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#eigenvector_centrality_101" class="md-nav__link">
-    Eigenvector centrality 101
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#nonlinear_eigenvector_centrality" class="md-nav__link">
-    Nonlinear eigenvector centrality
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -372,7 +335,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sec2/" class="md-nav__link">
+      <a href="../../ch2/sec2/" class="md-nav__link">
         Higher-order network models
       </a>
     </li>
@@ -510,110 +473,7 @@
               
                 
                 
-                <h1 id="eigenvector_centrality">Eigenvector centrality</h1>
-<p>Complex networks is a common name for various real networks which are usually presented by
-graphs with a large number of nodes: Internet graphs, collaboration graphs, e-mail graphs, social
-networks, transport networks, protein-protein interaction networks, and many other. </p>
-<p>The term network analysis refers to a wealth of mathematical techniques
-aiming at describing the structure, function, and evolution of complex networks. One of the main tasks in network analysis is the localization of nodes that, in some sense,
-are the &ldquo;most important&rdquo; in a given graph. The main tool to quantify the relevance of nodes
-in a graph is through the computation of suitably defined centrality indices. Many centrality
-indices have been invented during time. Each one of them refers to a particular definition of
-&ldquo;importance&rdquo; or &ldquo;relevance&rdquo; that is most useful in a given context.....</p>
-<h2 id="eigenvector_centrality_101">Eigenvector centrality 101</h2>
-<p>Ranking the nodes of a network according to suitable &ldquo;centrality measures&rdquo; is a recurring and fundamental question in network science and data mining.  Among the various  network centrality models,  the class of <strong>eigenvector centrality</strong> is one of the most widely used and effective. This family of models  dates back to the 19th Century when it was proposed as a mean to rank professional chess players by Edmund Landau<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> and was then  popularized in the network science community starting from the late &rsquo;80s with Bonacich<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>, PageRank<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup> and HITS<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup> models. </p>
-<p>This class of scores assigns importances to the nodes of a graph, based on the leading eigenvector <span class="arithmatex">\(x\)</span> (or the leading singular vectors <span class="arithmatex">\(x,y\)</span>) of suitable network matrices and strongly rely on the matrix Perron-Frobenius theorem. 
-One of the keys of the success of eigenvector  centralities is that they naturally incorporate <strong>mutual reinforcement</strong>: important objects are those that interact with many other important objects. To clarify this idea, we review below two widely used centrality models (we consider the case of binary &ldquo;unweighted&rdquo; graphs for simplicity, but everything transfer with minor adjustments  to the weighted setting.)</p>
-<p><strong>Bonacich centrality</strong> Let <span class="arithmatex">\(G=(V,E)\)</span> be a graph with adjacency matrix </p>
-<div class="arithmatex">\[
-A_{ij} = \begin{cases}1 &amp; j\to i \\
-0 &amp; \text{otherwise}
-\end{cases} \quad , 
-\]</div>
-<p>where <span class="arithmatex">\(j\to i\)</span> means that there is an edge in <span class="arithmatex">\(G\)</span> going from <span class="arithmatex">\(j\)</span> to <span class="arithmatex">\(i\)</span>. 
-Bonacich centrality model defines the importance <span class="arithmatex">\(x_i\)</span> of node <span class="arithmatex">\(i\in V\)</span> as </p>
-<div class="arithmatex">\[
-x_i\propto \sum_{j: \, j\to i} x_j = (Ax)_i  \, , 
-\]</div>
-<!-- $A_  -->
-
-<p>that is, the importance of node <span class="arithmatex">\(x_i\)</span> is linearly proportional to the importances <span class="arithmatex">\(x_j\)</span> of the nodes that points towards <span class="arithmatex">\(i\)</span>. The Perron-Frobenius theory teaches us that, <strong>if the graph is strongly connected</strong>,  only one such vector <span class="arithmatex">\(x\)</span> exists, the Perron eigenvector of the  adjacency matrix <span class="arithmatex">\(A x=\rho(A)x\)</span>, and it provides us with sufficient conditions to compute such <span class="arithmatex">\(x\)</span> via the simple Power Method scheme. </p>
-<p><strong>HITS centrality</strong> Another widely used approach defines two centralities indices, the <em>hub score</em> and the <em>authority score</em>, via the mutual reinforcing informal idea that <em>&ldquo;a node is a good hub if it points to good authorities; and a node is a good authority if it is pointed by good hubs&rdquo;</em>. If <span class="arithmatex">\(x_i\)</span> and <span class="arithmatex">\(y_i\)</span> are the hub and the authority scores of node <span class="arithmatex">\(i\)</span>, respectively, then  </p>
-<div class="arithmatex">\[\begin{equation}\label{eq:sing-vec}
-x_i \propto \sum_{j: i\to j}y_j =  (A^\top y)_i \qquad y_i \propto  \sum_{j:j\to i} x_j = (Ax)_i
-\end{equation}\]</div>
-<!-- $A_  -->
-
-<p>Again, by the Perron-Frobenius theorem, <strong>if the graph is strongly connected</strong> there is only one nonnegative solution, the dominant left and right singular vectors of the adjacency matrix.</p>
-<h2 id="nonlinear_eigenvector_centrality">Nonlinear eigenvector centrality</h2>
-<p>While powerful and useful, these models have two main drawbacks:   </p>
-<ol>
-<li>they only allow for linear proportionality relations to define the importance model </li>
-<li>they may not be unique, even for simple graphs</li>
-</ol>
-<p>The nonlinear Perron-Frobenius theory allows us to overcome both these two drawbacks in a very natural way. This will be particularly important when moving to the case of <a href="#higher-order-networks">higher-order networks</a>, as we will discuss next. Here we discuss two simple illustrative examples. </p>
-<p>Suppose <span class="arithmatex">\(A=I\)</span> is the identity matrix. This is certainly not irreducible and in fact <span class="arithmatex">\(Ax = x\)</span> for all nonnegative vectors <span class="arithmatex">\(x\in C_+\)</span>. While from a linear algebra point of view there is no preferred nonnegative solution to <span class="arithmatex">\(x=Ax\)</span>, from the graph centrality perspective this is not the case. The graph of <span class="arithmatex">\(A\)</span> is a set of isolated nodes, each with a self-loop of weight exactly one. Thus, a centrality score for these nodes would assign same score to all the nodes. This corresponds to the eigenvector <span class="arithmatex">\(x = \one\)</span> of <span class="arithmatex">\(A\)</span>. While this is only one of the nonnegative solutions of <span class="arithmatex">\(x=Ax\)</span>, <span class="arithmatex">\(\one\)</span> is the only nonlinear Perron eigenvector of a &ldquo;nonlinear version&rdquo; of the eigenvalue problem for <span class="arithmatex">\(A\)</span>. Precisely, consider the nonlinear eigenvalue equation</p>
-<div class="arithmatex">\[\begin{equation}\label{eq:Af(x)}
-\lambda x = A  x^{1-\varepsilon}
-\end{equation}\]</div>
-<p>It is easy to verify that the mapping <span class="arithmatex">\(F(x) := Ax^{1-\varepsilon}\)</span> is (multi)homogeneous with homogeneity matrix the scalar <span class="arithmatex">\(\M=1-\varepsilon\)</span>. Thus, for any <span class="arithmatex">\(\varepsilon \in (0,1)\)</span>, <span class="arithmatex">\(\rho(\M)&lt;1\)</span> and by the nonlinear Perron-Frobenius theorem we have that <span class="arithmatex">\(\eqref{eq:Af(x)}\)</span> has a unique positive solution. It is easy to verify that such solution is entrywise constant, yielding the desired centrality assignment. </p>
-<p>A similar situation holds for the singular vector case. Consider the graph in the figure below:</p>
-<p><center>
-<img style="width:13em;border-style:solid;border:5px;" src="../../tikz-figures/example-graph-hits.png" alt="example-graph" />
-</center></p>
-<p>This is a well-known example where HITS centrality may fail to output a reasonable centrality. 
-While this graph is not a strongly connected graph, we all most probably agree that node <span class="arithmatex">\(1\)</span> is the most relevant <em>hub</em> while node <span class="arithmatex">\(6\)</span> is the most relevant <em>authority</em>. Despite this simple setting, using the dominant singular vectors of <span class="arithmatex">\(A\)</span> as in the HITS model may fail to identify these relevant hub and authority nodes. In fact, for example, both the following pairs</p>
-<div class="arithmatex">\[\begin{align*}
-x = (1,1,1,1,1, 0) \qquad y = (0,1,1,1,1,4)  \\
-x = (4, 1, 1, 1, 1, 0) \qquad y =(0,1,1,1,1,1)
-\end{align*}\]</div>
-<p>are (up to scaling) singular pairs of the dominant singular value of <span class="arithmatex">\(A\)</span>. This shows that, in the  first case,  the  hub  vector  fails  to  detect  that  node <span class="arithmatex">\(1\)</span>  is  a  better  hub  than  nodes  <span class="arithmatex">\(2\)</span>−<span class="arithmatex">\(5\)</span>.   Similarly,  in  the second case, the authority vector fails to identify node <span class="arithmatex">\(6\)</span>  as  a  the  best  authority. 
-Also in this case, a small nonlinear modification of <span class="arithmatex">\(\eqref{eq:sing-vec}\)</span> solves this issue. Consider the singular vector equation</p>
-<div class="arithmatex">\[\begin{equation}\label{eq:nonlin-sing-vec}
-\lambda x = A^\top y^\alpha \quad \mu y = A x^\beta\, .
-\end{equation}\]</div>
-<p>It is easy to see that any such pair of vectors is an eigenvector of a  multihomogeneous mapping with homogeneity matrix</p>
-<div class="arithmatex">\[
-\M = \begin{bmatrix}0 &amp; \alpha \\ \beta &amp; 0 \end{bmatrix}, \qquad \rho(H) = \sqrt{|\alpha\beta|}
-\]</div>
-<p>Thus for any <span class="arithmatex">\(\alpha\beta&lt;1\)</span> the nonlinear eigenvector equation <span class="arithmatex">\(\eqref{eq:nonlin-sing-vec}\)</span> has a unique solution. Below we show the value of the two solution vectors <span class="arithmatex">\(x,y\)</span> for different choices of <span class="arithmatex">\(\alpha\)</span> and <span class="arithmatex">\(\beta\)</span>, showing that these two vectors capture the actual roles of nodes in this example graph. </p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5
-6
-7
-8
-9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    │     │ α = 0.5  │ α = 0.9  │ α = 0.5  │ α = 0.9  │ β = 0.5  │ β = 0.9  │ β = 0.9  │ β = 0.5  │
-    │entry│ x1       │ x2       │ x3       │ x4       │ y1       │ y2       │ y3       │ y4       │
-    ├-----│----------│----------│----------│----------│----------│----------│----------│----------│
-    │ 1   │ 0.386488 │ 0.341489 │ 0.468535 │ 0.243379 │ 0.0      │ 0.0      │ 0.0      │ 0.0      │
-    │ 2   │ 0.153378 │ 0.164628 │ 0.132866 │ 0.189155 │ 0.153378 │ 0.164628 │ 0.189155 │ 0.132866 │
-    │ 3   │ 0.153378 │ 0.164628 │ 0.132866 │ 0.189155 │ 0.153378 │ 0.164628 │ 0.189155 │ 0.132866 │
-    │ 4   │ 0.153378 │ 0.164628 │ 0.132866 │ 0.189155 │ 0.153378 │ 0.164628 │ 0.189155 │ 0.132866 │
-    │ 5   │ 0.153378 │ 0.164628 │ 0.132866 │ 0.189155 │ 0.153378 │ 0.164628 │ 0.189155 │ 0.132866 │
-    │ 6   │ 0.0      │ 0.0      │ 0.0      │ 0.0      │ 0.386488 │ 0.341489 │ 0.243379 │ 0.468535 │
-</code></pre></div>
-</td></tr></table>
-
-<div class="footnote">
-<hr />
-<ol>
-<li id="fn:1">
-<p>J. P. Schäfermeyer. On Edmund Landau&rsquo;s contribution to the ranking of chess players. Technical Report, Unpublished manuscript, 2019.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
-</li>
-<li id="fn:2">
-<p>P. Bonacich. Power and centrality: a family of measures. <em>American Journal of Sociology</em>, 92:1170–1182, 1987.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
-</li>
-<li id="fn:3">
-<p>Lawrence Page, Sergey Brin, Rajeev Motwani, and Terry Winograd. The PageRank citation ranking: Bringing order to the web. Technical Report, Stanford InfoLab, 1999.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
-</li>
-<li id="fn:4">
-<p>Jon M Kleinberg. Authoritative sources in a hyperlinked environment. <em>Journal of the ACM <span class="arithmatex">\(JACM\)</span></em>, 46<span class="arithmatex">\(5\)</span>:604–632, 1999.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
-</li>
-</ol>
-</div>
+                <h1 id="multihomogeneous_mappings">Multihomogeneous mappings</h1>
                 
               
               
@@ -636,7 +496,7 @@ Also in this case, a small nonlinear modification of <span class="arithmatex">\(
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../../ch1/sec3/" class="md-footer__link md-footer__link--prev" rel="prev">
+        <a href="../sec2/" class="md-footer__link md-footer__link--prev" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -645,19 +505,19 @@ Also in this case, a small nonlinear modification of <span class="arithmatex">\(
               <span class="md-footer__direction">
                 Previous
               </span>
-              Multihomogeneous mappings
+              Homogeneous mappings
             </div>
           </div>
         </a>
       
       
-        <a href="../sec2/" class="md-footer__link md-footer__link--next" rel="next">
+        <a href="../../ch2/sec1/" class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Higher-order network models
+              Eigenvector centrality
             </div>
           </div>
           <div class="md-footer__button md-icon">
