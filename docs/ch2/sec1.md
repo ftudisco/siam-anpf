@@ -1,4 +1,4 @@
-# Network centrality  
+# Eigenvector centrality  
 
 
 Complex networks is a common name for various real networks which are usually presented by
@@ -74,7 +74,7 @@ A similar situation holds for the singular vector case. Consider the graph in th
 </center>
 
 This is a well-known example where HITS centrality may fail to output a reasonable centrality. 
-While this graph is not a strongly connected graph, we all most probably agree that node $1$ is the most relevant *hub* while node $6$ is the most relevant *authority*. Despite this simple setting, using the dominant singular vectors of $A$ as in the HITS model may fail to identify these relevant hub and authority nodes. In fact, both the following pairs
+While this graph is not a strongly connected graph, we all most probably agree that node $1$ is the most relevant *hub* while node $6$ is the most relevant *authority*. Despite this simple setting, using the dominant singular vectors of $A$ as in the HITS model may fail to identify these relevant hub and authority nodes. In fact, for example, both the following pairs
 
 \begin{align*}
 x = (1,1,1,1,1, 0) \qquad y = (0,1,1,1,1,4)  \\

@@ -13,6 +13,11 @@ This website has the aim to provide a self-contained and relatively detailed ove
 
 The slides of the talks can be found here:  
 
+[Outline](../slides/SIAM_Tutorial_Intro.pdf)    
+[The Perron-Frobenius Theorem]()    
+[Network Centrality](../slides/SIAM_Tutorial_2.pdf)     
+[The Birkhoff-Hopf Theorem]()     
+[Optimization with nonlinear Perron eigenvectors]()   
 
 
 ## Abstract 
@@ -26,7 +31,7 @@ In this minitutorial we will introduce the concept of multihomogeneous operators
 
 
 ## Credits
-The website is developed and maintained by [Antoine Gautier](https://scholar.google.com/citations?user=ymx43BUAAAAJ&hl=en) and [Francesco Tudisco](https://ftudisco.gitlab.io/). 
+The  website (and the tutorial) is developed and maintained by [Antoine Gautier](https://scholar.google.com/citations?user=ymx43BUAAAAJ&hl=en) and [Francesco Tudisco](https://ftudisco.gitlab.io/). 
 
 <center>
 <a href="https://scholar.google.com/citations?user=ymx43BUAAAAJ&hl=en"><img style="width:15em;border-style:solid;border-width:2px;border-radius: 50%;margin-right:2em;" src="./img/antoine-gautier.jpeg" alt="antoine-gautier" /></a>

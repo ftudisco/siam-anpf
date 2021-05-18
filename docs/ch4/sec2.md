@@ -7,7 +7,7 @@ nodes or discovering hidden substructures that relate them.
 A relevant problem in network science and data mining is to discover hidden structures in a given network. 
 Clustering and  community detection  are perhaps the 
 most widely studied such problem, and it forms the basis of many classification algorithms
-\cite{BLSZ18}. Other relevant problems include the anti-community detection problem and the core-periphery one, which we discuss next.
+[@BLSZ18]. Other relevant problems include the anti-community detection problem and the core-periphery one, which we discuss next.
 
 <center>
 <img style="width:11em;margin-right:2em;" src="../../img/communities.png" alt="communities-spy"/> <img style="width:11em;margin-right:2em;" src="../../img/bipartite.png" alt="anticommunities-spy" /> <img style="width:11em;" src="../../img/cp.png" alt="core-periphery-spy" />

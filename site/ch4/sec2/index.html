@@ -16,7 +16,7 @@
     
     
       
-        <title>Section 2 - SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory</title>
+        <title>The core-periphery detection problem - SIAM LA 21 - Tutorial - Applied Nonlinear Perron-Frobenius Theory</title>
       
     
     
@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#section_2" class="md-skip">
+        <a href="#the_core-periphery_detection_problem" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Section 2
+              The core-periphery detection problem
             
           </span>
         </div>
@@ -243,8 +243,20 @@
   
   
     <li class="md-nav__item">
-      <a href="../../chapter1/" class="md-nav__link">
+      <a href="../../ch1/sec1/" class="md-nav__link">
         Perron-Frobenius theory for linear mappings
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ch1/sec2/" class="md-nav__link">
+        The Perron-Frobenius theorem for homogeneous mappings
       </a>
     </li>
   
@@ -423,7 +435,7 @@
       
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Section 2
+        The core-periphery detection problem
       </a>
       
     </li>
@@ -449,7 +461,26 @@
               
                 
                 
-                <h1 id="section_2">Section 2</h1>
+                <h1 id="the_core-periphery_detection_problem">The core-periphery detection problem</h1>
+<p>Many such tasks can be viewed in terms of categorizing
+nodes or discovering hidden substructures that relate them. </p>
+<p>A relevant problem in network science and data mining is to discover hidden structures in a given network. 
+Clustering and  community detection  are perhaps the 
+most widely studied such problem, and it forms the basis of many classification algorithms
+\cite{BLSZ18}. Other relevant problems include the anti-community detection problem and the core-periphery one, which we discuss next.</p>
+<p><center>
+<img style="width:11em;margin-right:2em;" src="../../img/communities.png" alt="communities-spy"/> <img style="width:11em;margin-right:2em;" src="../../img/bipartite.png" alt="anticommunities-spy" /> <img style="width:11em;" src="../../img/cp.png" alt="core-periphery-spy" />
+</center></p>
+<p>In core-periphery detection we seek a set of nodes that are highly connected internally and with the rest of the network, forming the <em>core</em>, and a set of <em>peripheral</em> nodes that are strongly connected to the core but have only sparse internal connections. </p>
+<p>This kind of structure is important for a number of reasons. For example, identifying core-periphery structures can help in identifying and categorizing hubs, i.e.,  well-connected nodes. As noted in <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>, such nodes often occur in real-world networks. This is an issue for some community detection methods, as hubs tend to be connected to many different communities and, thus, can be awkward to classify.  Moreover, the set of core nodes can be used to identify internally cohesive subgraphs of highly central nodes. In fact, even though all core nodes typically have high centrality score, not all nodes with high centrality measures belong to the core and it is possible to find sparsely connected subgraphs of central nodes not belonging to the core [@borgatti2000models].</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>M Puck Rombach, Mason A Porter, James H Fowler, and Peter J Mucha. Core-periphery structure in networks. <em>SIAM Journal on Applied mathematics</em>, 74<span class="arithmatex">\(1\)</span>:167–190, 2014.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
                 
               
               

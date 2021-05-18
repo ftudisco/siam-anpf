@@ -243,8 +243,20 @@
   
   
     <li class="md-nav__item">
-      <a href="../../chapter1/" class="md-nav__link">
+      <a href="../../ch1/sec1/" class="md-nav__link">
         Perron-Frobenius theory for linear mappings
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ch1/sec2/" class="md-nav__link">
+        The Perron-Frobenius theorem for homogeneous mappings
       </a>
     </li>
   
@@ -410,9 +422,53 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Optimization with nonlinear Perron eigenvectors
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Optimization with nonlinear Perron eigenvectors
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#optimization_of_combinatorial_ratios" class="md-nav__link">
+    Optimization of combinatorial ratios
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sub-multihomogeneous_mappings" class="md-nav__link">
+    Sub-multihomogeneous mappings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#global_optimization_setting" class="md-nav__link">
+    Global optimization setting
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -424,7 +480,7 @@
   
     <li class="md-nav__item">
       <a href="../sec2/" class="md-nav__link">
-        Section 2
+        The core-periphery detection problem
       </a>
     </li>
   
@@ -450,35 +506,187 @@
                 
                 
                 <h1 id="optimization_with_nonlinear_perron_eigenvectors">Optimization with nonlinear Perron eigenvectors</h1>
-<p>The connection between eigenvalue problems and constrained optimization is relatively standard. For example, the singular value equations <span class="arithmatex">\(M y = \lambda x\)</span>, <span class="arithmatex">\(M^\top x = \lambda y\)</span> of a matrix <span class="arithmatex">\(M\)</span>  always admit a variational characterization which connects the solutions of</p>
-<!-- \begin{equation*}\label{eq:matrix-singular-vectors}
-    M y = \lambda x, \qquad 
-    M^\top x = \lambda y
-\end{equation*} -->
-
-<div class="arithmatex">\[
-    \begin{cases}
-    M y = \lambda x &amp; \\
-    M^\top x = \lambda y
-    \end{cases}
-\]</div>
-<p>with the constrained optimization problem </p>
-<!-- with the critical points of the quadratic functional
-
-\begin{equation}\label{eq:matrix-variational-problem}
-    \varphi(x,y) = x^\top M y
-\end{equation}
-$\varphi(x,y) = x^\top M y$ subject to $\|x\|=\|y\|=1$.   -->
-
-<div class="arithmatex">\[
+<p>The connection between eigenvalue problems and constrained optimization is relatively standard. For example, the singular value equations <span class="arithmatex">\(M y = \lambda x\)</span>, <span class="arithmatex">\(M^\top x = \lambda y\)</span> of a matrix <span class="arithmatex">\(M\)</span>  always admit a variational characterization which connects the solutions of the constrained optimization of <span class="arithmatex">\(f(x,y) = x^\top M y\)</span> to the singular values and vectors of <span class="arithmatex">\(M\)</span>. In particular, the constrained optimization problem </p>
+<div class="arithmatex">\[\begin{equation}\label{eq:matrix-variational-problem}
 \left\{
 \begin{array}{ll}
-\text{optimize} &amp; \varphi(x,y) = x^\top M y \\[.4em]
-\text{subject to}&amp; \|x\|=1 \text{ and } \|y\|=1
+\text{max} &amp; f(x,y)  \\[.4em]
+\text{subject to}&amp; \|x\|= \|y\|=1
 \end{array}
 \right. 
+\end{equation}\]</div>
+<p>is given by the extreme left and right singular vectors of <span class="arithmatex">\(M\)</span>. Thus, while the optimization problem itself is not convex in general (for a general <span class="arithmatex">\(M\)</span>), we can compute it using ideas from numerical linear algebra, in particular,  numerical eigensolvers. This relatively simple connection has led to powerful numerical optimizers in recent years, see e.g. <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> <sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup> <sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>. </p>
+<p>A simple application of Euler&rsquo;s theorem show that an analogous property holds for the more general constrained optimization problem </p>
+<div class="arithmatex">\[\begin{equation}\label{eq:constrained-opt}
+\left\{
+\begin{array}{ll}
+\text{max}_{x\in \RR^n} &amp; f(x^{(1)}, \dots, x^{(s)})\\
+\text{subject to}&amp; g_1(x^{(1)})=\dots=g_s(x^{(s)})=1,
+\end{array}
+\right.
+\end{equation}\]</div>
+<p>where <span class="arithmatex">\(f\)</span> and <span class="arithmatex">\(g_i\)</span> are multihomogeneous or, more generally, sub-multihomogeneous. However, when <span class="arithmatex">\(f\)</span> and <span class="arithmatex">\(g_i\)</span> are not quadratic, this optimization problem can  significantly more challenging than <span class="arithmatex">\(\eqref{eq:matrix-variational-problem}\)</span>. As we will see, even smooth functions <span class="arithmatex">\(f\)</span> and <span class="arithmatex">\(g_i\)</span> may lead to NP-hard problems. 
+<strong>However</strong>, when <span class="arithmatex">\(f\)</span> and <span class="arithmatex">\(g_i\)</span> are nonnegative, we can often solve <span class="arithmatex">\(\eqref{eq:constrained-opt}\)</span> to an arbitrary accuracy by leveraging and extending the Perron-Frobenius theory for multihomogeneous mappings. This is a main result we will present below, in the <a href="#global-optimization-setting">Global optimization setting</a> section. </p>
+<p>Before doing this, we discuss an example which shows how the constrained optimization of homogeneous functions pops up in combinatorial optimization and has applications for example in graph clustering. </p>
+<h2 id="optimization_of_combinatorial_ratios">Optimization of combinatorial ratios</h2>
+<p>Consider a set of integers <span class="arithmatex">\(V=\{1,\dots, n\}\)</span>. A combinatorial ratio is a function <span class="arithmatex">\(f:2^V\to\RR\)</span> of the form </p>
+<div class="arithmatex">\[\begin{equation}\label{eq:general-ratio}
+\varrho(S) = \frac{\alpha(S)}{\beta(S)}
+\end{equation}\]</div>
+<p>where both <span class="arithmatex">\(\alpha\)</span> and <span class="arithmatex">\(\beta\)</span> are set functions <span class="arithmatex">\(\alpha,\beta:2^V\to\RR\)</span>. The optimization of this type of functions arises in many context. One example of interest to us is graph clustering. The optimization of the graph conductance is a classical and successful strategy for finding a good partition of a graph into two subsets. In this case  <span class="arithmatex">\(V\)</span> is the vertex set of a graph <span class="arithmatex">\(G=(V,E)\)</span> with adjacency matrix <span class="arithmatex">\(A\)</span> and the global minimum of </p>
+<div class="arithmatex">\[
+\varrho(S) = \frac{A(S,\bar S)}{\min\{\nu(S),\nu(\bar S)\}}
 \]</div>
-<p>So, the global optimum of <span class="arithmatex">\(\varphi\)</span> is given by the extreme left and right singular vectors of <span class="arithmatex">\(M\)</span>. This relatively simple connection has lead to powerful numerical optimizers in recent years, see e.g. <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> <sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup> <sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>. </p>
+<p>where <span class="arithmatex">\(\bar S = V\setminus S\)</span> is the complement of <span class="arithmatex">\(S\)</span> in <span class="arithmatex">\(V\)</span>, <span class="arithmatex">\(A(S,\bar S) = \sum_{i\in S, j\in \bar S}A_{ij}\)</span> is the overall weight of edges going from <span class="arithmatex">\(S\)</span> to <span class="arithmatex">\(\bar S\)</span>  and <span class="arithmatex">\(\nu(S)=\sum_{i\in S}\nu_i\)</span> is the weight of the set <span class="arithmatex">\(S\)</span>, for some weight coefficients <span class="arithmatex">\(\nu_i\)</span>.</p>
+<p><center>
+<img style="width:22em;border-style:solid;border:5px;" src="../../img/graph-cut.png" alt="example-graph" />
+</center></p>
+<p>Minimizing <span class="arithmatex">\(\varrho\)</span> is in general a NP-hard problem, however a homogeneous relaxation based on the Lovasz extension of <span class="arithmatex">\(\alpha\)</span> and <span class="arithmatex">\(\beta\)</span> allows us to obtain arbitrarily good continuous approximation. This was first observed in [.....matthias....] for <span class="arithmatex">\(1\)</span>-homogeneous functions, but it is not difficult to extend that idea to the case of <span class="arithmatex">\(p\)</span>-homogeneous ones:</p>
+<section class="theorem">
+<p><strong>Theorem.</strong> Let <span class="arithmatex">\(\alpha,\beta:2^V\to\RR\)</span> be such that <span class="arithmatex">\(\alpha(S),\beta(S)\geq 0\)</span> for all <span class="arithmatex">\(S\subseteq V\)</span> and <span class="arithmatex">\(\alpha(V)=\alpha(\emptyset)=\beta(V)=\beta(\emptyset)=0\)</span>. For any <span class="arithmatex">\(p\geq 1\)</span> there exist a constant <span class="arithmatex">\(C\)</span> independent of <span class="arithmatex">\(n\)</span> and <span class="arithmatex">\(p\)</span> and homogeneous functions <span class="arithmatex">\(f,g:\RR^n\to\RR\)</span> with homogeneity degree <span class="arithmatex">\(p\)</span> such that, if <span class="arithmatex">\(\lambda\)</span> is the solution to</p>
+<div class="arithmatex">\[\begin{equation}\label{eq:thm-cheeger}
+\lambda = \min \Big\{  f(x) \text{ such that } g(x) = 1 \Big\}
+\end{equation}\]</div>
+<p>then <span class="arithmatex">\(\lambda \leq \min_S \varrho(S)\leq C^{p-1} \lambda^{1/p}\)</span>. In particular, <span class="arithmatex">\(\lambda \xrightarrow{p\to 1} \min \varrho\)</span>. </p>
+</section>
+<p>Both <span class="arithmatex">\(f\)</span> and <span class="arithmatex">\(g\)</span> in the theorem above are defined in terms of the Lovasz extension of <span class="arithmatex">\(\alpha\)</span> and <span class="arithmatex">\(\beta\)</span>. For certain combinatorial functions this extension admits an explicit formula. For example, when tailored to the clustering problem <span class="arithmatex">\(\alpha(S) = A(S,\bar S)\)</span> and <span class="arithmatex">\(\beta(S) =\min\{\nu(S),\nu(\bar S)\}\)</span>, the <span class="arithmatex">\(p\)</span>-homogeneous functions in the theorem are</p>
+<div class="arithmatex">\[
+f(x) = \frac 1 2 \sum_{ij}A_{ij}|x_i-x_j|^p \qquad    \text{and} \qquad  g(x) = \|x-\mathrm{mean}(x)\one\|_p^p\, .
+\]</div>
+<!-- A_ -->
+
+<p>In particular, <span class="arithmatex">\(f(x)\)</span> is the energy associated to the so-called <span class="arithmatex">\(p\)</span>-Laplacian on <span class="arithmatex">\(G\)</span> and in fact, it is not difficult to show that for these two <span class="arithmatex">\(f\)</span> and <span class="arithmatex">\(g\)</span>, <span class="arithmatex">\(\lambda\)</span> in the theorem coincides with the smallest nonzero eigenvalue of the graph <span class="arithmatex">\(p\)</span>-Laplacian, defined as</p>
+<div class="arithmatex">\[
+L_p(x) = B\Phi(B^\top x), \qquad \Phi(x) = |x|^{p-1}\mathrm{sign}(x)
+\]</div>
+<p>with <span class="arithmatex">\(B\)</span> the incidence matrix of <span class="arithmatex">\(G\)</span> (see the <a href="../../ch2/sec2/#beyond_matrices_and_tensors">network centrality</a> section for its definition). In particular, <span class="arithmatex">\(L_p\)</span> boils down to the graph Laplacian matrix when <span class="arithmatex">\(p=2\)</span> and we obtain the renowned Cheeger inequality as a corollary of the theorem above. </p>
+<p>This observation shows that the optimization of the graph conductance can be approached via the solution of so-called nonlinear eigenvalue problems with eigenvector nonlinearities. In fact, using the Euler theorem for (multi)homogeneous functions, we can always connect the constrained optimization problem  <span class="arithmatex">\(\eqref{eq:constrained-opt}\)</span> with a nonlinear eigenvector problem, as we will discuss next.</p>
+<h2 id="sub-multihomogeneous_mappings">Sub-multihomogeneous mappings</h2>
+<p>Our main result concerns the global solution of the constrained optimization problem <span class="arithmatex">\(\eqref{eq:constrained-opt}\)</span>  and  holds for a family of operators that generalized the already discussed set of homogeneous mappings. This is the class of sub-multihomogeneous maps. We provide here their definition, first starting from a different characterization of the multihomogeneous ones. </p>
+<p>A mapping <span class="arithmatex">\(F:\RR^n\to\RR^m\)</span> is homogeneous with homogeneity coefficient <span class="arithmatex">\(p\)</span> if <span class="arithmatex">\(F(\lambda x)=\lambda^p F(x)\)</span> for all <span class="arithmatex">\(\lambda&gt;0\)</span> and <span class="arithmatex">\(x\succeq 0\)</span>. When <span class="arithmatex">\(F\)</span> is differentiable, Euler&rsquo;s theorem for homogeneous functions allows us to equivalently characterize this property in terms of the Jacobian of <span class="arithmatex">\(F\)</span>, which we denote by <span class="arithmatex">\(\partial F:\RR^n\to\RR^{m\times n}\)</span>. Precisely, we have </p>
+<section class="theorem">
+<p><strong>Theorem (Euler).</strong>  Let <span class="arithmatex">\(F:\RR^n\to\RR^{m}\)</span> be differentiable. Then <span class="arithmatex">\(F\)</span> is homogeneous  with homogeneity coefficient <span class="arithmatex">\(p\neq 0\)</span> if and only if <span class="arithmatex">\(\partial F(x)x = p F(x)\)</span> for all <span class="arithmatex">\(x\succ 0\)</span>.</p>
+</section>
+<p>This result can be extended to the multihomogeneous setting. In fact, as for homogeneous functions, multihomogeneous mappings enjoy a similar Euler-based characterization. </p>
+<p>To fix the ideas, consider first  the case of two variable sets <span class="arithmatex">\(x = (x^{(1)},x^{(2)})\)</span> with <span class="arithmatex">\(x^{(1)}\in\RR^{n_1}\)</span> and <span class="arithmatex">\(x^{(2)}\in \RR^{n_2}\)</span> and <span class="arithmatex">\(n_1+n_2=n\)</span>. Let <span class="arithmatex">\(F= (F_1,F_2):\RR^n\to\RR^n\)</span> be a multihomogeneous mapping with <span class="arithmatex">\(2\times 2\)</span> homogeneity matrix <span class="arithmatex">\(\M\)</span>. In this notation, each <span class="arithmatex">\(F_i\)</span> is a map from <span class="arithmatex">\(\RR^{n_1+n_2}\)</span> to <span class="arithmatex">\(\RR^{n_i}\)</span>. Moreover, we assume  </p>
+<section class="theorem">
+<p><center>
+<span class="arithmatex">\(\partial_j = \partial_{x^{(j)}}\)</span>  denotes the partial derivative with respect to the set of variables <span class="arithmatex">\(x^{(j)}\)</span>
+</center></p>
+</section>
+<p>then, for any <span class="arithmatex">\(x\in \RR^{n_1+n_2}\)</span>,  <span class="arithmatex">\(\partial_j F_i(x)\)</span> is a <span class="arithmatex">\(n_i\times n_j\)</span> matrix and  we can partition <span class="arithmatex">\(\M\)</span>, <span class="arithmatex">\(F\)</span>, and its Jacobian <span class="arithmatex">\(\partial F\)</span> as</p>
+<div class="arithmatex">\[
+\M = \begin{bmatrix} \M_{11} &amp; \M_{12}\\ \M_{21} &amp; \M_{22} \end{bmatrix}
+\qquad
+F(x) = 
+\left[
+\begin{array}{c}
+\begin{array}{c} 
+ \\
+F_1(x)\\
+ \,
+\end{array}  \\
+\hline
+F_2(x) 
+\end{array}\right] \qquad
+\partial F(x) = 
+\left[
+\begin{array}{c|c}
+\begin{array}{ccc} 
+&amp;&amp; \\
+&amp; \partial_{1}F_1(x) &amp;\\
+&amp;&amp; 
+\end{array} &amp; \partial_2 F_1(x) \\
+\hline
+\partial_1 F_2(x) &amp; \partial_2 F_2(x)
+\end{array}\right]
+\]</div>
+<p>If we apply the Euler&rsquo;s theorem to each of the blocks individually, we obtain that the following identities</p>
+<div class="arithmatex">\[
+\begin{cases}
+\partial_1 F_1(x)x^{(1)} = \M_{11} F_1(x) &amp; \partial_2 F_1(x)x^{(2)} = \M_{12} F_1(x) \\
+\partial_1 F_2(x)x^{(1)} = \M_{21} F_2(x) &amp; \partial_2 F_2(x)x^{(2)} = \M_{22} F_2(x)
+\end{cases}
+\]</div>
+<p>equivalently characterize <span class="arithmatex">\(F\)</span> as a multihomogeneous mapping. More in general, we have</p>
+<section class="theorem">
+<p><strong>Theorem.</strong> Let <span class="arithmatex">\(F=(F_1,\dots,F_t):\RR^n\to\RR^m\)</span> be differentiable. Then <span class="arithmatex">\(F\)</span> is multihomogeneous of homogeneity matrix <span class="arithmatex">\(\M\)</span> of size <span class="arithmatex">\(s\times t\)</span> if and only if there exists a subdivision of the variable <span class="arithmatex">\(x\)</span> into <span class="arithmatex">\(x=(x^{(1)}, \dots, x^{(s)})\)</span> such that</p>
+<div class="arithmatex">\[
+\partial_j F_i(x) x^{(j)} = \M_{ij} \, F_i(x)
+\]</div>
+<p>for all <span class="arithmatex">\(i,j\)</span> and all <span class="arithmatex">\(x=(x^{(1)}, \dots, x^{(s)})\succ 0\)</span>.</p>
+</section>
+<p>The theorem above fully characterizes differentiable multihomogeneous operators and, when <span class="arithmatex">\(F\)</span> is order-preserving, i.e. <span class="arithmatex">\(F(x)\succeq 0\)</span> when <span class="arithmatex">\(x\succeq 0\)</span>, it implies that <span class="arithmatex">\(|\partial_j F_i(x)| x^{(j)} = |\M_{ij}| \, F_i(x)\)</span> for a multihomogeneous mapping, where absoulute values are taken entrywise.</p>
+<p>This motivates the following</p>
+<section class="definition">
+<p><strong>Definition.</strong> A differentiable <span class="arithmatex">\(F:\RR^n\to\RR^m\)</span> is sub-multihomogeneous of homogeneity matrix <span class="arithmatex">\(\M\)</span> if there exists a partition of the variable <span class="arithmatex">\(x\)</span> such that</p>
+<div class="arithmatex">\[
+|\M_{ij}| = \min\Big\{\lambda \geq 0 \, : \, |\partial_j F_i(x)| x^{(j)} \leq  \lambda \, F_i(x) \Big\}
+\]</div>
+<p>for all <span class="arithmatex">\(i,j\)</span> and all <span class="arithmatex">\(x\succ 0\)</span>. </p>
+</section>
+<p>Clearly, any multihomogeneous operator is also sub-multihomogeneous, with the same homogeneity matrix. </p>
+<p>In what follows we will consider real-valued functions <span class="arithmatex">\(f:\RR^n\to \RR\)</span> whose gradient <span class="arithmatex">\(\partial f:\RR^n \to\RR^n\)</span> is sub-multihomogeneous, i.e. functions <span class="arithmatex">\(f\)</span> for which there exists a splitting <span class="arithmatex">\(x=(x^{(1)},\dots, x^{(s)})\)</span> and a matrix <span class="arithmatex">\(\\M\)</span> of size <span class="arithmatex">\(s\times s\)</span>, such that </p>
+<div class="arithmatex">\[\begin{equation*}%\label{eq:euler-thm-for-the-hessian}
+     \Big|\partial_{j}\partial_i f(x) \Big|x^{(j)} = |\M_{ij}| \partial_i f(x)
+\end{equation*}\]</div>
+<p>holds for all <span class="arithmatex">\(i,j=1,\dots,s\)</span> and all <span class="arithmatex">\(x\succ 0\)</span>. </p>
+<p>Before moving on, it is worth noting that if <span class="arithmatex">\(f\)</span> is itself multihomogeneous then this property is preserved by the gradient. More precisely, let <span class="arithmatex">\(f:\RR^n\to \RR\)</span> be a differentiable function and suppose <span class="arithmatex">\(f\)</span> is multihomogeneous. As <span class="arithmatex">\(m=1\)</span> in this case, its homogeneity matrix must be a row vector <span class="arithmatex">\(\delta^\top\)</span>, and we have</p>
+<div class="arithmatex">\[
+f(x^{(1)},\dots, \lambda x^{(j)}, \dots, x^{(m)}) = \lambda^{\delta_j} f(x)\, .
+\]</div>
+<p>For brevity, let <span class="arithmatex">\(x_j(\lambda) = (x^{(1)},\dots, \lambda x^{(j)}, \dots, x^{(m)})\)</span>. If we differentiate the previous identity we get </p>
+<div class="arithmatex">\[
+\partial_j f(x_j(\lambda)) = \lambda^{\delta_j-1} \partial_j f(x), \qquad \partial_i f(x_j(\lambda)) = \lambda^{\delta_j} \partial_i f(x), \quad i\neq j
+\]</div>
+<p>which shows that <span class="arithmatex">\(\partial f\)</span> is homogeneous of homogeneity matrix <span class="arithmatex">\(\M\)</span> with </p>
+<div class="arithmatex">\[
+\M = \begin{bmatrix}
+\delta_1 - 1 &amp; \delta_2 &amp; \dots &amp; \delta_s\\
+\delta_1 &amp; \delta_2-1 &amp; \dots &amp; \delta_s\\
+\vdots &amp; &amp; \ddots &amp; \vdots \\
+\delta_1 &amp; \dots  &amp; \delta_{s-1} &amp; \delta_s - 1
+\end{bmatrix} = \one\delta^\top - I \, .
+\]</div>
+<h2 id="global_optimization_setting">Global optimization setting</h2>
+<p>Consider the following constrained optimization problem</p>
+<div class="arithmatex">\[\begin{equation}\label{eq:constrained_opt_prob_3}
+\left\{
+\begin{array}{ll}
+\text{maximize} &amp; f(x)\\
+\text{subject to}&amp; g_1(x^{(1)})=\dots = g_s(x^{(s)})=1
+\end{array}
+\right. 
+\end{equation}\]</div>
+<p>where the gradient of <span class="arithmatex">\(f:\RR^n\to\RR\)</span> is sub-multihomogeneous and each <span class="arithmatex">\(g_i:\RR^{n_i}\to \RR\)</span> is a real-valued homogeneous function. </p>
+<p>The following Theorem shows that, under appropriate conditions on <span class="arithmatex">\(f\)</span> and <span class="arithmatex">\(g\)</span>, we can always compute an arbitrary accurate approximation of the global solution to <span class="arithmatex">\(\eqref{eq:constrained_opt_prob_3}\)</span>.</p>
+<p>The key to this result is the transformation of <span class="arithmatex">\(\eqref{eq:constrained_opt_prob_3}\)</span> into a nonlinear eigenvector problem, which one obtains relatively directly. In fact, using the Lagrangian we see that <span class="arithmatex">\(x\)</span> is a critical point only if it is a solution to the system of the nonlinear singular vector  equations</p>
+<div class="arithmatex">\[\begin{equation}\label{eq:tmp}
+\partial_i f(x) = \lambda_i \partial g_i(x) 
+\end{equation}\]</div>
+<p>which, if <span class="arithmatex">\(\partial g_i\)</span> are invertible and have the appropriate homogeneity and order-preserving structure, we can solve via the nonlinear power method. All together we get:</p>
+<section class="theorem">
+<p><strong>Theorem.</strong> Recall that a mapping <span class="arithmatex">\(F\)</span> is positive if <span class="arithmatex">\(F(x)\succ 0\)</span> when <span class="arithmatex">\(x\succ 0\)</span>.</p>
+<p>Let <span class="arithmatex">\(f:\RR^n\to\RR\)</span> be sub-multihomogeneous with homogeneity matrix <span class="arithmatex">\(\M\)</span> and twice differentiable. Let <span class="arithmatex">\(g_i:\RR^{n_i}\to\RR\)</span> be homogeneous with homogeneity coefficient <span class="arithmatex">\(1+\alpha_i\)</span> with <span class="arithmatex">\(\alpha_i\neq 0\)</span> and suppose the gradient <span class="arithmatex">\(\partial g_i\)</span> is invertible on <span class="arithmatex">\(\RR^{n_i}_{++}\)</span> and positive. Consider the matrix </p>
+<div class="arithmatex">\[
+K = \mathrm{Diag}(\alpha_1,\dots,\alpha_s)^{-1}\M
+\]</div>
+<p>and let <span class="arithmatex">\(|K|\)</span> denote the entrywise absolute value. 
+If either <span class="arithmatex">\(\rho(|K|)&lt;1/2\)</span> or <span class="arithmatex">\(\rho(|K|)&lt;1\)</span> and <span class="arithmatex">\(\partial^2 f\)</span> is a positive map, then   </p>
+<ul>
+<li>There exists a unique solution <span class="arithmatex">\(x^*\in \RR^n\)</span> to <span class="arithmatex">\(\eqref{eq:constrained_opt_prob_3}\)</span> and <span class="arithmatex">\(x^*\succ 0\)</span>;</li>
+<li>It holds <span class="arithmatex">\(\partial_i f(x^*) = \lambda_i \partial g_i(x^*)\)</span> for all <span class="arithmatex">\(i=1,\dots,s\)</span> and the coefficients <span class="arithmatex">\(\lambda_i\)</span> are maximal nonlinear singular vectors, in the sense that any other <span class="arithmatex">\(\tilde \lambda_i\)</span> solution of <span class="arithmatex">\(\eqref{eq:tmp}\)</span> is such that <span class="arithmatex">\(\lambda_i\geq \tilde \lambda_i\)</span>;</li>
+<li>The nonlinear power method sketched  below converges to <span class="arithmatex">\(x^*\)</span> </li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="p">[</span> <span class="p">[</span><span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="n">i</span><span class="p">])]</span> <span class="k">for</span> <span class="n">i</span> <span class="kp">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">s</span> <span class="p">]</span>
+<span class="k">for</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">...</span>
+  <span class="n">y</span> <span class="o">=</span> <span class="n">∂_i</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  <span class="n">z</span> <span class="n">s</span><span class="o">.</span><span class="n">t</span><span class="o">.</span> <span class="n">∂g_i</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="n">y</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="p">[</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">./</span> <span class="n">g_i</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])]</span> <span class="k">for</span> <span class="n">i</span> <span class="kp">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">s</span> <span class="p">]</span>
+</code></pre></div>
+
+
+</section>
 <div class="footnote">
 <hr />
 <ol>
@@ -536,7 +744,7 @@ $\varphi(x,y) = x^\top M y$ subject to $\|x\|=\|y\|=1$.   -->
               <span class="md-footer__direction">
                 Next
               </span>
-              Section 2
+              The core-periphery detection problem
             </div>
           </div>
           <div class="md-footer__button md-icon">

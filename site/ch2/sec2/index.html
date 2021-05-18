@@ -243,8 +243,20 @@
   
   
     <li class="md-nav__item">
-      <a href="../../chapter1/" class="md-nav__link">
+      <a href="../../ch1/sec1/" class="md-nav__link">
         Perron-Frobenius theory for linear mappings
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ch1/sec2/" class="md-nav__link">
+        The Perron-Frobenius theorem for homogeneous mappings
       </a>
     </li>
   
@@ -494,7 +506,7 @@
   
     <li class="md-nav__item">
       <a href="../../ch4/sec2/" class="md-nav__link">
-        Section 2
+        The core-periphery detection problem
       </a>
     </li>
   
@@ -590,17 +602,18 @@ C_+(T) =\left\{(x,y)\succeq 0  \quad : \quad
 \end{array}\right\}\, .
 \]</div>
 <p>This is a cone of vectors that depends on the nonzero pattern of <span class="arithmatex">\(T\)</span>: for <span class="arithmatex">\((x,y)\in C_+(T)\)</span>, <span class="arithmatex">\(x_i\)</span> is zero if and only if <span class="arithmatex">\(T_{ijk}=0\)</span> for all <span class="arithmatex">\(j,k\)</span>, that is node <span class="arithmatex">\(i\)</span> is isolated in all the layers and, similarly, <span class="arithmatex">\(y_k=0\)</span> if and only if layer <span class="arithmatex">\(k\)</span> is empty (there is no edge in that layer).  </p>
-<p>Then <span class="arithmatex">\(\rho(\M) = \frac{\sqrt{8p+q}+\sqrt{q}}{2p\sqrt{q}}\)</span> and if <span class="arithmatex">\(\rho(\M)&lt;1\)</span> we have:</p>
+<p>Then <span class="arithmatex">\(\rho(\M) =  ( \sqrt{8p+q}+\sqrt{q}) / (2p\sqrt{q})\)</span> and if <span class="arithmatex">\(\rho(\M)&lt;1\)</span> we have:</p>
 <p><strong>1.</strong> The system of nonlinear equations <span class="arithmatex">\(\eqref{eq:tensor_singvec}\)</span> has a unique solution <span class="arithmatex">\((x^*,y^*)\in C_+(T)\)</span> such that <span class="arithmatex">\(\|x^*\|=\|y^*\|=1\)</span>. </p>
 <p><strong>2.</strong> The power method iteration</p>
-<pre><code class="julia">x = ones(n,1) 
-y = ones(l,1)
-for r = 0,1,2,3,..
-        x = F_1(x,y)
-        x = x / norm(x)
-        y = F_2(x,y)
-        y = y / norm(y)
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> 
+<span class="n">y</span> <span class="o">=</span> <span class="n">ones</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="o">..</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F_1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">F_2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">/</span> <span class="n">norm</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</code></pre></div>
+
 
 <p>converges to <span class="arithmatex">\((x^*,y^*)\)</span> and after <span class="arithmatex">\(m\)</span> steps we have </p>
 <div class="arithmatex">\[
@@ -693,14 +706,15 @@ B^\top &amp; 0
 <section class="theorem">
 <p><strong>Theorem.</strong>  Let <span class="arithmatex">\(f,g,\varphi,\psi\)</span> be order preserving and homogeneous of degrees <span class="arithmatex">\(\alpha,\beta,\gamma,\delta\)</span>, respectively. Define the coefficient <span class="arithmatex">\(\rho = |\alpha\beta\gamma\delta|\)</span>.</p>
 <p>If either    <span class="arithmatex">\(\rho&lt;1\)</span>  or   <span class="arithmatex">\(\rho=1\)</span>,  <span class="arithmatex">\(f,g,\varphi,\psi\)</span> are differentiable and the bipartite graph with adjacency matrix as in <span class="arithmatex">\(\eqref{eq:bipartite}\)</span> is connected, then there exist unique <span class="arithmatex">\(x^*,y^* \succ  0\)</span> (up to scaling) and unique <span class="arithmatex">\(\lambda, \mu &gt;0\)</span> solution of <span class="arithmatex">\(\eqref{eq:NEP}\)</span> and the nonlinear power iteration</p>
-<pre><code class="julia">x = ones(n,1)  
-y = ones(l,1)
-for r = 0,1,2,3,...
-        x = sqrt.(x .* g(B*W*f(y)))
-        x = x / norm(x)
-        y = sqrt.(y .* ψ(B'*N*φ(x)))
-        y = y / norm(y)
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>  
+<span class="n">y</span> <span class="o">=</span> <span class="n">ones</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="o">...</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">sqrt</span><span class="o">.</span><span class="p">(</span><span class="n">x</span> <span class="o">.*</span> <span class="n">g</span><span class="p">(</span><span class="n">B</span><span class="o">*</span><span class="n">W</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">sqrt</span><span class="o">.</span><span class="p">(</span><span class="n">y</span> <span class="o">.*</span> <span class="n">ψ</span><span class="p">(</span><span class="n">B</span><span class="o">&#39;*</span><span class="n">N</span><span class="o">*</span><span class="nb">φ</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">/</span> <span class="n">norm</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</code></pre></div>
+
 
 <p>converges to such <span class="arithmatex">\(x^*,y^*\)</span>. </p>
 </section>
